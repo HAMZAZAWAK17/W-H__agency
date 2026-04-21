@@ -46,43 +46,32 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="relative hidden md:block"
         >
-          {/* Mockups Visualization */}
-          <div className="relative z-10">
-            <div className="glass aspect-video w-full rounded-2xl p-4 border border-white/10 shadow-2xl relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent" />
-              <div className="h-full w-full bg-background/40 rounded-lg flex items-center justify-center border border-white/5">
-                <div className="space-y-4 w-3/4">
-                  <div className="h-4 bg-white/5 rounded w-3/4 animate-pulse" />
-                  <div className="h-4 bg-white/5 rounded w-1/2 animate-pulse" />
-                  <div className="h-32 bg-white/5 rounded w-full animate-pulse" />
-                </div>
-              </div>
+          {/* Main Visual */}
+          <motion.div 
+            animate={{ 
+              y: [0, -15, 0],
+              rotateZ: [0, 1, 0]
+            }}
+            transition={{ 
+              duration: 6, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="relative z-10"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <img 
+                src="/src/assets/hero-mockup.png" 
+                alt="W&H Agency Mockup" 
+                className="relative glass w-full rounded-2xl border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+              />
             </div>
-            
-            <div className="absolute -bottom-10 -right-10 glass w-32 h-64 rounded-3xl p-4 border border-white/10 shadow-2xl overflow-hidden hidden lg:block">
-              <div className="h-full w-full bg-background/40 rounded-2xl flex flex-col items-center py-8 space-y-4">
-                <div className="w-8 h-8 rounded-full bg-primary/20" />
-                <div className="w-12 h-2 bg-white/10 rounded" />
-                <div className="w-16 h-24 bg-white/5 rounded-lg" />
-              </div>
-            </div>
-          </div>
+          </motion.div>
 
-          {/* Floating elements */}
-          <motion.div 
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute -top-10 right-10 w-12 h-12 glass rounded-xl border border-primary/30 flex items-center justify-center text-primary"
-          >
-            💻
-          </motion.div>
-          <motion.div 
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-            className="absolute top-1/2 -left-10 w-14 h-14 glass rounded-full border border-secondary/30 flex items-center justify-center text-secondary text-2xl"
-          >
-            ✨
-          </motion.div>
+          {/* Particle Effects / Floating elements */}
+          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 -ml-4 -mb-4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-700" />
         </motion.div>
       </div>
     </section>
