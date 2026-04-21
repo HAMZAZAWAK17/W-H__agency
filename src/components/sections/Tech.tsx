@@ -1,53 +1,43 @@
 import React from 'react';
-import {
-  type LucideIcon,
-  Atom,
-  Smartphone,
-  Boxes,
-  Zap,
-  Coffee,
-  Server,
-  Leaf,
-  Presentation,
-  BarChart3,
-  Database,
-  Infinity,
-  Code2,
-} from "lucide-react";
+import { motion } from 'framer-motion';
 
 type Tech = {
   name: string;
-  icon: LucideIcon;
+  slug: string;
   category: "Frontend" | "Backend" | "Mobile" | "Design" | "Database" | "Business";
+  color?: string;
 };
 
 const techs: Tech[] = [
-  { name: "Reactjs", icon: Atom, category: "Frontend" },
-  { name: "React Native", icon: Smartphone, category: "Mobile" },
-  { name: "Flutter", icon: Boxes, category: "Mobile" },
-  { name: "Ionic", icon: Zap, category: "Mobile" },
-  { name: "Java", icon: Coffee, category: "Backend" },
-  { name: "Expressjs", icon: Server, category: "Backend" },
-  { name: "SpringBoot", icon: Leaf, category: "Backend" },
-  { name: "PowerPoint", icon: Presentation, category: "Business" },
-  { name: "PowerBI", icon: BarChart3, category: "Business" },
-  { name: "MySQL", icon: Database, category: "Database" },
-  { name: "MongoDB", icon: Code2, category: "Database" },
-  { name: "Laravel", icon: Infinity, category: "Backend" },
+  { name: "Reactjs", slug: "react", category: "Frontend", color: "61DAFB" },
+  { name: "React Native", slug: "react", category: "Mobile", color: "61DAFB" },
+  { name: "Flutter", slug: "flutter", category: "Mobile", color: "02569B" },
+  { name: "Ionic", slug: "ionic", category: "Mobile", color: "3880FF" },
+  { name: "Java", slug: "openjdk", category: "Backend", color: "ED8B00" },
+  { name: "Expressjs", slug: "express", category: "Backend", color: "ffffff" },
+  { name: "SpringBoot", slug: "springboot", category: "Backend", color: "6DB33F" },
+  { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A" },
+  { name: "PowerBI", slug: "powerbi", category: "Business", color: "F2C811" },
+  { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
+  { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
+  { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
 ];
 
-function TechCard({ name, icon: Icon, category }: Tech) {
+function TechCard({ name, slug, category, color }: Tech) {
   return (
     <div className="group relative shrink-0 px-3">
       <div className="bg-glass glow-border relative flex h-36 w-44 flex-col items-center justify-center gap-3 rounded-2xl px-4 py-5 transition-all hover:-translate-y-1 hover:shadow-glow-soft">
-        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02]">
+        <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 transition-colors group-hover:bg-white/10">
           <span
             aria-hidden
-            className="absolute inset-0 rounded-xl bg-[var(--neon)]/0 blur-xl transition-all duration-300 group-hover:bg-[var(--neon)]/30"
+            className="absolute inset-0 rounded-xl blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
+            style={{ backgroundColor: color ? `#${color}` : 'var(--neon)' }}
           />
-          <Icon
-            className="relative h-6 w-6 text-foreground/80 transition-colors group-hover:text-[var(--neon)]"
-            strokeWidth={1.6}
+          <img 
+            src={`https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
+            alt={`${name} logo`}
+            className="relative h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110"
+            loading="lazy"
           />
         </div>
         <div className="text-center">
@@ -63,7 +53,7 @@ function TechCard({ name, icon: Icon, category }: Tech) {
 
 export function Tech() {
   // Duplicate the list so the marquee loops seamlessly
-  const loop = [...techs, ...techs, ...techs]; // Triple for smoother long screen loops
+  const loop = [...techs, ...techs, ...techs];
 
   return (
     <section id="tech" className="relative py-20 sm:py-28 overflow-hidden">
@@ -76,7 +66,7 @@ export function Tech() {
             Technologies we <span className="text-gradient">build with</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            A modern, battle-tested stack — picked for speed, reliability, and great DX.
+            A modern, battle-tested stack — using the original tools for maximum performance.
           </p>
         </div>
       </div>
@@ -89,7 +79,7 @@ export function Tech() {
         <div className="group overflow-hidden">
           <div className="marquee-track flex w-max items-center py-2 group-hover:[animation-play-state:paused]">
             {loop.map((t, i) => (
-              <TechCard key={`${t.name}-${i}`} {...t} />
+              <TechCard key={`${t.slug}-${i}`} {...t} />
             ))}
           </div>
         </div>
