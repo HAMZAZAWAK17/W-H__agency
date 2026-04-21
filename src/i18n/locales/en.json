@@ -10,7 +10,8 @@
   "hero": {
     "badge": "Digital Agency · Est. 2025",
     "title1": "Turn Your Ideas",
-    "title2": "Into Reality",
+    "title2_prefix": "Into",
+    "title2_accent": "Reality",
     "description": "Web · Mobile · Digital Solutions — crafted by two software engineers who care about the details.",
     "cta_start": "Start Your Project",
     "cta_explore": "Explore Services",

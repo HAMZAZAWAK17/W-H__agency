@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { DeviceMockups } from "./DeviceMockups";
 
 // Note: Temporarily using standard <a> tags as TanStack Router is not yet initialized in App.tsx
@@ -9,6 +10,7 @@ const Link = ({ to, children, className }: { to: string; children: React.ReactNo
 );
 
 export function Hero() {
+  const { t } = useTranslation();
   return (
     <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
       {/* Background glow effects to match the premium visual */}
@@ -24,7 +26,7 @@ export function Hero() {
               className="bg-glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-muted-foreground"
             >
               <Sparkles className="h-3.5 w-3.5 text-[var(--neon)]" />
-              Digital Agency · Est. 2025
+              {t('hero.badge')}
             </motion.div>
 
             <motion.h1
@@ -33,9 +35,11 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.05 }}
               className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
             >
-              Turn Your Ideas
+              {t('hero.title1')}
               <br />
-              Into <span className="text-gradient">Reality</span>
+              {t('hero.title2').includes('Reality') || t('hero.title2').includes('Réalité') || t('hero.title2').includes('حقيقة') ? (
+                <>Into <span className="text-gradient">{t('hero.title2').replace('Into ', '').replace('en ', '')}</span></>
+              ) : t('hero.title2')}
             </motion.h1>
 
             <motion.p
@@ -44,8 +48,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="mt-5 max-w-lg text-base text-muted-foreground sm:text-lg"
             >
-              Web · Mobile · Digital Solutions — crafted by two software
-              engineers who care about the details.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -58,14 +61,14 @@ export function Hero() {
                 to="#contact"
                 className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] px-5 py-3 text-sm font-semibold text-background shadow-neon transition-transform hover:scale-[1.03]"
               >
-                Start Your Project
+                {t('hero.cta_start')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="#projects"
                 className="bg-glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-foreground transition-all hover:shadow-glow-soft border border-white/5"
               >
-                Explore Services
+                {t('hero.cta_explore')}
               </Link>
             </motion.div>
 
@@ -77,9 +80,9 @@ export function Hero() {
             >
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[var(--neon)] shadow-[0_0_12px_var(--neon)]" />
-                Available for new projects
+                {t('hero.available')}
               </div>
-              <div>Avg. delivery · 2–6 weeks</div>
+              <div>{t('hero.delivery')}</div>
             </motion.div>
           </div>
 

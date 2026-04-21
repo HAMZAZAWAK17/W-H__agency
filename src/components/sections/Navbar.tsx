@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import ThemeToggle from '../ui/ThemeToggle';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,14 +15,15 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const { t } = useTranslation();
+
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Tech', href: '#tech' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Steps', href: '#steps' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('navbar.about'), href: '#about' },
+    { name: t('navbar.services'), href: '#services' },
+    { name: t('navbar.tech'), href: '#tech' },
+    { name: t('navbar.projects'), href: '#projects' },
+    { name: t('navbar.steps'), href: '#steps' },
+    { name: t('navbar.contact'), href: '#contact' },
   ];
 
   return (
@@ -50,15 +53,17 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <ThemeToggle />
             <button className="btn-primary py-2 px-6 text-sm">
-              DM Us
+              {t('navbar.contact')}
             </button>
           </div>
         </div>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-4">
+          <LanguageSwitcher />
           <ThemeToggle />
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
