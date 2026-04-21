@@ -37,9 +37,7 @@ export function Hero() {
             >
               {t('hero.title1')}
               <br />
-              {t('hero.title2').includes('Reality') || t('hero.title2').includes('Réalité') || t('hero.title2').includes('حقيقة') ? (
-                <>Into <span className="text-gradient">{t('hero.title2').replace('Into ', '').replace('en ', '')}</span></>
-              ) : t('hero.title2')}
+              {t('hero.title2_prefix')} <span className="text-gradient">{t('hero.title2_accent')}</span>
             </motion.h1>
 
             <motion.p
