@@ -17,6 +17,9 @@ export default {
           glow: "#7000ff",
         }
       },
+      fontFamily: {
+        display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+      },
       animation: {
         'glow': 'glow 2s ease-in-out infinite alternate',
         'float': 'float 6s ease-in-out infinite',

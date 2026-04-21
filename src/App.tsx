@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/sections/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
+import Services from './components/sections/Services';
 import Tech from './components/sections/Tech';
 import Projects from './components/sections/Projects';
 import Steps from './components/sections/Steps';
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Services />
         <Tech />
         <Projects />
         <Steps />
