@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { Cpu, Instagram, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export function About() {

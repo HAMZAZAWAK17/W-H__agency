@@ -19,7 +19,8 @@ export default {
         }
       },
       fontFamily: {
-        display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'Cairo', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Cairo', 'system-ui', 'sans-serif'],
       },
       animation: {
         'glow': 'glow 2s ease-in-out infinite alternate',
