@@ -17,5 +17,29 @@
     "cta_explore": "Explorer nos Services",
     "available": "Disponible pour de nouveaux projets",
     "delivery": "Livraison moyenne · 2–6 semaines"
+  },
+  "about": {
+    "subtitle": "Qui nous sommes",
+    "title_prefix": "Un duo d'ingénieurs livrant des produits",
+    "title_accent": "prêts pour le futur",
+    "title_suffix": ".",
+    "description": "Nous sommes deux étudiants en ingénierie logicielle passionnés par la création de solutions numériques rapides, esthétiques et fiables. Des concepts initiaux aux produits finis, nous accompagnons les fondateurs, les étudiants et les petites équipes pour donner vie à leurs idées.",
+    "stats": {
+      "projects": "Projets livrés",
+      "founders": "Fondateurs, une vision",
+      "response": "Temps de réponse",
+      "custom": "Code sur mesure"
+    },
+    "founders_subtitle": "Les fondateurs",
+    "founders_title_prefix": "Rencontrez l'",
+    "founders_title_accent": "équipe",
+    "founder1": {
+      "role": "Développeur Full-stack",
+      "bio": "Construit des plateformes web robustes de bout en bout — de l'API au pixel."
+    },
+    "founder2": {
+      "role": "Développeur Mobile · UI/UX",
+      "bio": "Conçoit des expériences mobiles raffinées avec un soin particulier pour chaque détail."
+    }
   }
 }

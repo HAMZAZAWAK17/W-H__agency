@@ -1,32 +1,32 @@
-import { motion } from "framer-motion";
-import { Cpu, Instagram, Linkedin } from "lucide-react";
-
-type Founder = {
-  initials: string;
-  name: string;
-  role: string;
-  bio: string;
-  gradient: string;
-};
-
-const founders: Founder[] = [
-  {
-    initials: "EH",
-    name: "EZ-ZOUEK Hamza",
-    role: "Full-stack Developer",
-    bio: "Builds robust web platforms end-to-end — from API to pixel.",
-    gradient: "from-[var(--neon)] to-[var(--electric)]",
-  },
-  {
-    initials: "BW",
-    name: "BADRI Wissal",
-    role: "Mobile Developer · UI/UX",
-    bio: "Crafts polished mobile experiences with care for every detail.",
-    gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function About() {
+  const { t } = useTranslation();
+
+  const founders = [
+    {
+      initials: "EH",
+      name: "EZ-ZOUEK Hamza",
+      role: t('about.founder1.role'),
+      bio: t('about.founder1.bio'),
+      gradient: "from-[var(--neon)] to-[var(--electric)]",
+    },
+    {
+      initials: "BW",
+      name: "BADRI Wissal",
+      role: t('about.founder2.role'),
+      bio: t('about.founder2.bio'),
+      gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
+    },
+  ];
+
+  const stats = [
+    [ "10+", t('about.stats.projects') ],
+    [ "2", t('about.stats.founders') ],
+    [ "24h", t('about.stats.response') ],
+    [ "100%", t('about.stats.custom') ],
+  ];
+
   return (
     <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
       {/* Background glow for the section */}
@@ -41,24 +41,16 @@ export function About() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-              Who we are
+              {t('about.subtitle')}
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              A duo of engineers shipping <span className="text-gradient">future-ready</span> products.
+              {t('about.title_prefix')} <span className="text-gradient">{t('about.title_accent')}</span>{t('about.title_suffix')}
             </h2>
             <p className="mt-5 text-muted-foreground">
-              We&apos;re two software engineering students obsessed with crafting
-              fast, beautiful, and reliable digital solutions. From early-stage
-              concepts to fully-shipped products, we partner with founders,
-              students, and small teams to bring ideas to life.
+              {t('about.description')}
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-4 text-sm">
-              {[
-                ["10+", "Projects shipped"],
-                ["2", "Founders, one vision"],
-                ["24h", "Response time"],
-                ["100%", "Custom code"],
-              ].map(([k, v]) => (
+              {stats.map(([k, v]) => (
                 <li key={v} className="bg-glass rounded-xl px-4 py-3">
                   <div className="font-display text-2xl font-bold text-gradient">{k}</div>
                   <div className="text-xs text-muted-foreground">{v}</div>
@@ -91,10 +83,10 @@ export function About() {
         <div className="mt-24">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-              The founders
+              {t('about.founders_subtitle')}
             </p>
             <h3 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-              Meet the <span className="text-gradient">team</span>
+              {t('about.founders_title_prefix')} <span className="text-gradient">{t('about.founders_title_accent')}</span>
             </h3>
           </div>
 

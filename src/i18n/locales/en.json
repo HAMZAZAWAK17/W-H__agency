@@ -17,5 +17,29 @@
     "cta_explore": "Explore Services",
     "available": "Available for new projects",
     "delivery": "Avg. delivery · 2–6 weeks"
+  },
+  "about": {
+    "subtitle": "Who we are",
+    "title_prefix": "A duo of engineers shipping",
+    "title_accent": "future-ready",
+    "title_suffix": "products.",
+    "description": "We're two software engineering students obsessed with crafting fast, beautiful, and reliable digital solutions. From early-stage concepts to fully-shipped products, we partner with founders, students, and small teams to bring ideas to life.",
+    "stats": {
+      "projects": "Projects shipped",
+      "founders": "Founders, one vision",
+      "response": "Response time",
+      "custom": "Custom code"
+    },
+    "founders_subtitle": "The founders",
+    "founders_title_prefix": "Meet the",
+    "founders_title_accent": "team",
+    "founder1": {
+      "role": "Full-stack Developer",
+      "bio": "Builds robust web platforms end-to-end — from API to pixel."
+    },
+    "founder2": {
+      "role": "Mobile Developer · UI/UX",
+      "bio": "Crafts polished mobile experiences with care for every detail."
+    }
   }
 }
