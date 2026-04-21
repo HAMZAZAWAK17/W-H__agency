@@ -6,6 +6,7 @@
   :root {
     --neon: #00f2ff;
     --electric: #7000ff;
+    --violet-glow: #bd00ff;
     --muted-foreground: #9ca3af;
   }
   body {
@@ -48,9 +49,27 @@
     @apply px-6 py-3 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] text-background font-bold transition-all duration-300 shadow-neon hover:scale-[1.03];
   }
 
-  .btn-outline {
-    @apply px-6 py-3 rounded-xl border border-white/10 text-white font-bold hover:bg-white/5 transition-all duration-300;
+  .glow-border {
+    @apply border border-white/5 relative overflow-hidden;
   }
+  
+  .glow-border::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 transition-opacity duration-500;
+  }
+  
+  .glow-border:hover::after {
+    @apply opacity-100;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
 /* Custom Scrollbar */
