@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "about": "À propos",
+    "services": "Services",
+    "tech": "Tech",
+    "projects": "Projets",
+    "steps": "Processus",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Agence Digitale · Fondée en 2025",
+    "title1": "Transformez vos Idées",
+    "title2": "en Réalité",
+    "description": "Web · Mobile · Solutions Digitales — conçues par deux ingénieurs logiciels soucieux du détail.",
+    "cta_start": "Démarrer Votre Projet",
+    "cta_explore": "Explorer nos Services",
+    "available": "Disponible pour de nouveaux projets",
+    "delivery": "Livraison moyenne · 2–6 semaines"
+  }
+}

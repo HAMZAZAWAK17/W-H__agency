@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "about": "About",
+    "services": "Services",
+    "tech": "Tech",
+    "projects": "Projects",
+    "steps": "Process",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Digital Agency · Est. 2025",
+    "title1": "Turn Your Ideas",
+    "title2": "Into Reality",
+    "description": "Web · Mobile · Digital Solutions — crafted by two software engineers who care about the details.",
+    "cta_start": "Start Your Project",
+    "cta_explore": "Explore Services",
+    "available": "Available for new projects",
+    "delivery": "Avg. delivery · 2–6 weeks"
+  }
+}
