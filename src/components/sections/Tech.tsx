@@ -13,7 +13,7 @@ const techs: Tech[] = [
   { name: "React Native", slug: "react", category: "Mobile", color: "61DAFB" },
   { name: "Flutter", slug: "flutter", category: "Mobile", color: "02569B" },
   { name: "Ionic", slug: "ionic", category: "Mobile", color: "3880FF" },
-  { name: "Java", slug: "openjdk", category: "Backend", color: "ED8B00" },
+  { name: "Java", slug: "java", category: "Backend", color: "ED8B00" },
   { name: "Expressjs", slug: "express", category: "Backend", color: "ffffff" },
   { name: "SpringBoot", slug: "springboot", category: "Backend", color: "6DB33F" },
   { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A" },
