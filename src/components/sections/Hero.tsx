@@ -1,81 +1,100 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { DeviceMockups } from "./DeviceMockups";
 
-const Hero: React.FC = () => {
+// Note: Temporarily using standard <a> tags as TanStack Router is not yet initialized in App.tsx
+// To use real Links, initialize the RouterProvider in main.tsx
+const Link = ({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) => (
+  <a href={to} className={className}>{children}</a>
+);
+
+export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Glows */}
-      <div className="glow-spot top-[-10%] left-[-10%]" />
-      <div className="glow-spot-secondary bottom-[-20%] right-[-10%]" />
+    <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+      {/* Background glow effects to match the premium visual */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full -z-10" />
       
-      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-6 border border-primary/20">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-xs font-semibold tracking-wider uppercase text-primary">Available for new projects</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-            Turn Your Ideas <br />
-            Into <span className="neon-text">Reality</span>
-          </h1>
-          
-          <p className="text-xl text-gray-400 mb-10 max-w-lg">
-            Web • Mobile • Digital Solutions — crafted by two software engineers who care about the details.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="btn-primary group">
-              Let's Build Together
-              <ChevronRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="btn-outline">
-              Our Work
-            </button>
-          </div>
-        </motion.div>
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-muted-foreground"
+            >
+              <Sparkles className="h-3.5 w-3.5 text-[var(--neon)]" />
+              Digital Agency · Est. 2025
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="relative hidden md:block"
-        >
-          {/* Main Visual */}
-          <motion.div 
-            animate={{ 
-              y: [0, -15, 0],
-              rotateZ: [0, 1, 0]
-            }}
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="relative z-10"
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.05 }}
+              className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              Turn Your Ideas
+              <br />
+              Into <span className="text-gradient">Reality</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="mt-5 max-w-lg text-base text-muted-foreground sm:text-lg"
+            >
+              Web · Mobile · Digital Solutions — crafted by two software
+              engineers who care about the details.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="mt-8 flex flex-wrap items-center gap-3"
+            >
+              <Link
+                to="#contact"
+                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] px-5 py-3 text-sm font-semibold text-background shadow-neon transition-transform hover:scale-[1.03]"
+              >
+                Start Your Project
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="#projects"
+                className="bg-glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-foreground transition-all hover:shadow-glow-soft border border-white/5"
+              >
+                Explore Services
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.45 }}
+              className="mt-10 flex flex-wrap items-center gap-6 text-xs text-muted-foreground"
+            >
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[var(--neon)] shadow-[0_0_12px_var(--neon)]" />
+                Available for new projects
+              </div>
+              <div>Avg. delivery · 2–6 weeks</div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            className="relative"
           >
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-              <img 
-                src="/src/assets/hero-mockup.png" 
-                alt="W&H Agency Mockup" 
-                className="relative glass w-full rounded-2xl border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-              />
-            </div>
+            <DeviceMockups />
           </motion.div>
-
-          {/* Particle Effects / Floating elements */}
-          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 -ml-4 -mb-4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-700" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-};
+}
 
 export default Hero;

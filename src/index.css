@@ -3,14 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --neon: #00f2ff;
+    --electric: #7000ff;
+    --muted-foreground: #9ca3af;
+  }
   body {
     @apply bg-background text-white selection:bg-primary/30 selection:text-primary;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 }
 
 @layer components {
+  .bg-glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] bg-clip-text text-transparent;
+  }
+
+  .shadow-neon {
+    @apply shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.5)];
+  }
+
+  .shadow-glow-soft {
+    @apply shadow-[0_0_15px_rgba(255,255,255,0.05)];
+  }
+
   .glass {
     @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
   }
@@ -24,11 +45,11 @@
   }
 
   .btn-primary {
-    @apply px-6 py-3 rounded-full bg-primary text-background font-bold hover:bg-primary/80 transition-all duration-300 shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:shadow-[0_0_30px_rgba(0,242,255,0.5)];
+    @apply px-6 py-3 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] text-background font-bold transition-all duration-300 shadow-neon hover:scale-[1.03];
   }
 
   .btn-outline {
-    @apply px-6 py-3 rounded-full border border-primary/50 text-primary font-bold hover:bg-primary/10 transition-all duration-300;
+    @apply px-6 py-3 rounded-xl border border-white/10 text-white font-bold hover:bg-white/5 transition-all duration-300;
   }
 }
 
