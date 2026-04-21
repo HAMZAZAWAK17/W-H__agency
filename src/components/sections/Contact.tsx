@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
           {/* Left: Info */}
           <div className="space-y-8">
             <h3 className="text-3xl font-bold mb-6">Let's start a <span className="neon-text">conversation</span></h3>
-            <p className="text-gray-400 max-w-md text-lg">
+            <p className="text-muted-foreground max-w-md text-lg">
               Whether you're a startup, a student, or a small business, we're here to help you scale your digital presence.
             </p>
 
@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
                   <Mail className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Email Us</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">Email Us</p>
                   <p className="text-lg font-medium">contact@whagency.com</p>
                 </div>
               </div>
@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
                   <Instagram className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Follow Us</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">Follow Us</p>
                   <p className="text-lg font-medium">@wh_agency</p>
                 </div>
               </div>
@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
                   <MessageCircle className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">DM Us</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">DM Us</p>
                   <p className="text-lg font-medium">TikTok / Instagram</p>
                 </div>
               </div>
@@ -80,31 +80,31 @@ const Contact: React.FC = () => {
           <Card className="p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                <label className="block text-sm font-medium text-muted-foreground mb-2">Your Name</label>
                 <input 
                   {...register("name")}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-white"
+                  className="w-full bg-glass border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground"
                   placeholder="John Doe"
                 />
                 {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                <label className="block text-sm font-medium text-muted-foreground mb-2">Email Address</label>
                 <input 
                   {...register("email")}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-white"
+                  className="w-full bg-glass border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground"
                   placeholder="john@example.com"
                 />
                 {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                <label className="block text-sm font-medium text-muted-foreground mb-2">Message</label>
                 <textarea 
                   {...register("message")}
                   rows={4}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-white resize-none"
+                  className="w-full bg-glass border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground resize-none"
                   placeholder="How can we help you?"
                 />
                 {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}

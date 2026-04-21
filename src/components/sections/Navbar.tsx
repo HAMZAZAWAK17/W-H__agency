@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,18 +44,22 @@ const Navbar: React.FC = () => {
             <a 
               key={link.name} 
               href={link.href}
-              className="text-gray-300 hover:text-primary transition-colors text-sm font-medium"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
             >
               {link.name}
             </a>
           ))}
-          <button className="btn-primary py-2 px-6 text-sm">
-            DM Us
-          </button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <button className="btn-primary py-2 px-6 text-sm">
+              DM Us
+            </button>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -76,7 +81,7 @@ const Navbar: React.FC = () => {
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-300 hover:text-primary text-lg font-medium"
+                  className="text-muted-foreground hover:text-primary text-lg font-medium"
                 >
                   {link.name}
                 </a>

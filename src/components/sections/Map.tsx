@@ -31,7 +31,7 @@ export default function Map() {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-wider">Physical Presence</h4>
+                  <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">Physical Presence</h4>
                   <p className="text-xs text-muted-foreground mt-0.5">Casablanca, Morocco</p>
                 </div>
               </div>
@@ -41,7 +41,7 @@ export default function Map() {
                   <Globe2 size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-wider">Global Reach</h4>
+                  <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">Global Reach</h4>
                   <p className="text-xs text-muted-foreground mt-0.5">Working with clients across 3+ continents</p>
                 </div>
               </div>
@@ -51,7 +51,7 @@ export default function Map() {
                   <Compass size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-wider">Timezone</h4>
+                  <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">Timezone</h4>
                   <p className="text-xs text-muted-foreground mt-0.5">GMT+1 (Western European Time)</p>
                 </div>
               </div>

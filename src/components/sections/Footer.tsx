@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
 
           {/* Navigation Column */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white mb-6">Navigation</h3>
+            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-6">Navigation</h3>
             <ul className="space-y-4">
               {navigation.map((item) => (
                 <li key={item.name}>
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
 
           {/* Services Column */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white mb-6">Services</h3>
+            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-6">Services</h3>
             <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service} className="text-sm text-muted-foreground hover:text-primary cursor-default transition-colors">
@@ -81,14 +81,14 @@ const Footer: React.FC = () => {
 
           {/* Map Column */}
           <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white mb-6">Location</h3>
+            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-6">Location</h3>
             <div className="bg-glass glow-border group relative rounded-2xl p-4 overflow-hidden shadow-glow-soft hover:-translate-y-1 transition-transform duration-300">
               <div className="absolute inset-0 grid-overlay opacity-20 group-hover:opacity-30 transition-opacity" />
               <div className="relative z-10 flex flex-col items-center justify-center py-6">
                 <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-primary/20 border border-primary/40 text-primary mb-4 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
                   <MapPin size={24} />
                 </div>
-                <h4 className="font-display font-bold text-lg text-white">Casablanca</h4>
+                <h4 className="font-display font-bold text-lg text-foreground">Casablanca</h4>
                 <p className="text-xs text-muted-foreground mt-1 tracking-wide">MOROCCO, NORTH AFRICA</p>
                 <div className="mt-4 pt-4 border-t border-white/10 w-full text-center">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-widest animate-pulse">Available Globally</p>
