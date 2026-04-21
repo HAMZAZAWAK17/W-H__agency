@@ -7,6 +7,7 @@ import Tech from './components/sections/Tech';
 import Projects from './components/sections/Projects';
 import Steps from './components/sections/Steps';
 import Contact from './components/sections/Contact';
+import Map from './components/sections/Map';
 import Footer from './components/sections/Footer';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Projects />
         <Steps />
         <Contact />
+        <Map />
       </main>
       <Footer />
     </div>
