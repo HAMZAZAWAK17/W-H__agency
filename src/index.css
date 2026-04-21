@@ -10,6 +10,9 @@
     --electric: #7000ff;
     --violet-glow: #bd00ff;
     --muted-foreground: #64748b;
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --grid-overlay: rgba(0, 0, 0, 0.05);
   }
 
   .dark {
@@ -19,6 +22,9 @@
     --electric: #7000ff;
     --violet-glow: #bd00ff;
     --muted-foreground: #9ca3af;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --grid-overlay: rgba(255, 255, 255, 0.05);
   }
 
   body {
@@ -30,7 +36,9 @@
 
 @layer components {
   .bg-glass {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
   }
   
   .text-gradient {
@@ -46,7 +54,10 @@
   }
 
   .glass {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    @apply shadow-xl;
   }
   
   .neon-border {
@@ -75,8 +86,8 @@
   }
 
   .grid-overlay {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(to right, var(--grid-overlay) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-overlay) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 }
