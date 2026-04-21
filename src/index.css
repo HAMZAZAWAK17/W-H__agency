@@ -4,13 +4,25 @@
 
 @layer base {
   :root {
+    --background: #ffffff;
+    --foreground: #030712;
+    --neon: #00b8c4;
+    --electric: #7000ff;
+    --violet-glow: #bd00ff;
+    --muted-foreground: #64748b;
+  }
+
+  .dark {
+    --background: #030712;
+    --foreground: #ffffff;
     --neon: #00f2ff;
     --electric: #7000ff;
     --violet-glow: #bd00ff;
     --muted-foreground: #9ca3af;
   }
+
   body {
-    @apply bg-background text-white selection:bg-primary/30 selection:text-primary;
+    @apply bg-background text-[var(--foreground)] selection:bg-primary/30 selection:text-primary;
     font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
