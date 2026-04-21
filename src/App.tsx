@@ -5,6 +5,7 @@ import About from './components/sections/About';
 import Services from './components/sections/Services';
 import Tech from './components/sections/Tech';
 import Projects from './components/sections/Projects';
+import Reviews from './components/sections/Reviews';
 import Steps from './components/sections/Steps';
 import Contact from './components/sections/Contact';
 import Map from './components/sections/Map';
@@ -20,6 +21,7 @@ function App() {
         <Services />
         <Tech />
         <Projects />
+        <Reviews />
         <Steps />
         <Contact />
         <Map />
