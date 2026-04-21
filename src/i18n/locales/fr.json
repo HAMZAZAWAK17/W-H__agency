@@ -41,5 +41,28 @@
       "role": "Développeur Mobile · UI/UX",
       "bio": "Conçoit des expériences mobiles raffinées avec un soin particulier pour chaque détail."
     }
+  },
+  "reviews": {
+    "subtitle": "Témoignages",
+    "title_prefix": "Ce que disent nos",
+    "title_accent": "clients",
+    "title_suffix": "",
+    "items": [
+      {
+        "name": "Alex Thompson",
+        "role": "PDG, TechFlow",
+        "comment": "L'équipe de W&H Agency a transformé notre vision en une réalité époustouflante. Leur souci du détail et leur expertise technique sont inégalés."
+      },
+      {
+        "name": "Sarah Chen",
+        "role": "Directrice Marketing, Lumina",
+        "comment": "Travailler avec Hamza et Wissal a été un plaisir. Ils ont livré une application web haute performance qui a dépassé nos attentes."
+      },
+      {
+        "name": "James Wilson",
+        "role": "Fondateur, Artisan",
+        "comment": "Professionnels, créatifs et rapides. La meilleure agence avec laquelle nous avons travaillé pour le développement mobile."
+      }
+    ]
   }
 }

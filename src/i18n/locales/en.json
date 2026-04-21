@@ -41,5 +41,28 @@
       "role": "Mobile Developer · UI/UX",
       "bio": "Crafts polished mobile experiences with care for every detail."
     }
+  },
+  "reviews": {
+    "subtitle": "Testimonials",
+    "title_prefix": "What our",
+    "title_accent": "clients",
+    "title_suffix": "say",
+    "items": [
+      {
+        "name": "Alex Thompson",
+        "role": "CEO, TechFlow",
+        "comment": "The team at W&H Agency transformed our vision into a stunning reality. Their attention to detail and technical expertise is unmatched."
+      },
+      {
+        "name": "Sarah Chen",
+        "role": "Marketing Director, Lumina",
+        "comment": "Working with Hamza and Wissal was a breeze. They delivered a high-performance web app that exceeded our expectations."
+      },
+      {
+        "name": "James Wilson",
+        "role": "Founder, Artisan",
+        "comment": "Professional, creative, and fast. The best agency we've worked with for mobile development."
+      }
+    ]
   }
 }
