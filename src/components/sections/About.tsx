@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, GraduationCap } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
 
@@ -190,9 +190,9 @@ export function About() {
                     />
                   </div>
                   
-                  {/* Badge */}
-                  <div className={`absolute -bottom-2 -right-2 p-1.5 rounded-lg bg-gradient-to-br ${f.gradient} shadow-lg`}>
-                    <div className="h-4 w-4 rounded-full bg-background/20 border border-white/30" />
+                  {/* Graduation Badge */}
+                  <div className={`absolute -bottom-2 -right-2 p-2 rounded-lg bg-gradient-to-br ${f.gradient} shadow-lg ring-2 ring-background`}>
+                    <GraduationCap className="h-4 w-4 text-white" />
                   </div>
                 </div>
 
