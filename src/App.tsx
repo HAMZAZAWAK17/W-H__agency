@@ -11,20 +11,38 @@ import Contact from './components/sections/Contact';
 import Map from './components/sections/Map';
 import Footer from './components/sections/Footer';
 
+import { ScrollReveal } from './components/ui/ScrollReveal';
+
 function App() {
   return (
     <div className="relative min-h-screen">
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Services />
-        <Tech />
-        <Projects />
-        <Reviews />
-        <Steps />
-        <Contact />
-        <Map />
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Services />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Tech />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Projects />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Reviews />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Steps />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Contact />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Map />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>
