@@ -75,9 +75,9 @@ export function About() {
             <div className="absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(circle_at_center,oklch(0.85_0.18_200/25%),transparent_70%)] blur-3xl" />
 
             {/* Code editor card */}
-            <div className="bg-glass glow-border overflow-hidden rounded-2xl shadow-glow-soft">
+            <div className="bg-[#0b0e14] dark:bg-glass glow-border overflow-hidden rounded-2xl shadow-2xl">
               {/* Window chrome */}
-              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-3">
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.05] px-4 py-3">
                 <div className="flex items-center gap-1.5">
                   <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                   <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -87,55 +87,55 @@ export function About() {
               </div>
 
               {/* Code body */}
-              <div className="font-mono text-[13px] leading-relaxed">
+              <div className="font-mono text-[13px] leading-relaxed text-slate-300">
                 <pre className="overflow-x-auto p-5">
                   <code>
-                    <span className="text-muted-foreground">{"// who we are"}</span>
+                    <span className="text-slate-500">{"// who we are"}</span>
                     {"\n"}
-                    <span className="text-[var(--violet-glow)]">const</span>{" "}
-                    <span className="text-[var(--neon)]">agency</span>{" "}
-                    <span className="text-foreground">=</span>{" "}
-                    <span className="text-foreground">{"{"}</span>
+                    <span className="text-[#c792ea]">const</span>{" "}
+                    <span className="text-[#89ddff]">agency</span>{" "}
+                    <span className="text-white">=</span>{" "}
+                    <span className="text-white">{"{"}</span>
                     {"\n  "}
-                    <span className="text-[var(--electric)]">name</span>
-                    <span className="text-foreground">:</span>{" "}
-                    <span className="text-[var(--neon)]">'W&H Agency'</span>
-                    <span className="text-foreground">,</span>
+                    <span className="text-[#f07178]">name</span>
+                    <span className="text-white">:</span>{" "}
+                    <span className="text-[#c3e88d]">'W&H Agency'</span>
+                    <span className="text-white">,</span>
                     {"\n  "}
-                    <span className="text-[var(--electric)]">team</span>
-                    <span className="text-foreground">:</span>{" "}
-                    <span className="text-foreground">[</span>
-                    <span className="text-[var(--neon)]">'Hamza'</span>
-                    <span className="text-foreground">,</span>{" "}
-                    <span className="text-[var(--neon)]">'Wissal'</span>
-                    <span className="text-foreground">],</span>
+                    <span className="text-[#f07178]">team</span>
+                    <span className="text-white">:</span>{" "}
+                    <span className="text-white">[</span>
+                    <span className="text-[#c3e88d]">'Hamza'</span>
+                    <span className="text-white">,</span>{" "}
+                    <span className="text-[#c3e88d]">'Wissal'</span>
+                    <span className="text-white">],</span>
                     {"\n  "}
-                    <span className="text-[var(--electric)]">stack</span>
-                    <span className="text-foreground">:</span>{" "}
-                    <span className="text-[var(--neon)]">'web · mobile · design'</span>
-                    <span className="text-foreground">,</span>
+                    <span className="text-[#f07178]">stack</span>
+                    <span className="text-white">:</span>{" "}
+                    <span className="text-[#c3e88d]">'web · mobile · design'</span>
+                    <span className="text-white">,</span>
                     {"\n  "}
-                    <span className="text-[var(--electric)]">mission</span>
-                    <span className="text-foreground">:</span>{" "}
-                    <span className="text-[var(--violet-glow)]">() =&gt;</span>{" "}
-                    <span className="text-foreground">(</span>
+                    <span className="text-[#f07178]">mission</span>
+                    <span className="text-white">:</span>{" "}
+                    <span className="text-[#c792ea]">() =&gt;</span>{" "}
+                    <span className="text-white">(</span>
                     {"\n    "}
-                    <span className="text-[var(--neon)]">'ship fast, ship clean'</span>
+                    <span className="text-[#c3e88d]">'ship fast, ship clean'</span>
                     {"\n  "}
-                    <span className="text-foreground">),</span>
+                    <span className="text-white">),</span>
                     {"\n"}
-                    <span className="text-foreground">{"};"}</span>
+                    <span className="text-white">{"};"}</span>
                     {"\n\n"}
-                    <span className="text-[var(--violet-glow)]">export default</span>{" "}
-                    <span className="text-[var(--neon)]">agency</span>
-                    <span className="text-foreground">;</span>
+                    <span className="text-[#c792ea]">export default</span>{" "}
+                    <span className="text-[#89ddff]">agency</span>
+                    <span className="text-white">;</span>
                     <span className="ml-1 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-[var(--neon)]" />
                   </code>
                 </pre>
               </div>
 
               {/* Status bar */}
-              <div className="flex items-center justify-between border-t border-white/10 bg-white/[0.02] px-4 py-2 text-[11px] text-muted-foreground">
+              <div className="flex items-center justify-between border-t border-white/10 bg-white/[0.02] px-4 py-2 text-[11px] text-slate-500">
                 <span className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)]" />
                   online · building
