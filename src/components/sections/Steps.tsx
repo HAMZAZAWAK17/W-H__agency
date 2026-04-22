@@ -1,112 +1,134 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { Lightbulb, PenTool, Code2, Rocket, type LucideIcon } from "lucide-react";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { Lightbulb, PenTool, Code2, Rocket, ChevronRight } from "lucide-react";
 
-type Step = {
-  icon: LucideIcon;
-  title: string;
-  text: string;
-  color: string;
-};
-
-const steps: Step[] = [
-  { icon: Lightbulb, title: "Discovery", text: "Deep dive into your goals, users, and technical requirements.", color: "var(--neon)" },
-  { icon: PenTool, title: "Design", text: "Iterative UI/UX design focused on conversion and usability.", color: "var(--electric)" },
-  { icon: Code2, title: "Development", text: "Building with scalable architecture and clean, modular code.", color: "var(--violet-glow)" },
-  { icon: Rocket, title: "Launch", text: "Production deployment, monitoring, and continuous scaling.", color: "var(--neon)" },
+const steps = [
+  {
+    number: "01",
+    icon: Lightbulb,
+    title: "Idea",
+    summary: "Discovery, scoping, and a clear roadmap.",
+    details: "We dig into your goals, audience, and constraints — then map a path that's lean and realistic.",
+    tags: ["DISCOVERY", "SCOPE", "ROADMAP"],
+    color: "from-blue-500 to-cyan-400"
+  },
+  {
+    number: "02",
+    icon: PenTool,
+    title: "Design",
+    summary: "Wireframes and polished UI prototypes.",
+    details: "From low-fi flows to pixel-perfect screens, we design interfaces that feel as good as they look.",
+    tags: ["WIREFRAMES", "UI", "PROTOTYPE"],
+    color: "from-cyan-400 to-emerald-400"
+  },
+  {
+    number: "03",
+    icon: Code2,
+    title: "Development",
+    summary: "Clean, tested, production-grade code.",
+    details: "Modern stack, modular architecture, and code that's built to scale — not just to ship.",
+    tags: ["REACT", "API", "TESTS"],
+    color: "from-indigo-500 to-purple-500"
+  },
+  {
+    number: "04",
+    icon: Rocket,
+    title: "Launch",
+    summary: "Ship, monitor, iterate — fast.",
+    details: "We deploy, watch the metrics, and keep improving based on real usage from day one.",
+    tags: ["DEPLOY", "MONITOR", "ITERATE"],
+    color: "from-purple-500 to-pink-500"
+  }
 ];
 
 export default function Steps() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   return (
-    <section id="steps" ref={containerRef} className="relative py-20 sm:py-32 overflow-hidden bg-background">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.03)_0%,transparent_70%)] -z-10" />
-
+    <section id="steps" className="relative py-20 sm:py-32 overflow-hidden bg-background">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mx-auto max-w-2xl text-center mb-20">
+        <div className="text-center mb-20">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--neon)] mb-4"
           >
-            Workflow
+            How we work
           </motion.p>
           <h2 className="font-display text-4xl font-bold tracking-tight sm:text-6xl">
-            Our <span className="text-gradient">Battle-Tested</span> Process
+            A simple, focused <span className="text-gradient">process</span>
           </h2>
         </div>
 
-        <div className="relative">
-          {/* Main Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-[2px] bg-white/5 -z-10">
-            <motion.div 
-              style={{ scaleX, originX: 0 }}
-              className="absolute inset-0 bg-gradient-to-r from-[var(--neon)] via-[var(--electric)] to-[var(--violet-glow)] shadow-[0_0_15px_var(--neon)]"
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {steps.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="group relative flex flex-col bg-[#0b0e14]/80 glow-border rounded-[2.5rem] p-8 min-h-[480px] transition-all hover:-translate-y-2"
+            >
+              {/* Header: Icon and Step Number */}
+              <div className="flex items-start justify-between mb-8">
+                <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 text-[var(--neon)]">
+                  <s.icon className="h-6 w-6" />
+                </div>
+                <div className="relative">
+                  <span className="absolute -top-4 -right-2 text-7xl font-black text-white/[0.03] pointer-events-none select-none">
+                    {s.number}
+                  </span>
+                  <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] text-muted-foreground/60">
+                    STEP / {s.number}
+                  </span>
+                </div>
+              </div>
 
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-4 relative z-10">
-            {steps.map((s, i) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="group relative flex flex-col items-center text-center"
-              >
-                {/* Step Node */}
-                <div className="relative mb-8">
-                  {/* Outer Pulsing Glow */}
-                  <div 
-                    className="absolute inset-0 rounded-full bg-[var(--neon)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
-                    style={{ backgroundColor: `${s.color}33` }}
+              {/* Content */}
+              <div className="flex-1 flex flex-col">
+                <h3 className="font-display text-2xl font-bold mb-4 tracking-tight group-hover:text-[var(--neon)] transition-colors">
+                  {s.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  {s.summary}
+                </p>
+                <p className="text-muted-foreground/60 text-sm leading-relaxed mb-8">
+                  {s.details}
+                </p>
+
+                {/* Tags */}
+                <div className="mt-auto flex flex-wrap gap-2 mb-8">
+                  {s.tags.map(tag => (
+                    <span 
+                      key={tag} 
+                      className="px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] text-[9px] font-black tracking-widest text-muted-foreground/40"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Progress Bar */}
+                <div className="h-[2px] w-1/3 bg-white/5 rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '100%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: i * 0.2 }}
+                    className={`h-full bg-gradient-to-r ${s.color}`}
                   />
-                  
-                  {/* Icon Container */}
-                  <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-[#0b0e14] border-2 border-white/10 group-hover:border-[var(--neon)] transition-colors duration-500 shadow-2xl">
-                    <s.icon className="h-8 w-8 text-white group-hover:text-[var(--neon)] transition-colors duration-500" strokeWidth={1.5} />
-                    
-                    {/* Number Badge */}
-                    <div className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[var(--neon)] to-[var(--electric)] text-[11px] font-black text-background shadow-lg">
-                      0{i + 1}
-                    </div>
+                </div>
+              </div>
+
+              {/* Connector Arrow (Desktop only, except last) */}
+              {i < steps.length - 1 && (
+                <div className="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20">
+                  <div className="h-6 w-6 rounded-full bg-[#0b0e14] border border-white/10 flex items-center justify-center text-[var(--neon)] shadow-lg ring-4 ring-background">
+                    <ChevronRight className="h-3.5 w-3.5" />
                   </div>
-
-                  {/* Mobile Connecting Line (Vertical) */}
-                  {i < steps.length - 1 && (
-                    <div className="md:hidden absolute top-20 left-1/2 -translate-x-1/2 w-px h-12 bg-gradient-to-b from-white/10 to-transparent" />
-                  )}
                 </div>
-
-                <div className="px-4">
-                  <h3 className="font-display text-xl font-bold mb-3 tracking-tight group-hover:text-[var(--neon)] transition-colors">
-                    {s.title}
-                  </h3>
-                  <p className="text-muted-foreground/80 text-sm leading-relaxed max-w-[200px] mx-auto">
-                    {s.text}
-                  </p>
-                </div>
-
-                {/* Desktop Indicator Dot on Line */}
-                <div className="hidden md:block absolute top-[39px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-background border-2 border-white/20 group-hover:border-[var(--neon)] group-hover:scale-125 transition-all z-20" />
-              </motion.div>
-            ))}
-          </div>
+              )}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
