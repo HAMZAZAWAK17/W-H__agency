@@ -1,39 +1,34 @@
 import { motion } from "framer-motion";
-import { Cpu, Instagram, Linkedin } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { Instagram, Linkedin } from "lucide-react";
+
+type Founder = {
+  initials: string;
+  name: string;
+  role: string;
+  bio: string;
+  gradient: string;
+};
+
+const founders: Founder[] = [
+  {
+    initials: "EH",
+    name: "EZ-ZOUEK Hamza",
+    role: "Full-stack Developer",
+    bio: "Builds robust web platforms end-to-end — from API to pixel.",
+    gradient: "from-[var(--neon)] to-[var(--electric)]",
+  },
+  {
+    initials: "BW",
+    name: "BADRI Wissal",
+    role: "Mobile Developer · UI/UX",
+    bio: "Crafts polished mobile experiences with care for every detail.",
+    gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
+  },
+];
 
 export function About() {
-  const { t } = useTranslation();
-
-  const founders = [
-    {
-      initials: "EH",
-      name: "EZ-ZOUEK Hamza",
-      role: t('about.founder1.role'),
-      bio: t('about.founder1.bio'),
-      gradient: "from-[var(--neon)] to-[var(--electric)]",
-    },
-    {
-      initials: "BW",
-      name: "BADRI Wissal",
-      role: t('about.founder2.role'),
-      bio: t('about.founder2.bio'),
-      gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
-    },
-  ];
-
-  const stats = [
-    [ "10+", t('about.stats.projects') ],
-    [ "2", t('about.stats.founders') ],
-    [ "24h", t('about.stats.response') ],
-    [ "100%", t('about.stats.custom') ],
-  ];
-
   return (
-    <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background glow for the section */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.03)_0%,transparent_70%)] -z-10" />
-
+    <section id="about" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <motion.div
@@ -43,16 +38,24 @@ export function About() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-              {t('about.subtitle')}
+              Who we are
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              {t('about.title_prefix')} <span className="text-gradient">{t('about.title_accent')}</span>{t('about.title_suffix')}
+              A duo of engineers shipping <span className="text-gradient">future-ready</span> products.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              {t('about.description')}
+              We&apos;re two software engineering students obsessed with crafting
+              fast, beautiful, and reliable digital solutions. From early-stage
+              concepts to fully-shipped products, we partner with founders,
+              students, and small teams to bring ideas to life.
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-4 text-sm">
-              {stats.map(([k, v]) => (
+              {[
+                ["10+", "Projects shipped"],
+                ["2", "Founders, one vision"],
+                ["24h", "Response time"],
+                ["100%", "Custom code"],
+              ].map(([k, v]) => (
                 <li key={v} className="bg-glass rounded-xl px-4 py-3">
                   <div className="font-display text-2xl font-bold text-gradient">{k}</div>
                   <div className="text-xs text-muted-foreground">{v}</div>
@@ -62,76 +65,88 @@ export function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex items-center justify-center min-h-[400px]"
+            transition={{ duration: 0.7 }}
+            className="relative mx-auto w-full max-w-lg"
           >
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--neon)]/10 via-transparent to-[var(--electric)]/10 blur-3xl -z-10" />
-            
-            {/* Floating Service Cards */}
-            <div className="relative w-full max-w-sm aspect-square flex items-center justify-center">
-              {/* Card 1: Web Development */}
-              <motion.div
-                animate={{ 
-                  y: [0, -15, 0],
-                  rotate: [0, 2, 0]
-                }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 w-48 h-32 bg-glass border border-white/10 rounded-2xl p-4 shadow-xl z-20 backdrop-blur-xl"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-[var(--neon)]/20 text-[var(--neon)]">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-wider">Web Apps</span>
-                </div>
-                <div className="space-y-2">
-                  <div className="h-1.5 w-full bg-white/10 rounded-full" />
-                  <div className="h-1.5 w-2/3 bg-white/10 rounded-full" />
-                </div>
-              </motion.div>
+            {/* Soft ambient glow */}
+            <div className="absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(circle_at_center,oklch(0.85_0.18_200/25%),transparent_70%)] blur-3xl" />
 
-              {/* Card 2: Mobile Apps */}
-              <motion.div
-                animate={{ 
-                  y: [-10, 10, -10],
-                  rotate: [0, -2, 0]
-                }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-8 left-0 w-40 h-56 bg-glass border border-white/10 rounded-[2.5rem] p-6 shadow-2xl z-30 backdrop-blur-xl"
-              >
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-white/20 rounded-full" />
-                <div className="mt-8 space-y-3">
-                  <div className="h-24 w-full rounded-xl bg-gradient-to-br from-[var(--neon)] to-[var(--electric)] opacity-40" />
-                  <div className="h-2 w-full bg-white/10 rounded-full" />
-                  <div className="h-2 w-3/4 bg-white/10 rounded-full" />
+            {/* Code editor card */}
+            <div className="bg-glass glow-border overflow-hidden rounded-2xl shadow-glow-soft">
+              {/* Window chrome */}
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-3">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+                  <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+                  <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                 </div>
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-white/20" />
-              </motion.div>
+                <span className="font-mono text-xs text-muted-foreground">
+                  wh-agency.tsx
+                </span>
+                <span className="h-3 w-3" />
+              </div>
 
-              {/* Card 3: UI/UX Design */}
-              <motion.div
-                animate={{ 
-                  x: [-5, 5, -5],
-                  y: [5, -5, 5]
-                }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-20 -left-12 w-36 h-36 bg-glass border border-white/10 rounded-full p-4 shadow-lg z-10 backdrop-blur-md flex flex-col items-center justify-center"
-              >
-                <div className="p-3 rounded-full bg-[var(--electric)]/20 text-[var(--electric)] mb-2">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-center">UI/UX Craft</span>
-              </motion.div>
+              {/* Code body */}
+              <div className="font-mono text-[13px] leading-relaxed">
+                <pre className="overflow-x-auto p-5">
+                  <code>
+                    <span className="text-muted-foreground">{"// who we are"}</span>
+                    {"\n"}
+                    <span className="text-[var(--violet-glow)]">const</span>{" "}
+                    <span className="text-[var(--neon)]">agency</span>{" "}
+                    <span className="text-foreground">=</span>{" "}
+                    <span className="text-foreground">{"{"}</span>
+                    {"\n  "}
+                    <span className="text-[var(--electric)]">name</span>
+                    <span className="text-foreground">:</span>{" "}
+                    <span className="text-[var(--neon)]">'W&H Agency'</span>
+                    <span className="text-foreground">,</span>
+                    {"\n  "}
+                    <span className="text-[var(--electric)]">team</span>
+                    <span className="text-foreground">:</span>{" "}
+                    <span className="text-foreground">[</span>
+                    <span className="text-[var(--neon)]">'Hamza'</span>
+                    <span className="text-foreground">,</span>{" "}
+                    <span className="text-[var(--neon)]">'Wissal'</span>
+                    <span className="text-foreground">],</span>
+                    {"\n  "}
+                    <span className="text-[var(--electric)]">stack</span>
+                    <span className="text-foreground">:</span>{" "}
+                    <span className="text-[var(--neon)]">'web · mobile · design'</span>
+                    <span className="text-foreground">,</span>
+                    {"\n  "}
+                    <span className="text-[var(--electric)]">mission</span>
+                    <span className="text-foreground">:</span>{" "}
+                    <span className="text-[var(--violet-glow)]">() =&gt;</span>{" "}
+                    <span className="text-foreground">(</span>
+                    {"\n    "}
+                    <span className="text-[var(--neon)]">'ship fast, ship clean'</span>
+                    {"\n  "}
+                    <span className="text-foreground">),</span>
+                    {"\n"}
+                    <span className="text-foreground">{"};"}</span>
+                    {"\n\n"}
+                    <span className="text-[var(--violet-glow)]">export default</span>{" "}
+                    <span className="text-[var(--neon)]">agency</span>
+                    <span className="text-foreground">;</span>
+                    <span className="ml-1 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-[var(--neon)]" />
+                  </code>
+                </pre>
+              </div>
 
-              {/* Connection Lines / Glows */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <div className="w-1/2 h-1/2 rounded-full bg-[var(--neon)] blur-[100px] animate-pulse" />
+              {/* Status bar */}
+              <div className="flex items-center justify-between border-t border-white/10 bg-white/[0.02] px-4 py-2 text-[11px] text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)]" />
+                  online · building
+                </span>
+                <span className="font-mono">utf-8 · ts</span>
               </div>
             </div>
+
           </motion.div>
         </div>
 
@@ -139,10 +154,10 @@ export function About() {
         <div className="mt-24">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-              {t('about.founders_subtitle')}
+              The founders
             </p>
             <h3 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-              {t('about.founders_title_prefix')} <span className="text-gradient">{t('about.founders_title_accent')}</span>
+              Meet the <span className="text-gradient">team</span>
             </h3>
           </div>
 
@@ -191,5 +206,3 @@ export function About() {
     </section>
   );
 }
-
-export default About;
