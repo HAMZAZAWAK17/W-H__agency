@@ -62,22 +62,76 @@ export function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            className="relative mx-auto aspect-square w-full max-w-md"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative flex items-center justify-center min-h-[400px]"
           >
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,oklch(0.85_0.18_200/30%),transparent_60%)] blur-2xl" />
-            <div className="absolute inset-6 rounded-full border border-white/10 animate-pulse-glow" />
-            <div className="absolute inset-16 rounded-full border border-white/10" style={{ animationDelay: "-1s" }} />
-            <div className="absolute inset-28 rounded-full border border-[var(--neon)]/40" />
-            <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-[var(--neon)] to-[var(--violet-glow)] shadow-neon">
-              <Cpu className="h-10 w-10 text-background" strokeWidth={2} />
+            {/* Decorative background elements */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--neon)]/10 via-transparent to-[var(--electric)]/10 blur-3xl -z-10" />
+            
+            {/* Floating Service Cards */}
+            <div className="relative w-full max-w-sm aspect-square flex items-center justify-center">
+              {/* Card 1: Web Development */}
+              <motion.div
+                animate={{ 
+                  y: [0, -15, 0],
+                  rotate: [0, 2, 0]
+                }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 right-0 w-48 h-32 bg-glass border border-white/10 rounded-2xl p-4 shadow-xl z-20 backdrop-blur-xl"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-[var(--neon)]/20 text-[var(--neon)]">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider">Web Apps</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-1.5 w-full bg-white/10 rounded-full" />
+                  <div className="h-1.5 w-2/3 bg-white/10 rounded-full" />
+                </div>
+              </motion.div>
+
+              {/* Card 2: Mobile Apps */}
+              <motion.div
+                animate={{ 
+                  y: [-10, 10, -10],
+                  rotate: [0, -2, 0]
+                }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute bottom-8 left-0 w-40 h-56 bg-glass border border-white/10 rounded-[2.5rem] p-6 shadow-2xl z-30 backdrop-blur-xl"
+              >
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-white/20 rounded-full" />
+                <div className="mt-8 space-y-3">
+                  <div className="h-24 w-full rounded-xl bg-gradient-to-br from-[var(--neon)] to-[var(--electric)] opacity-40" />
+                  <div className="h-2 w-full bg-white/10 rounded-full" />
+                  <div className="h-2 w-3/4 bg-white/10 rounded-full" />
+                </div>
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-white/20" />
+              </motion.div>
+
+              {/* Card 3: UI/UX Design */}
+              <motion.div
+                animate={{ 
+                  x: [-5, 5, -5],
+                  y: [5, -5, 5]
+                }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-20 -left-12 w-36 h-36 bg-glass border border-white/10 rounded-full p-4 shadow-lg z-10 backdrop-blur-md flex flex-col items-center justify-center"
+              >
+                <div className="p-3 rounded-full bg-[var(--electric)]/20 text-[var(--electric)] mb-2">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-center">UI/UX Craft</span>
+              </motion.div>
+
+              {/* Connection Lines / Glows */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                <div className="w-1/2 h-1/2 rounded-full bg-[var(--neon)] blur-[100px] animate-pulse" />
+              </div>
             </div>
-            <span className="absolute left-1/2 top-6 h-3 w-3 -translate-x-1/2 rounded-full bg-[var(--neon)] shadow-[0_0_18px_var(--neon)]" />
-            <span className="absolute right-6 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-[var(--electric)] shadow-[0_0_18px_var(--electric)]" />
-            <span className="absolute bottom-10 left-12 h-2 w-2 rounded-full bg-[var(--violet-glow)] shadow-[0_0_18px_var(--violet-glow)]" />
           </motion.div>
         </div>
 
