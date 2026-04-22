@@ -67,22 +67,19 @@ export default function Map() {
             className="relative"
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-[var(--neon)]/20 to-transparent blur-3xl rounded-full opacity-30" />
-            <div className="bg-glass glow-border relative overflow-hidden rounded-3xl aspect-[4/3] shadow-glow-soft">
-              <img 
-                src="/casablanca_location_map_1776761741492.png" 
-                alt="Map of Casablanca, Morocco" 
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+            <div className="bg-glass glow-border relative overflow-hidden rounded-3xl aspect-[4/3] shadow-glow-soft group">
+              <iframe
+                title="Casablanca Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106371.49129528643!2d-7.6693945892578!3d33.57226079999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                className="w-full h-full border-0 grayscale-[0.2] brightness-[0.9] contrast-[1.1] dark:invert-[0.9] dark:hue-rotate-[180deg] dark:brightness-[0.8] transition-all duration-700"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-              <div className="absolute inset-0 grid-overlay opacity-30" />
               
-              {/* Animated Radar Effect on Pin */}
-              <div className="absolute top-[48%] left-[45%] h-6 w-6">
-                <span className="absolute inset-0 rounded-full bg-[var(--neon)] animate-ping opacity-75" />
-                <span className="relative flex h-6 w-6 items-center justify-center rounded-full bg-[var(--neon)] shadow-[0_0_20px_var(--neon)]">
-                  <MapPin size={12} className="text-background" />
-                </span>
-              </div>
+              {/* Decorative overlays */}
+              <div className="absolute inset-0 pointer-events-none border-[12px] border-black/[0.03] dark:border-white/[0.03] rounded-3xl" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/20 to-transparent" />
             </div>
           </motion.div>
         </div>
