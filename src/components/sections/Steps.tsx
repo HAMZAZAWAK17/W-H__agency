@@ -1,82 +1,112 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { Lightbulb, PenTool, Code2, Rocket, type LucideIcon } from "lucide-react";
+import { useRef } from "react";
 
 type Step = {
   icon: LucideIcon;
   title: string;
   text: string;
+  color: string;
 };
 
 const steps: Step[] = [
-  { icon: Lightbulb, title: "Idea", text: "Discovery, scoping, and a clear roadmap." },
-  { icon: PenTool, title: "Design", text: "Wireframes and polished UI prototypes." },
-  { icon: Code2, title: "Development", text: "Clean, tested, production-grade code." },
-  { icon: Rocket, title: "Launch", text: "Ship, monitor, iterate — fast." },
+  { icon: Lightbulb, title: "Discovery", text: "Deep dive into your goals, users, and technical requirements.", color: "var(--neon)" },
+  { icon: PenTool, title: "Design", text: "Iterative UI/UX design focused on conversion and usability.", color: "var(--electric)" },
+  { icon: Code2, title: "Development", text: "Building with scalable architecture and clean, modular code.", color: "var(--violet-glow)" },
+  { icon: Rocket, title: "Launch", text: "Production deployment, monitoring, and continuous scaling.", color: "var(--neon)" },
 ];
 
 export default function Steps() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <section id="steps" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-            How we work
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            A simple, focused <span className="text-gradient">process</span>
+    <section id="steps" ref={containerRef} className="relative py-20 sm:py-32 overflow-hidden bg-background">
+      {/* Background radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.03)_0%,transparent_70%)] -z-10" />
+
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-2xl text-center mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--neon)] mb-4"
+          >
+            Workflow
+          </motion.p>
+          <h2 className="font-display text-4xl font-bold tracking-tight sm:text-6xl">
+            Our <span className="text-gradient">Battle-Tested</span> Process
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Four deliberate steps from raw idea to a product live in the wild.
-          </p>
         </div>
 
-        <div className="relative mt-16">
-          {/* connecting line — horizontal on desktop, vertical on mobile */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-8 top-0 h-full w-px bg-gradient-to-b from-transparent via-[var(--neon)]/40 to-transparent md:left-0 md:top-10 md:h-px md:w-full md:bg-gradient-to-r"
-          />
+        <div className="relative">
+          {/* Main Connecting Line (Desktop) */}
+          <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-[2px] bg-white/5 -z-10">
+            <motion.div 
+              style={{ scaleX, originX: 0 }}
+              className="absolute inset-0 bg-gradient-to-r from-[var(--neon)] via-[var(--electric)] to-[var(--violet-glow)] shadow-[0_0_15px_var(--neon)]"
+            />
+          </div>
 
-          <ol className="grid gap-8 md:grid-cols-4 md:gap-6">
-            {steps.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.li
-                  key={s.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group relative flex items-start gap-5 md:block"
-                >
-                  {/* icon node */}
-                  <div className="relative z-10 shrink-0">
-                    <div className="bg-glass relative mx-0 flex h-16 w-16 items-center justify-center rounded-2xl shadow-glow-soft transition-transform duration-300 group-hover:-translate-y-1 md:mx-auto md:h-20 md:w-20">
-                      <span
-                        aria-hidden
-                        className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--neon)]/20 via-transparent to-[var(--violet-glow)]/20 opacity-60 transition-opacity duration-300 group-hover:opacity-100"
-                      />
-                      <Icon className="relative h-7 w-7 text-[var(--neon)] md:h-8 md:w-8" strokeWidth={1.5} />
-                      <span className="absolute -inset-1 rounded-2xl bg-[var(--neon)]/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
-                    </div>
-                    {/* step number badge */}
-                    <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full border border-[var(--neon)]/40 bg-background text-[10px] font-bold text-[var(--neon)] md:left-1/2 md:-translate-x-1/2 md:translate-y-0">
+          {/* Steps Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-4 relative z-10">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="group relative flex flex-col items-center text-center"
+              >
+                {/* Step Node */}
+                <div className="relative mb-8">
+                  {/* Outer Pulsing Glow */}
+                  <div 
+                    className="absolute inset-0 rounded-full bg-[var(--neon)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                    style={{ backgroundColor: `${s.color}33` }}
+                  />
+                  
+                  {/* Icon Container */}
+                  <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-[#0b0e14] border-2 border-white/10 group-hover:border-[var(--neon)] transition-colors duration-500 shadow-2xl">
+                    <s.icon className="h-8 w-8 text-white group-hover:text-[var(--neon)] transition-colors duration-500" strokeWidth={1.5} />
+                    
+                    {/* Number Badge */}
+                    <div className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[var(--neon)] to-[var(--electric)] text-[11px] font-black text-background shadow-lg">
                       0{i + 1}
                     </div>
                   </div>
 
-                  <div className="flex-1 md:mt-6 md:text-center">
-                    <h3 className="font-display text-lg font-semibold tracking-tight">
-                      {s.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm text-muted-foreground md:mx-auto md:max-w-[14rem]">
-                      {s.text}
-                    </p>
-                  </div>
-                </motion.li>
-              );
-            })}
-          </ol>
+                  {/* Mobile Connecting Line (Vertical) */}
+                  {i < steps.length - 1 && (
+                    <div className="md:hidden absolute top-20 left-1/2 -translate-x-1/2 w-px h-12 bg-gradient-to-b from-white/10 to-transparent" />
+                  )}
+                </div>
+
+                <div className="px-4">
+                  <h3 className="font-display text-xl font-bold mb-3 tracking-tight group-hover:text-[var(--neon)] transition-colors">
+                    {s.title}
+                  </h3>
+                  <p className="text-muted-foreground/80 text-sm leading-relaxed max-w-[200px] mx-auto">
+                    {s.text}
+                  </p>
+                </div>
+
+                {/* Desktop Indicator Dot on Line */}
+                <div className="hidden md:block absolute top-[39px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-background border-2 border-white/20 group-hover:border-[var(--neon)] group-hover:scale-125 transition-all z-20" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
