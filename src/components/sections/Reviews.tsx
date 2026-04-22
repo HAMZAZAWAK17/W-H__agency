@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 
 const reviews = [
   {
@@ -35,6 +36,22 @@ const reviews = [
 ];
 
 export function Reviews() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === 'left' 
+        ? scrollLeft - clientWidth / 1.5 
+        : scrollLeft + clientWidth / 1.5;
+      
+      scrollRef.current.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="reviews" className="relative py-20 sm:py-28 overflow-hidden bg-background/30">
       {/* Decorative background elements */}
@@ -42,37 +59,54 @@ export function Reviews() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--electric)]/5 blur-[120px] rounded-full -z-10" />
 
       <div className="mx-auto max-w-7xl px-4">
-        <div className="text-center mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]"
-          >
-            Testimonials
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
-          >
-            What our <span className="text-gradient">clients</span> say
-          </motion.h2>
-          <p className="mt-4 text-muted-foreground text-sm">
-            Scroll horizontally to see more reviews
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]"
+            >
+              Testimonials
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+              What our <span className="text-gradient">clients</span> say
+            </motion.h2>
+          </div>
+          
+          {/* Desktop Navigation Buttons */}
+          <div className="hidden md:flex gap-3">
+            <button
+              onClick={() => scroll('left')}
+              className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 hover:bg-white/10 hover:border-[var(--neon)] transition-all shadow-glow-soft"
+              aria-label="Scroll Left"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 hover:bg-white/10 hover:border-[var(--neon)] transition-all shadow-glow-soft"
+              aria-label="Scroll Right"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
         </div>
 
         {/* Horizontal Scroll Container */}
-        <div className="relative">
+        <div className="relative group">
           <div 
+            ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-12 pt-4 px-4 snap-x snap-mandatory scrollbar-hide no-scrollbar"
             style={{ 
               msOverflowStyle: 'none', 
-              scrollbarWidth: 'none',
-              scrollBehavior: 'smooth' 
+              scrollbarWidth: 'none'
             }}
           >
             {reviews.map((item, index) => (
@@ -82,9 +116,9 @@ export function Reviews() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex-shrink-0 w-[300px] sm:w-[400px] snap-center bg-glass glow-border group relative rounded-3xl p-8 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
+                className="flex-shrink-0 w-[300px] sm:w-[400px] snap-center bg-glass glow-border group/card relative rounded-3xl p-8 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
               >
-                <Quote className="absolute top-6 right-8 h-10 w-10 text-primary/10 transition-colors group-hover:text-primary/20" />
+                <Quote className="absolute top-6 right-8 h-10 w-10 text-primary/10 transition-colors group-hover/card:text-primary/20" />
                 
                 <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
@@ -97,7 +131,7 @@ export function Reviews() {
                 </p>
 
                 <div className="flex items-center gap-4 border-t border-white/5 pt-6">
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-2 ring-white/10 group-hover:ring-[var(--neon)]/50 transition-all">
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-2 ring-white/10 group-hover/card:ring-[var(--neon)]/50 transition-all">
                     <img
                       src={item.avatar}
                       alt={item.name}
@@ -113,9 +147,25 @@ export function Reviews() {
             ))}
           </div>
           
-          {/* Fading edges for better UX */}
-          <div className="absolute top-0 left-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-          <div className="absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+          {/* Mobile Navigation Indicators (Fade edges) */}
+          <div className="absolute top-0 left-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 md:w-20" />
+          <div className="absolute top-0 right-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 md:w-20" />
+        </div>
+
+        {/* Mobile Navigation Buttons */}
+        <div className="flex md:hidden justify-center gap-4 mt-4">
+          <button
+            onClick={() => scroll('left')}
+            className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 active:bg-white/10 shadow-glow-soft"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 active:bg-white/10 shadow-glow-soft"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
         </div>
       </div>
     </section>
@@ -123,4 +173,5 @@ export function Reviews() {
 }
 
 export default Reviews;
+
 
