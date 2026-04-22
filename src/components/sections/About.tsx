@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin } from "lucide-react";
+import profileImg from "../../assets/profile.jpg";
+import wissalImg from "../../assets/image.png";
 
 type Founder = {
   initials: string;
   name: string;
   role: string;
   bio: string;
+  image: string;
   gradient: string;
 };
 
@@ -15,6 +18,7 @@ const founders: Founder[] = [
     name: "EZ-ZOUEK Hamza",
     role: "Full-stack Developer",
     bio: "Builds robust web platforms end-to-end — from API to pixel.",
+    image: profileImg,
     gradient: "from-[var(--neon)] to-[var(--electric)]",
   },
   {
@@ -22,6 +26,7 @@ const founders: Founder[] = [
     name: "BADRI Wissal",
     role: "Mobile Developer · UI/UX",
     bio: "Crafts polished mobile experiences with care for every detail.",
+    image: wissalImg,
     gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
   },
 ];
@@ -157,42 +162,63 @@ export function About() {
             </h3>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-2 px-4">
             {founders.map((f, i) => (
               <motion.div
                 key={f.name}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="bg-glass glow-border group rounded-2xl p-6 text-center transition-all hover:-translate-y-1 hover:shadow-glow-soft"
+                transition={{ duration: 0.7, delay: i * 0.2 }}
+                className="bg-glass glow-border group relative rounded-[2rem] p-8 text-center transition-all hover:shadow-2xl hover:shadow-primary/10 overflow-hidden"
               >
-                <div className="relative mx-auto h-24 w-24">
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${f.gradient} blur-md opacity-60 group-hover:opacity-90 transition-opacity`} />
-                  <div className={`relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br ${f.gradient} font-display text-2xl font-bold text-background ring-2 ring-white/20`}>
-                    {f.initials}
+                {/* Background decorative glow */}
+                <div className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${f.gradient} blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity`} />
+                
+                <div className="relative mx-auto h-32 w-32 mb-6">
+                  {/* Glowing Ring */}
+                  <div className={`absolute -inset-1 rounded-full bg-gradient-to-br ${f.gradient} opacity-40 group-hover:opacity-100 blur-sm transition-all duration-500 group-hover:scale-110`} />
+                  
+                  {/* Profile Image Container */}
+                  <div className="relative h-32 w-32 rounded-full overflow-hidden border-2 border-white/20">
+                    <motion.img 
+                      src={f.image} 
+                      alt={f.name}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Badge */}
+                  <div className={`absolute -bottom-2 -right-2 p-1.5 rounded-lg bg-gradient-to-br ${f.gradient} shadow-lg`}>
+                    <div className="h-4 w-4 rounded-full bg-background/20 border border-white/30" />
                   </div>
                 </div>
-                <h4 className="mt-5 font-display text-lg font-semibold">{f.name}</h4>
-                <p className="text-sm text-[var(--neon)]">{f.role}</p>
-                <p className="mt-3 text-sm text-muted-foreground">{f.bio}</p>
-                <div className="mt-4 flex items-center justify-center gap-2">
-                  <a
-                    href="https://instagram.com/wh__agency"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${f.name} Instagram`}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 hover:bg-white/10"
-                  >
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label={`${f.name} LinkedIn`}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 hover:bg-white/10"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                  </a>
+
+                <div className="relative z-10">
+                  <h4 className="font-display text-xl font-bold tracking-tight">{f.name}</h4>
+                  <p className="mt-1 text-sm font-semibold text-primary uppercase tracking-widest">{f.role}</p>
+                  <p className="mt-4 text-sm text-muted-foreground leading-relaxed italic">
+                    "{f.bio}"
+                  </p>
+                  
+                  <div className="mt-8 flex items-center justify-center gap-3">
+                    <a
+                      href="https://instagram.com/wh__agency"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-gradient-to-br hover:from-[#E4405F] hover:to-[#F58529] hover:border-transparent"
+                    >
+                      <Instagram className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
+                    </a>
+                    <a
+                      href="#"
+                      className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-[#0A66C2] hover:border-transparent"
+                    >
+                      <Linkedin className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -204,3 +230,4 @@ export function About() {
 }
 
 export default About;
+
