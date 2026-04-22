@@ -83,9 +83,6 @@ export function About() {
                   <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
                   <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">
-                  wh-agency.tsx
-                </span>
                 <span className="h-3 w-3" />
               </div>
 
@@ -143,7 +140,6 @@ export function About() {
                   <span className="h-1.5 w-1.5 rounded-full bg-[var(--neon)] shadow-[0_0_8px_var(--neon)]" />
                   online · building
                 </span>
-                <span className="font-mono">utf-8 · ts</span>
               </div>
             </div>
 
