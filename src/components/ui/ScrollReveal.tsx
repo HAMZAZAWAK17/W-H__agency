@@ -1,12 +1,12 @@
-import { motion, useInView, useAnimation, Variant } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
 import { useEffect, useRef, ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
   width?: "fit-content" | "100%";
   variants?: {
-    hidden: Variant;
-    visible: Variant;
+    hidden: any;
+    visible: any;
   };
   transition?: {
     duration?: number;
