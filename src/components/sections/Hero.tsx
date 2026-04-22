@@ -38,7 +38,7 @@ export function Hero() {
       {/* Video Background with Parallax Effect */}
       <motion.div 
         initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.4 }}
+        animate={{ scale: 1, opacity: 0.6 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0 -z-20 overflow-hidden"
       >
@@ -47,12 +47,12 @@ export function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover brightness-[0.7]"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-background-of-soft-and-abstract-blue-lines-41278-large.mp4" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-motion-of-blue-particles-20671-large.mp4" type="video/mp4" />
         </video>
         {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)]" />
       </motion.div>
 
