@@ -3,6 +3,8 @@ import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import TextType from "../ui/TextType";
 
+import heroVideo from "../../assets/14519250_3840_2160_25fps.mp4";
+
 const Link = ({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) => (
   <a href={to} className={className}>{children}</a>
 );
@@ -38,7 +40,7 @@ export function Hero() {
       {/* Video Background with Parallax Effect */}
       <motion.div 
         initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.6 }}
+        animate={{ scale: 1, opacity: 0.7 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0 -z-20 overflow-hidden"
       >
@@ -49,7 +51,7 @@ export function Hero() {
           playsInline
           className="w-full h-full object-cover brightness-[0.7]"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-motion-of-blue-particles-20671-large.mp4" type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         {/* Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
