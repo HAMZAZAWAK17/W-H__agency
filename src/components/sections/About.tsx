@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, GraduationCap } from "lucide-react";
+import { Github, Linkedin, GraduationCap } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
 
@@ -9,6 +9,8 @@ type Founder = {
   role: string;
   bio: string;
   image: string;
+  github: string;
+  linkedin: string;
   gradient: string;
 };
 
@@ -19,6 +21,8 @@ const founders: Founder[] = [
     role: "Full-stack Developer",
     bio: "Builds robust web platforms end-to-end — from API to pixel.",
     image: profileImg,
+    github: "https://github.com/HAMZAZAWAK17",
+    linkedin: "https://www.linkedin.com/in/hamza-ezzouek-a99aa327a/",
     gradient: "from-[var(--neon)] to-[var(--electric)]",
   },
   {
@@ -27,6 +31,8 @@ const founders: Founder[] = [
     role: "Mobile Developer · UI/UX",
     bio: "Crafts polished mobile experiences with care for every detail.",
     image: wissalImg,
+    github: "https://github.com/Wissal-badri",
+    linkedin: "https://www.linkedin.com/in/wissal-badri-77099a335/",
     gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
   },
 ];
@@ -205,16 +211,18 @@ export function About() {
                   
                   <div className="mt-8 flex items-center justify-center gap-3">
                     <a
-                      href="https://instagram.com/wh__agency"
+                      href={f.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-gradient-to-br hover:from-[#E4405F] hover:to-[#F58529] hover:border-transparent"
+                      className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-white hover:text-black hover:border-transparent"
                     >
-                      <Instagram className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
+                      <Github className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
                     </a>
                     <a
-                      href="#"
-                      className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-[#0A66C2] hover:border-transparent"
+                      href={f.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-[#0A66C2] hover:text-white hover:border-transparent"
                     >
                       <Linkedin className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
                     </a>
