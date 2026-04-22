@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import TextType from "../ui/TextType";
 
 const Link = ({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) => (
   <a href={to} className={className}>{children}</a>
@@ -78,7 +79,16 @@ export function Hero() {
           >
             {t('hero.title1')}
             <br />
-            {t('hero.title2_prefix')} <span className="text-gradient">{t('hero.title2_accent')}</span>
+            {t('hero.title2_prefix')}{" "}
+            <TextType 
+              text={[t('hero.title2_accent'), "Success", "Digital Innovation"]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor
+              cursorCharacter="_"
+              deletingSpeed={50}
+              className="text-gradient inline-block"
+            />
           </motion.h1>
 
           {/* Description */}
