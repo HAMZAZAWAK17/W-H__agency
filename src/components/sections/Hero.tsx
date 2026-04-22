@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-// Note: Temporarily using standard <a> tags as TanStack Router is not yet initialized in App.tsx
 const Link = ({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) => (
   <a href={to} className={className}>{children}</a>
 );
@@ -10,36 +9,62 @@ const Link = ({ to, children, className }: { to: string; children: React.ReactNo
 export function Hero() {
   const { t } = useTranslation();
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      },
+    },
+  };
+
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
+    <section className="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
+      {/* Video Background with Parallax Effect */}
+      <motion.div 
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.4 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-0 -z-20 overflow-hidden"
+      >
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-40 scale-105"
+          className="w-full h-full object-cover"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-background-of-soft-and-abstract-blue-lines-41278-large.mp4" type="video/mp4" />
         </video>
-        {/* Overlays for depth and readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)]" />
-      </div>
+      </motion.div>
 
-      <div className="mx-auto max-w-4xl px-4 text-center">
+      <div className="mx-auto max-w-5xl px-4 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="flex flex-col items-center"
         >
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            variants={itemVariants}
             className="bg-glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-muted-foreground border border-white/10 shadow-glow-soft mb-8"
           >
             <Sparkles className="h-3.5 w-3.5 text-[var(--neon)]" />
@@ -48,10 +73,8 @@ export function Hero() {
 
           {/* Title */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="font-display text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
+            variants={itemVariants}
+            className="font-display text-5xl font-bold leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl"
           >
             {t('hero.title1')}
             <br />
@@ -60,19 +83,15 @@ export function Hero() {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-8 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl leading-relaxed"
+            variants={itemVariants}
+            className="mt-8 max-w-2xl mx-auto text-lg text-muted-foreground/90 sm:text-xl leading-relaxed"
           >
             {t('hero.description')}
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            variants={itemVariants}
             className="mt-10 flex flex-wrap justify-center items-center gap-4"
           >
             <Link
@@ -92,10 +111,8 @@ export function Hero() {
 
           {/* Meta Info */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground/80"
+            variants={itemVariants}
+            className="mt-16 flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground/60"
           >
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-3 w-3">
@@ -112,10 +129,11 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      {/* Decorative gradient for bottom blend */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }
 
 export default Hero;
+
