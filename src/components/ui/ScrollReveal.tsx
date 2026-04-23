@@ -21,10 +21,11 @@ export const ScrollReveal = ({
   children,
   width = "100%",
   variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   },
-  transition = { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] },
+  transition = { duration: 1, ease: [0.16, 1, 0.3, 1] },
+
   threshold = 0.2,
   once = true,
 }: ScrollRevealProps) => {
