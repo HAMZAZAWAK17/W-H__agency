@@ -32,6 +32,7 @@ const techs: Tech[] = [
 
 
 function TechCard({ name, slug, category, color, image }: Tech) {
+  const { t } = useTranslation();
   return (
     <div className="group relative shrink-0 px-3">
       <div className="bg-glass relative flex h-32 w-40 sm:h-40 sm:w-48 flex-col items-center justify-center gap-3 sm:gap-4 rounded-[1.5rem] sm:rounded-[2rem] px-4 py-4 sm:py-6 transition-all hover:-translate-y-1 hover:shadow-glow-soft overflow-hidden">
@@ -51,7 +52,7 @@ function TechCard({ name, slug, category, color, image }: Tech) {
         <div className="text-center">
           <div className="text-sm font-bold text-foreground/90 whitespace-nowrap tracking-tight">{name}</div>
           <div className="mt-1 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
-            {category}
+            {t(`tech.categories.${category.toLowerCase()}`)}
           </div>
         </div>
       </div>
@@ -64,6 +65,7 @@ function TechCard({ name, slug, category, color, image }: Tech) {
 
 
 export function Tech() {
+  const { t } = useTranslation();
   // Duplicate the list so the marquee loops seamlessly
   const loop = [...techs, ...techs, ...techs];
 
@@ -72,13 +74,13 @@ export function Tech() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-            Our toolkit
+            {t('tech.subtitle')}
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Technologies we <span className="text-gradient">build with</span>
+            {t('tech.title_prefix')} <span className="text-gradient">{t('tech.title_accent')}</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            A modern, battle-tested stack — using the original tools for maximum performance.
+            {t('tech.description')}
           </p>
         </div>
       </div>

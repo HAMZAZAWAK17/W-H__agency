@@ -138,15 +138,16 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
-            Selected work
+            {t('projects.subtitle')}
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Projects we&apos;re <span className="text-gradient">proud of</span>
+            {t('projects.title_prefix')} <span className="text-gradient">{t('projects.title_accent')}</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            A glimpse at what we&apos;ve been building — from mobile apps to full-stack platforms.
+            {t('projects.description')}
           </p>
         </div>
+
 
         {/* Filters */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
@@ -171,8 +172,9 @@ export default function Projects() {
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {visible.map((p, i) => {
+            {translatedProjects.map((p, i) => {
               const Icon = p.icon;
+
               return (
                 <motion.article
                   key={p.title}
@@ -316,9 +318,10 @@ export default function Projects() {
                     onClick={() => setSelectedProject(null)}
                     className="btn-primary w-full text-center flex items-center justify-center gap-2"
                   >
-                    Inquire About Project
+                    {t('projects.modal.inquire')}
                     <ArrowUpRight size={18} />
                   </a>
+
                 </div>
               </div>
             </motion.div>
