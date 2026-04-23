@@ -35,8 +35,17 @@ const reviews = [
   }
 ];
 
+import { useTranslation } from "react-i18next";
+
 export function Reviews() {
+  const { t } = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Get translated reviews array
+  const translatedReviews = t('reviews.items', { returnObjects: true }) as any[];
+  // If translations aren't objects yet, fallback to original names but use keys
+  // For simplicity, I'll use the indices from the JSON array
+
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -67,7 +76,7 @@ export function Reviews() {
               viewport={{ once: true }}
               className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]"
             >
-              Testimonials
+              {t('reviews.subtitle')}
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -76,8 +85,9 @@ export function Reviews() {
               transition={{ delay: 0.1 }}
               className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl"
             >
-              What our <span className="text-gradient">clients</span> say
+              {t('reviews.title_prefix')} <span className="text-gradient">{t('reviews.title_accent')}</span> {t('reviews.title_suffix')}
             </motion.h2>
+
           </div>
           
           {/* Desktop Navigation Buttons */}
@@ -109,7 +119,7 @@ export function Reviews() {
               scrollbarWidth: 'none'
             }}
           >
-            {reviews.map((item, index) => (
+            {translatedReviews.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -133,7 +143,7 @@ export function Reviews() {
                 <div className="flex items-center gap-4 border-t border-white/5 pt-6">
                   <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-2 ring-white/10 group-hover/card:ring-[var(--neon)]/50 transition-all">
                     <img
-                      src={item.avatar}
+                      src={`https://i.pravatar.cc/150?u=${item.name.split(' ')[0]}`}
                       alt={item.name}
                       className="h-full w-full object-cover"
                     />
@@ -145,6 +155,7 @@ export function Reviews() {
                 </div>
               </motion.div>
             ))}
+
           </div>
           
           {/* Mobile Navigation Indicators (Fade edges) */}

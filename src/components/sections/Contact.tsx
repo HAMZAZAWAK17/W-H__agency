@@ -7,22 +7,24 @@ import * as z from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Instagram, MessageCircle, Send, CheckCircle, XCircle } from 'lucide-react';
 import Card from '../ui/Card';
-
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation();
+  
+  const contactSchema = z.object({
+    name: z.string().min(2, t('contact.form.name_label')),
+    email: z.string().email(t('contact.form.email_label')),
+    message: z.string().min(10, t('contact.form.message_label')),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
+
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema)
   });
 
   const [notification, setNotification] = React.useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
-
 
   const onSubmit = async (data: ContactFormData) => {
     try {
@@ -41,32 +43,30 @@ const Contact: React.FC = () => {
         'y8QhHz6fvBdv9FXJ3'
       );
 
-      setNotification({ type: 'success', message: 'Message sent successfully! We\'ll get back to you soon.' });
+      setNotification({ type: 'success', message: t('contact.form.success') });
       reset();
     } catch (error) {
       console.error("EmailJS Error:", error);
-      setNotification({ type: 'error', message: 'Failed to send message. Please try again later.' });
+      setNotification({ type: 'error', message: t('contact.form.error') });
     } finally {
-      // Auto-hide notification after 5 seconds
       setTimeout(() => setNotification({ type: null, message: '' }), 5000);
     }
   };
-
 
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
         <SectionHeader 
-          title="Get In Touch" 
-          subtitle="Have a project in mind? Let's talk about how we can help you build something amazing."
+          title={t('contact.subtitle')} 
+          subtitle={t('contact.description')}
         />
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Left: Info */}
           <div className="space-y-8">
-            <h3 className="text-3xl font-bold mb-6">Let's start a <span className="neon-text">conversation</span></h3>
+            <h3 className="text-3xl font-bold mb-6">{t('contact.title_prefix')} <span className="neon-text">{t('contact.title_accent')}</span></h3>
             <p className="text-muted-foreground max-w-md text-lg">
-              Whether you're a startup, a student, or a small business, we're here to help you scale your digital presence.
+              {t('contact.info_description')}
             </p>
 
             <div className="space-y-6">
@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
                   <Mail className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">Email Us</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">{t('contact.email_label')}</p>
                   <p className="text-lg font-medium">contact@whagency.com</p>
                 </div>
               </div>
@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
                   <Instagram className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">Follow Us</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">{t('contact.follow_label')}</p>
                   <p className="text-lg font-medium">@wh_agency</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                   <MessageCircle className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">DM Us</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">{t('contact.dm_label')}</p>
                   <p className="text-lg font-medium">TikTok / Instagram</p>
                 </div>
               </div>
@@ -106,32 +106,32 @@ const Contact: React.FC = () => {
           <Card className="p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-muted-foreground mb-2">Your Name</label>
+                <label className="block text-sm font-medium text-muted-foreground mb-2">{t('contact.form.name_label')}</label>
                 <input 
                   {...register("name")}
                   className="w-full bg-glass border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground"
-                  placeholder="John Doe"
+                  placeholder={t('contact.form.name_placeholder')}
                 />
                 {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-muted-foreground mb-2">Email Address</label>
+                <label className="block text-sm font-medium text-muted-foreground mb-2">{t('contact.form.email_label')}</label>
                 <input 
                   {...register("email")}
                   className="w-full bg-glass border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground"
-                  placeholder="john@example.com"
+                  placeholder={t('contact.form.email_placeholder')}
                 />
                 {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-muted-foreground mb-2">Message</label>
+                <label className="block text-sm font-medium text-muted-foreground mb-2">{t('contact.form.message_label')}</label>
                 <textarea 
                   {...register("message")}
                   rows={4}
                   className="w-full bg-glass border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors text-foreground resize-none"
-                  placeholder="How can we help you?"
+                  placeholder={t('contact.form.message_placeholder')}
                 />
                 {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
               </div>
@@ -141,7 +141,7 @@ const Contact: React.FC = () => {
                 disabled={isSubmitting}
                 className="btn-primary w-full flex items-center justify-center space-x-2 disabled:opacity-50"
               >
-                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                <span>{isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}</span>
                 {!isSubmitting && <Send size={18} />}
               </button>
             </form>
@@ -188,6 +188,5 @@ const Contact: React.FC = () => {
     </section>
   );
 };
-
 
 export default Contact;
