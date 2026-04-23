@@ -112,7 +112,7 @@ export default function Projects() {
 
   const visible = active === "All" ? projects : projects.filter((p) => p.type === active);
 
-  const translatedProjects = visible.map((p, index) => ({
+  const translatedProjects = visible.map((p) => ({
     ...p,
     title: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.title`),
     description: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.description`),

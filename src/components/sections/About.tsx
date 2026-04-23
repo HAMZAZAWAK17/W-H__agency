@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Github, Linkedin, GraduationCap } from "lucide-react";
+import { Github, Linkedin, GraduationCap, Mail } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
 
@@ -16,6 +16,7 @@ export function About() {
       image: profileImg,
       github: "https://github.com/HAMZAZAWAK17",
       linkedin: "https://www.linkedin.com/in/hamza-ezzouek-a99aa327a/",
+      email: "ezzouekhamza2411@gmail.com",
       gradient: "from-[var(--neon)] to-[var(--electric)]",
     },
     {
@@ -26,6 +27,7 @@ export function About() {
       image: wissalImg,
       github: "https://github.com/Wissal-badri",
       linkedin: "https://www.linkedin.com/in/wissal-badri-77099a335/",
+      email: "wissalbadri91@gmail.com",
       gradient: "from-[var(--violet-glow)] to-[var(--neon)]",
     },
   ];
@@ -196,6 +198,7 @@ export function About() {
                 <div className="relative z-10">
                   <h4 className="font-display text-xl font-bold tracking-tight">{f.name}</h4>
                   <p className="mt-1 text-sm font-semibold text-primary uppercase tracking-widest">{f.role}</p>
+                  <p className="mt-1.5 text-xs font-medium text-muted-foreground uppercase tracking-widest">Software Engineer Student</p>
                   <p className="mt-4 text-sm text-muted-foreground leading-relaxed italic">
                     "{f.bio}"
                   </p>
@@ -217,6 +220,14 @@ export function About() {
                     >
                       <Linkedin className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
                     </a>
+                    {f.email && (
+                      <a
+                        href={`mailto:${f.email}`}
+                        className="group/icon flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 transition-all hover:bg-[#ea4335] hover:text-white hover:border-transparent"
+                      >
+                        <Mail className="h-5 w-5 transition-transform group-hover/icon:scale-110" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>

@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">{t('contact.email_label')}</p>
-                  <p className="text-lg font-medium">contact@whagency.com</p>
+                  <p className="text-lg font-medium">whagency01@gmail.com</p>
                 </div>
               </div>
 
@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">{t('contact.follow_label')}</p>
-                  <p className="text-lg font-medium">@wh_agency</p>
+                  <p className="text-lg font-medium">@wh__agency</p>
                 </div>
               </div>
 
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground uppercase tracking-widest font-bold">{t('contact.dm_label')}</p>
-                  <p className="text-lg font-medium">TikTok / Instagram</p>
+                  <p className="text-lg font-medium">TikTok / Instagram / Email</p>
                 </div>
               </div>
             </div>

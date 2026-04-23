@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import TextType from "../ui/TextType";
 
@@ -30,7 +30,7 @@ export function Hero() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        ease: [0.21, 0.47, 0.32, 0.98] as const,
       },
     },
   };
@@ -65,14 +65,7 @@ export function Hero() {
           animate="visible"
           className="flex flex-col items-center"
         >
-          {/* Badge */}
-          <motion.div
-            variants={itemVariants}
-            className="bg-glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-muted-foreground border border-white/10 shadow-glow-soft mb-8"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-[var(--neon)]" />
-            {t('hero.badge')}
-          </motion.div>
+
 
           {/* Title */}
           <motion.h1

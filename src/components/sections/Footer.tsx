@@ -1,113 +1,87 @@
-import React from 'react';
-import { Github, Instagram, Twitter, Linkedin, MapPin, Mail, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, Instagram, Linkedin, ChevronDown, Sparkles, Music2 as Tiktok } from 'lucide-react';
 
-const services = [
-  "Mobile App Development",
-  "Web Development",
-  "UI / UX Design",
-  "Custom Digital Solutions",
-  "PFE Support",
-  "Presentations & Reports"
-];
-
-const navigation = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Tech', href: '#tech' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+const serviceDetails = [
+  { title: "Mobile App Development", desc: "Crafting high-performance iOS and Android applications with React Native and Flutter." },
+  { title: "Web Development", desc: "Building cutting-edge web platforms using Next.js and React." },
+  { title: "UI / UX Design", desc: "Modern, premium designs that wow users." },
+  { title: "Custom Digital Solutions", desc: "Bespoke software tailored to your business needs." }
 ];
 
 const Footer: React.FC = () => {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+
   return (
-    <footer className="relative pt-24 pb-12 overflow-hidden border-t border-white/5 bg-background">
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 blur-[120px] rounded-full -z-10" />
-
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand Column */}
-          <div className="space-y-6 text-center md:text-left">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tighter">
-                W&H <span className="neon-text">Agency</span>
-              </h2>
-              <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-                Crafting digital excellence through modern engineering and premium design. We turn complex ideas into scalable products.
+    <footer className="relative pb-10 pt-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="bg-glass rounded-[40px] border border-foreground/10 dark:border-white/10 p-8 md:p-12 shadow-2xl overflow-hidden relative"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="px-4 py-1.5 rounded-full border border-blue-900/30 dark:border-primary/30 bg-blue-900/5 dark:bg-primary/5 flex items-center justify-center">
+                  <span className="text-blue-900 dark:text-primary text-sm font-black font-display italic">WH</span>
+                </div>
+                <div className="flex flex-col">
+                  <h2 className="text-2xl font-bold tracking-tighter font-display uppercase leading-tight text-foreground">W&H Agency</h2>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-900/80 dark:text-primary/80">Agence Digitale</span>
+                </div>
+              </div>
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                We bridge the gap between complex engineering and premium design.
               </p>
-            </div>
-            <div className="flex items-center justify-center md:justify-start gap-4">
-              <a href="https://instagram.com/wh__agency" className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all">
-                <Github size={18} />
-              </a>
-            </div>
-          </div>
-
-          {/* Navigation Column */}
-          <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-6">Navigation</h3>
-            <ul className="space-y-4">
-              {navigation.map((item) => (
-                <li key={item.name}>
-                  <a href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {item.name}
+              <div className="flex items-center gap-4">
+                {[
+                  { Icon: Instagram, href: "https://instagram.com/wh__agency" },
+                  { Icon: Tiktok, href: "https://www.tiktok.com/@wh.agency8?_r=1&_t=ZS-95adLSQzL7I" },
+                  { Icon: Linkedin, href: "https://www.linkedin.com/company/w-h-agency/" },
+                  { Icon: Github, href: "https://github.com/Wissal-badri" }
+                ].map(({ Icon, href }, i) => (
+                  <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="h-10 w-10 flex items-center justify-center rounded-2xl bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10 text-muted-foreground hover:text-blue-900 dark:hover:text-primary hover:border-blue-900/50 dark:hover:border-primary/50 transition-all">
+                    <Icon size={18} />
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+              <div className="pt-8 border-t border-foreground/10 dark:border-white/5">
+                <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest">
+                  © {new Date().getFullYear()} W&H Agency. ALL RIGHTS RESERVED.
+                </p>
+              </div>
+            </div>
 
-          {/* Services Column */}
-          <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-6">Services</h3>
-            <ul className="space-y-4">
-              {services.map((service) => (
-                <li key={service} className="text-sm text-muted-foreground hover:text-primary cursor-default transition-colors">
-                  {service}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Map Column */}
-          <div className="text-center md:text-left">
-            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground mb-6">Location</h3>
-            <div className="bg-glass glow-border group relative rounded-2xl p-4 overflow-hidden shadow-glow-soft hover:-translate-y-1 transition-transform duration-300">
-              <div className="absolute inset-0 grid-overlay opacity-20 group-hover:opacity-30 transition-opacity" />
-              <div className="relative z-10 flex flex-col items-center justify-center py-6">
-                <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-primary/20 border border-primary/40 text-primary mb-4 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
-                  <MapPin size={24} />
-                </div>
-                <h4 className="font-display font-bold text-lg text-foreground">Casablanca</h4>
-                <p className="text-xs text-muted-foreground mt-1 tracking-wide">MOROCCO, NORTH AFRICA</p>
-                <div className="mt-4 pt-4 border-t border-white/10 w-full text-center">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-widest animate-pulse">Available Globally</p>
-                </div>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 mb-6">
+                <Sparkles className="text-blue-900 dark:text-primary h-4 w-4" />
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Our Expertise</h3>
+              </div>
+              <div className="grid gap-3">
+                {serviceDetails.map((service, i) => (
+                  <div key={i}>
+                    <button
+                      onClick={() => setExpandedService(expandedService === i ? null : i)}
+                      className={`w-full text-left p-4 rounded-3xl border transition-all ${expandedService === i ? 'bg-blue-900/5 dark:bg-primary/5 border-blue-900/30 dark:border-primary/30' : 'border-transparent hover:bg-foreground/5 dark:hover:bg-white/5'}`}
+                    >
+                      <span className={`font-semibold ${expandedService === i ? 'text-blue-900 dark:text-primary' : 'text-foreground/70 dark:text-foreground/70'}`}>{service.title}</span>
+                      <ChevronDown size={18} className={`float-right transition-transform ${expandedService === i ? 'rotate-180 text-blue-900 dark:text-primary' : 'text-foreground/50'}`} />
+                    </button>
+                    <AnimatePresence>
+                      {expandedService === i && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                          <p className="p-4 text-sm text-muted-foreground">{service.desc}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-widest">
-            © {new Date().getFullYear()} W&H Agency. ALL RIGHTS RESERVED.
-          </p>
-          <div className="flex items-center gap-8 text-[11px] text-muted-foreground font-medium uppercase tracking-widest">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
