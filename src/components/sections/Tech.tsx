@@ -33,29 +33,29 @@ const techs: Tech[] = [
 function TechCard({ name, slug, category, color, image }: Tech) {
   return (
     <div className="group relative shrink-0 px-3">
-      <div className="bg-glass glow-border relative flex h-36 w-44 flex-col items-center justify-center gap-3 rounded-2xl px-4 py-5 transition-all hover:-translate-y-1 hover:shadow-glow-soft">
-        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-foreground/5 border border-foreground/5 transition-colors group-hover:bg-foreground/10">
+      <div className="bg-glass glow-border relative flex h-40 w-48 flex-col items-center justify-center gap-4 rounded-[2rem] px-4 py-6 transition-all hover:-translate-y-1 hover:shadow-glow-soft">
+        <div className="relative flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-foreground/5 border border-foreground/5 transition-colors group-hover:bg-foreground/10">
           <span
             aria-hidden
-            className="absolute inset-0 rounded-2xl blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
+            className="absolute inset-0 rounded-[1.5rem] blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
             style={{ backgroundColor: color ? `#${color}` : 'var(--neon)' }}
           />
           <img 
             src={image || `https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
             alt={`${name} logo`}
-            className="relative h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="relative h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
             loading="lazy"
           />
         </div>
-
         <div className="text-center">
-          <div className="text-sm font-semibold text-foreground/90 whitespace-nowrap">{name}</div>
-          <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="text-sm font-bold text-foreground/90 whitespace-nowrap tracking-tight">{name}</div>
+          <div className="mt-1 text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
             {category}
           </div>
         </div>
       </div>
     </div>
+
   );
 }
 
