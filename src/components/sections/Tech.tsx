@@ -1,5 +1,8 @@
+import React from 'react';
+import { motion } from 'framer-motion';
 import powerbiImg from '../../assets/PowerBi.png';
 import powerpointImg from '../../assets/PowerPoint.png';
+import javaImg from '../../assets/javaicon.jpg';
 
 type Tech = {
   name: string;
@@ -14,7 +17,7 @@ const techs: Tech[] = [
   { name: "React Native", slug: "react", category: "Mobile", color: "61DAFB" },
   { name: "Flutter", slug: "flutter", category: "Mobile", color: "02569B" },
   { name: "Ionic", slug: "ionic", category: "Mobile", color: "3880FF" },
-  { name: "Java", slug: "java", category: "Backend", color: "ED8B00" },
+  { name: "Java", slug: "java", category: "Backend", color: "ED8B00", image: javaImg },
   { name: "Expressjs", slug: "express", category: "Backend", color: "ffffff" },
   { name: "SpringBoot", slug: "springboot", category: "Backend", color: "6DB33F" },
   { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A", image: powerpointImg },
