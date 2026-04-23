@@ -1,6 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ArrowUpRight, Smartphone, Globe, LayoutDashboard, ShoppingBag, GraduationCap, Sparkles, type LucideIcon } from "lucide-react";
+import { 
+  ArrowUpRight, Smartphone, Globe, LayoutDashboard, 
+  ShoppingBag, GraduationCap, Sparkles, ChevronLeft, 
+  ChevronRight, X, type LucideIcon 
+} from "lucide-react";
 
 type Filter = "All" | "Web" | "Mobile" | "UI";
 
@@ -12,6 +16,7 @@ type Project = {
   description: string;
   tags: string[];
   accent: string;
+  captures?: string[]; // Array of image URLs/paths
 };
 
 const projects: Project[] = [
@@ -23,6 +28,11 @@ const projects: Project[] = [
     description: "Cross-platform fitness tracker with workout plans, progress charts, and social challenges.",
     tags: ["React Native", "Firebase", "UI/UX"],
     accent: "from-[var(--neon)]/30 to-[var(--electric)]/10",
+    captures: [
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200",
+      "https://images.unsplash.com/photo-1510017803434-a899398421b3?q=80&w=1200",
+      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1200"
+    ]
   },
   {
     icon: ShoppingBag,
@@ -32,6 +42,10 @@ const projects: Project[] = [
     description: "Modern headless storefront with smooth checkout, animated product galleries, and CMS.",
     tags: ["Next.js", "Stripe", "Tailwind"],
     accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
+    captures: [
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200",
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200"
+    ]
   },
   {
     icon: LayoutDashboard,
@@ -41,6 +55,10 @@ const projects: Project[] = [
     description: "Real-time analytics dashboard for SMBs — KPIs, team management, and exportable reports.",
     tags: ["React", "Supabase", "Charts"],
     accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
+    captures: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
+    ]
   },
   {
     icon: Globe,
@@ -50,6 +68,10 @@ const projects: Project[] = [
     description: "Award-style portfolio site with cinematic scroll, custom cursor, and CMS-driven case studies.",
     tags: ["Astro", "GSAP", "Sanity"],
     accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
+    captures: [
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200",
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1200"
+    ]
   },
   {
     icon: GraduationCap,
@@ -59,6 +81,10 @@ const projects: Project[] = [
     description: "Final-year project: an AI-powered student progress tracker with smart recommendations.",
     tags: ["Python", "FastAPI", "ML"],
     accent: "from-[var(--electric)]/30 to-[var(--neon)]/10",
+    captures: [
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1200",
+      "https://images.unsplash.com/photo-1523240715639-99a808406742?q=80&w=1200"
+    ]
   },
   {
     icon: Sparkles,
@@ -68,6 +94,10 @@ const projects: Project[] = [
     description: "Investor-ready pitch deck and brand identity for an early-stage AI startup.",
     tags: ["Figma", "Slides", "Branding"],
     accent: "from-[var(--violet-glow)]/30 to-[var(--electric)]/10",
+    captures: [
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200",
+      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200"
+    ]
   },
 ];
 
@@ -75,7 +105,24 @@ const filters: Filter[] = ["All", "Web", "Mobile", "UI"];
 
 export default function Projects() {
   const [active, setActive] = useState<Filter>("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
   const visible = active === "All" ? projects : projects.filter((p) => p.type === active);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedProject?.captures) {
+      setCurrentImgIndex((prev) => (prev + 1) % selectedProject.captures!.length);
+    }
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedProject?.captures) {
+      setCurrentImgIndex((prev) => (prev - 1 + selectedProject.captures!.length) % selectedProject.captures!.length);
+    }
+  };
 
   return (
     <section id="projects" className="relative py-20 sm:py-28">
@@ -125,7 +172,11 @@ export default function Projects() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="bg-glass glow-border group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-glow-soft"
+                  onClick={() => {
+                    setSelectedProject(p);
+                    setCurrentImgIndex(0);
+                  }}
+                  className="bg-glass glow-border group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-glow-soft cursor-pointer"
                 >
                   {/* Visual header */}
                   <div className={`relative h-40 overflow-hidden bg-gradient-to-br ${p.accent}`}>
@@ -170,6 +221,101 @@ export default function Projects() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Discovery Modal / Gallery */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background/90 backdrop-blur-md"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-5xl bg-glass border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute right-6 top-6 z-50 p-2 rounded-full bg-background/50 hover:bg-background transition-colors text-foreground"
+              >
+                <X size={24} />
+              </button>
+
+              <div className="grid lg:grid-cols-5 h-full">
+                {/* Left: Image Gallery */}
+                <div className="lg:col-span-3 relative h-[300px] lg:h-[600px] bg-black/20 flex items-center justify-center group">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImgIndex}
+                      src={selectedProject.captures?.[currentImgIndex]}
+                      alt={selectedProject.title}
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.5 }}
+                      className="h-full w-full object-cover"
+                    />
+                  </AnimatePresence>
+
+                  {/* Navigation Buttons */}
+                  <button
+                    onClick={handlePrev}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/50 hover:bg-background transition-all opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/50 hover:bg-background transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+
+                  {/* Counter */}
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-background/50 backdrop-blur text-xs font-bold uppercase tracking-widest">
+                    {currentImgIndex + 1} / {selectedProject.captures?.length}
+                  </div>
+                </div>
+
+                {/* Right: Project Details */}
+                <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center">
+                  <span className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-4">
+                    {selectedProject.category}
+                  </span>
+                  <h3 className="text-4xl font-bold mb-6 tracking-tight">
+                    {selectedProject.title}
+                  </h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    {selectedProject.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {selectedProject.tags.map((t) => (
+                      <span key={t} className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="#contact"
+                    onClick={() => setSelectedProject(null)}
+                    className="btn-primary w-full text-center flex items-center justify-center gap-2"
+                  >
+                    Inquire About Project
+                    <ArrowUpRight size={18} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
+
