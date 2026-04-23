@@ -1,4 +1,5 @@
 import React from 'react';
+import emailjs from '@emailjs/browser';
 import SectionHeader from '../ui/SectionHeader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,12 +21,30 @@ const Contact: React.FC = () => {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    console.log("Form submitted:", data);
-    // In a real app, send to API
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    alert("Message sent successfully!");
-    reset();
+    try {
+      const templateParams = {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        title: "New Agency Inquiry", // Matches {{title}} in subject
+        time: new Date().toLocaleString(), // Matches {{time}} in content
+      };
+
+      await emailjs.send(
+        'service_lj009fn',
+        'template_jf16fwx',
+        templateParams,
+        'y8QhHz6fvBdv9FXJ3'
+      );
+
+      alert("Message sent successfully!");
+      reset();
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("Failed to send message. Please try again later.");
+    }
   };
+
 
   return (
     <section id="contact" className="py-24">
