@@ -236,20 +236,21 @@ export default function Projects() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-5xl bg-glass border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-5xl max-h-[90vh] bg-glass border border-white/10 rounded-3xl overflow-y-auto lg:overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute right-6 top-6 z-50 p-2 rounded-full bg-background/50 hover:bg-background transition-colors text-foreground"
+                className="absolute right-4 top-4 lg:right-6 lg:top-6 z-50 p-2 rounded-full bg-background/50 hover:bg-background transition-colors text-foreground"
               >
-                <X size={24} />
+                <X size={20} />
               </button>
 
-              <div className="grid lg:grid-cols-5 h-full">
+              <div className="grid grid-cols-1 lg:grid-cols-5 h-full">
                 {/* Left: Image Gallery */}
-                <div className="lg:col-span-3 relative h-[300px] lg:h-[600px] bg-black/20 flex items-center justify-center group">
+                <div className="lg:col-span-3 relative h-[250px] sm:h-[400px] lg:h-[600px] bg-black/20 flex items-center justify-center group shrink-0">
+
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImgIndex}
