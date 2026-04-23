@@ -79,7 +79,7 @@ export default function Services() {
               viewport={{ once: true }}
               className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--neon)] mb-4"
             >
-              Expertise
+              {t('services.subtitle')}
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export default function Services() {
               transition={{ delay: 0.1 }}
               className="font-display text-4xl font-bold tracking-tight sm:text-6xl"
             >
-              Our <span className="text-gradient">Specialized</span> Services
+              {t('services.title_prefix')} <span className="text-gradient">{t('services.title_accent')}</span> {t('services.title_suffix')}
             </motion.h2>
           </div>
           <motion.p 
@@ -98,8 +98,9 @@ export default function Services() {
             transition={{ delay: 0.3 }}
             className="text-muted-foreground max-w-sm text-lg leading-relaxed"
           >
-            A duo of engineers dedicated to building high-performance digital products that scale with your vision.
+            {t('services.description')}
           </motion.p>
+
         </div>
 
         {/* Bento Grid */}
