@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import powerbiImg from '../../assets/PowerBi.png';
 import powerpointImg from '../../assets/PowerPoint.png';
 import javaImg from '../../assets/javalogo.png';
