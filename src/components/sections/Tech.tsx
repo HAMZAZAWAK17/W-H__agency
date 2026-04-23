@@ -33,17 +33,17 @@ const techs: Tech[] = [
 function TechCard({ name, slug, category, color, image }: Tech) {
   return (
     <div className="group relative shrink-0 px-3">
-      <div className="bg-glass relative flex h-40 w-48 flex-col items-center justify-center gap-4 rounded-[2rem] px-4 py-6 transition-all hover:-translate-y-1 hover:shadow-glow-soft overflow-hidden">
-        <div className="relative flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-foreground/5 transition-colors group-hover:bg-foreground/10">
+      <div className="bg-glass relative flex h-32 w-40 sm:h-40 sm:w-48 flex-col items-center justify-center gap-3 sm:gap-4 rounded-[1.5rem] sm:rounded-[2rem] px-4 py-4 sm:py-6 transition-all hover:-translate-y-1 hover:shadow-glow-soft overflow-hidden">
+        <div className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-[1.25rem] sm:rounded-[1.5rem] bg-foreground/5 transition-colors group-hover:bg-foreground/10">
           <span
             aria-hidden
-            className="absolute inset-0 rounded-[1.5rem] blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
+            className="absolute inset-0 rounded-[1.25rem] sm:rounded-[1.5rem] blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
             style={{ backgroundColor: color ? `#${color}` : 'var(--neon)' }}
           />
           <img 
             src={image || `https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
             alt={`${name} logo`}
-            className="relative h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="relative h-10 w-10 sm:h-14 sm:w-14 object-contain transition-transform duration-300 group-hover:scale-110"
             loading="lazy"
           />
         </div>
@@ -55,6 +55,7 @@ function TechCard({ name, slug, category, color, image }: Tech) {
         </div>
       </div>
     </div>
+
 
 
   );
