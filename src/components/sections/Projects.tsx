@@ -104,11 +104,20 @@ const projects: Project[] = [
 const filters: Filter[] = ["All", "Web", "Mobile", "UI"];
 
 export default function Projects() {
+  const { t } = useTranslation();
   const [active, setActive] = useState<Filter>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
   const visible = active === "All" ? projects : projects.filter((p) => p.type === active);
+
+  const translatedProjects = visible.map((p, index) => ({
+    ...p,
+    title: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.title`),
+    description: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.description`),
+    category: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.category`),
+  }));
+
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();

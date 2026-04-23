@@ -43,6 +43,141 @@
       "bio": "Crafts polished mobile experiences with care for every detail."
     }
   },
+  "services": {
+    "subtitle": "Expertise",
+    "title_prefix": "Our",
+    "title_accent": "Specialized",
+    "title_suffix": "Services",
+    "description": "A duo of engineers dedicated to building high-performance digital products that scale with your vision.",
+    "mobile": {
+      "title": "Mobile App Development",
+      "description": "Native-feel iOS & Android apps built with React Native and Flutter."
+    },
+    "web": {
+      "title": "Web Development",
+      "description": "Fast, scalable websites and dashboards using modern stacks like Next.js and React."
+    },
+    "design": {
+      "title": "UI / UX Design",
+      "description": "Clean, modern interfaces designed around real user needs and accessibility."
+    },
+    "custom": {
+      "title": "Custom Digital Solutions",
+      "description": "Tailor-made tools, automations, and integrations for your business."
+    },
+    "pfe": {
+      "title": "PFE Support",
+      "description": "End-to-end help for final year projects — from idea to defense."
+    },
+    "presentation": {
+      "title": "Presentations & Reports",
+      "description": "Polished slide decks and professional reports that impress."
+    }
+  },
+  "tech": {
+    "subtitle": "Our toolkit",
+    "title_prefix": "Technologies we",
+    "title_accent": "build with",
+    "description": "A modern, battle-tested stack — using the original tools for maximum performance.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "design": "Design",
+      "database": "Database",
+      "business": "Business"
+    }
+  },
+  "projects": {
+    "subtitle": "Selected work",
+    "title_prefix": "Projects we're",
+    "title_accent": "proud of",
+    "description": "A glimpse at what we've been building — from mobile apps to full-stack platforms.",
+    "modal": {
+      "inquire": "Inquire About Project"
+    },
+    "items": {
+      "fitpulse": {
+        "title": "FitPulse",
+        "category": "Mobile App",
+        "description": "Cross-platform fitness tracker with workout plans, progress charts, and social challenges."
+      },
+      "nova_store": {
+        "title": "Nova Store",
+        "category": "E-commerce",
+        "description": "Modern headless storefront with smooth checkout, animated product galleries, and CMS."
+      },
+      "opsboard": {
+        "title": "OpsBoard",
+        "category": "SaaS Dashboard",
+        "description": "Real-time analytics dashboard for SMBs — KPIs, team management, and exportable reports."
+      },
+      "atlas_studio": {
+        "title": "Atlas Studio",
+        "category": "Agency Site",
+        "description": "Award-style portfolio site with cinematic scroll, custom cursor, and CMS-driven case studies."
+      },
+      "edutrack": {
+        "title": "EduTrack",
+        "category": "PFE Project",
+        "description": "Final-year project: an AI-powered student progress tracker with smart recommendations."
+      },
+      "pitch_deck_pro": {
+        "title": "Pitch Deck Pro",
+        "category": "Branding",
+        "description": "Investor-ready pitch deck and brand identity for an early-stage AI startup."
+      }
+    }
+  },
+  "steps": {
+    "subtitle": "How we work",
+    "title_prefix": "A simple, focused",
+    "title_accent": "process",
+    "items": {
+      "idea": {
+        "title": "Idea",
+        "summary": "Discovery, scoping, and a clear roadmap.",
+        "details": "We dig into your goals, audience, and constraints — then map a path that's lean and realistic."
+      },
+      "design": {
+        "title": "Design",
+        "summary": "Wireframes and polished UI prototypes.",
+        "details": "From low-fi flows to pixel-perfect screens, we design interfaces that feel as good as they look."
+      },
+      "dev": {
+        "title": "Development",
+        "summary": "Clean, tested, production-grade code.",
+        "details": "Modern stack, modular architecture, and code that's built to scale — not just to ship."
+      },
+      "launch": {
+        "title": "Launch",
+        "summary": "Ship, monitor, iterate — fast.",
+        "details": "We deploy, watch the metrics, and keep improving based on real usage from day one."
+      }
+    }
+  },
+  "contact": {
+    "subtitle": "Get In Touch",
+    "description": "Have a project in mind? Let's talk about how we can help you build something amazing.",
+    "title_prefix": "Let's start a",
+    "title_accent": "conversation",
+    "info_description": "Whether you're a startup, a student, or a small business, we're here to help you scale your digital presence.",
+    "email_label": "Email Us",
+    "follow_label": "Follow Us",
+    "dm_label": "DM Us",
+    "form": {
+      "name_label": "Your Name",
+      "name_placeholder": "John Doe",
+      "email_label": "Email Address",
+      "email_placeholder": "john@example.com",
+      "message_label": "Message",
+      "message_placeholder": "How can we help you?",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Failed to send message. Please try again later."
+    }
+  },
   "reviews": {
     "subtitle": "Testimonials",
     "title_prefix": "What our",

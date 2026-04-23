@@ -8,58 +8,62 @@ import {
   Presentation,
   ArrowUpRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+  const { t } = useTranslation();
+
   const services = [
     {
       icon: Smartphone,
-      title: "Mobile App Development",
-      description: "Native-feel iOS & Android apps built with React Native and Flutter.",
+      title: t('services.mobile.title'),
+      description: t('services.mobile.description'),
       className: "md:col-span-2 md:row-span-1",
       gradient: "from-blue-500/20 to-cyan-500/20",
       accent: "text-blue-400"
     },
     {
       icon: Globe,
-      title: "Web Development",
-      description: "Fast, scalable websites and dashboards using modern stacks like Next.js and React.",
+      title: t('services.web.title'),
+      description: t('services.web.description'),
       className: "md:col-span-1 md:row-span-2",
       gradient: "from-purple-500/20 to-pink-500/20",
       accent: "text-purple-400"
     },
     {
       icon: Palette,
-      title: "UI / UX Design",
-      description: "Clean, modern interfaces designed around real user needs and accessibility.",
+      title: t('services.design.title'),
+      description: t('services.design.description'),
       className: "md:col-span-1 md:row-span-1",
       gradient: "from-amber-500/20 to-orange-500/20",
       accent: "text-amber-400"
     },
     {
       icon: Wand2,
-      title: "Custom Digital Solutions",
-      description: "Tailor-made tools, automations, and integrations for your business.",
+      title: t('services.custom.title'),
+      description: t('services.custom.description'),
       className: "md:col-span-1 md:row-span-1",
       gradient: "from-emerald-500/20 to-teal-500/20",
       accent: "text-emerald-400"
     },
     {
       icon: GraduationCap,
-      title: "PFE Support",
-      description: "End-to-end help for final year projects — from idea to defense.",
+      title: t('services.pfe.title'),
+      description: t('services.pfe.description'),
       className: "md:col-span-1 md:row-span-1",
       gradient: "from-indigo-500/20 to-violet-500/20",
       accent: "text-indigo-400"
     },
     {
       icon: Presentation,
-      title: "Presentations & Reports",
-      description: "Polished slide decks and professional reports that impress.",
+      title: t('services.presentation.title'),
+      description: t('services.presentation.description'),
       className: "md:col-span-1 md:row-span-1",
       gradient: "from-rose-500/20 to-red-500/20",
       accent: "text-rose-400"
     },
   ];
+
 
   return (
     <section id="services" className="relative py-20 sm:py-32 overflow-hidden">
