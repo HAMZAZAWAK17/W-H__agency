@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import powerbiImg from '../../assets/PowerBi.png';
 import powerpointImg from '../../assets/PowerPoint.png';
-import javaImg from '../../assets/javaicon.jpg';
+import javaImg from '../../assets/javalogo.png';
+import canvaImg from '../../assets/canvalogo.png';
 
 type Tech = {
   name: string;
@@ -22,29 +23,31 @@ const techs: Tech[] = [
   { name: "SpringBoot", slug: "springboot", category: "Backend", color: "6DB33F" },
   { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A", image: powerpointImg },
   { name: "PowerBI", slug: "powerbi", category: "Business", color: "F2C811", image: powerbiImg },
-  { name: "Canva", slug: "canva", category: "Design", color: "00C4CC" },
+  { name: "Canva", slug: "canva", category: "Design", color: "00C4CC", image: canvaImg },
   { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
   { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
   { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
 ];
 
+
 function TechCard({ name, slug, category, color, image }: Tech) {
   return (
     <div className="group relative shrink-0 px-3">
       <div className="bg-glass glow-border relative flex h-36 w-44 flex-col items-center justify-center gap-3 rounded-2xl px-4 py-5 transition-all hover:-translate-y-1 hover:shadow-glow-soft">
-        <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 transition-colors group-hover:bg-white/10">
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-foreground/5 border border-foreground/5 transition-colors group-hover:bg-foreground/10">
           <span
             aria-hidden
-            className="absolute inset-0 rounded-xl blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
+            className="absolute inset-0 rounded-2xl blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-20"
             style={{ backgroundColor: color ? `#${color}` : 'var(--neon)' }}
           />
           <img 
             src={image || `https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
             alt={`${name} logo`}
-            className="relative h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="relative h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
             loading="lazy"
           />
         </div>
+
         <div className="text-center">
           <div className="text-sm font-semibold text-foreground/90 whitespace-nowrap">{name}</div>
           <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
