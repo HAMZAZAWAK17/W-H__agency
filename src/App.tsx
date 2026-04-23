@@ -18,8 +18,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Synchronize with Loader component timing
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    // Synchronize with the new dynamic Loader component timing
+    const timer = setTimeout(() => setIsLoading(false), 2800);
     return () => clearTimeout(timer);
   }, []);
 
