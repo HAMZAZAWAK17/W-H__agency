@@ -148,8 +148,46 @@ const Contact: React.FC = () => {
           </Card>
         </div>
       </div>
+      {/* Animated Notification */}
+      <AnimatePresence>
+        {notification.type && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, x: 20 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            className="fixed bottom-8 right-8 z-50 max-w-sm"
+          >
+            <div className={`glass p-5 rounded-2xl flex items-center space-x-4 shadow-2xl border-l-4 ${
+              notification.type === 'success' ? 'border-l-primary' : 'border-l-red-500'
+            }`}>
+              <div className="flex-shrink-0">
+                {notification.type === 'success' ? (
+                  <CheckCircle className="text-primary h-8 w-8" />
+                ) : (
+                  <XCircle className="text-red-500 h-8 w-8" />
+                )}
+              </div>
+              <div className="flex-1">
+                <p className="font-bold text-foreground">
+                  {notification.type === 'success' ? 'Success!' : 'Error'}
+                </p>
+                <p className="text-sm text-muted-foreground leading-tight">
+                  {notification.message}
+                </p>
+              </div>
+              <button 
+                onClick={() => setNotification({ type: null, message: '' })}
+                className="flex-shrink-0 text-muted-foreground hover:text-foreground transition-colors p-1"
+              >
+                <XCircle size={16} className="opacity-50" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
+
 
 export default Contact;
