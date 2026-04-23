@@ -66,7 +66,7 @@ export default function Steps() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative flex flex-col bg-glass glow-border rounded-[2.5rem] p-8 min-h-[480px] transition-all hover:-translate-y-2"
+              className="group relative flex flex-col bg-white dark:bg-glass glow-border rounded-[2.5rem] p-8 min-h-[480px] transition-all hover:-translate-y-2"
             >
               {/* Header: Icon and Step Number */}
               <div className="flex items-start justify-between mb-8">
@@ -74,14 +74,15 @@ export default function Steps() {
                   <s.icon className="h-6 w-6" />
                 </div>
                 <div className="relative">
-                  <span className="absolute -top-4 -right-2 text-7xl font-black text-foreground/[0.03] dark:text-white/[0.03] pointer-events-none select-none">
+                  <span className="absolute -top-4 -right-2 text-7xl font-black text-white dark:text-white/[0.03] drop-shadow-sm pointer-events-none select-none">
                     {s.number}
                   </span>
-                  <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] text-muted-foreground">
+                  <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] text-muted-foreground group-hover:text-primary transition-colors">
                     STEP / {s.number}
                   </span>
                 </div>
               </div>
+
 
               {/* Content */}
               <div className="flex-1 flex flex-col">
