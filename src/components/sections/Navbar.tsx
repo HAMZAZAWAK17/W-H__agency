@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -6,100 +6,137 @@ import ThemeToggle from '../ui/ThemeToggle';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const { t } = useTranslation();
-
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: t('navbar.about'), href: '#about' },
     { name: t('navbar.services'), href: '#services' },
     { name: t('navbar.tech'), href: '#tech' },
     { name: t('navbar.projects'), href: '#projects' },
     { name: t('navbar.reviews'), href: '#reviews' },
-    { name: t('navbar.steps'), href: '#steps' },
     { name: t('navbar.contact'), href: '#contact' },
-  ];
+  ], [t]);
+
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+
+    const sections = navLinks.map(link => link.href.substring(1));
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }, [navLinks]);
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md py-4 border-b border-white/10' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-bold tracking-tighter"
-        >
-          W&H <span className="neon-text">Agency</span>
-        </motion.div>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="flex items-center gap-3">
-            <LanguageSwitcher />
-            <ThemeToggle />
-            <button className="btn-primary py-2 px-6 text-sm">
-              {t('navbar.contact')}
-            </button>
+    <div className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 py-4 md:py-6">
+      <motion.nav 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className={`w-full max-w-6xl flex items-center justify-between px-6 py-2 rounded-full bg-glass backdrop-blur-xl transition-all duration-500 ${
+          isScrolled ? 'shadow-2xl' : 'shadow-lg'
+        }`}
+      >
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <div className="px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 flex items-center justify-center shadow-[0_0_15px_hsla(var(--primary-glow),0.2)] group-hover:border-primary transition-all duration-300">
+            <span className="text-primary text-sm font-black font-display italic tracking-tighter">WH</span>
           </div>
+          <span className="hidden sm:block text-lg font-bold tracking-tighter font-display uppercase">
+            W&H <span className="text-primary">Agency</span>
+          </span>
         </div>
 
-        {/* Mobile Toggle */}
+        <div className="hidden lg:flex items-center gap-1 bg-muted/20 p-1 rounded-full">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className={`relative px-4 py-1.5 rounded-full text-[13px] font-semibold uppercase tracking-wider transition-colors duration-300 ${
+                  isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 bg-primary/10 border border-primary/20 rounded-full"
+                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
+              </a>
+            );
+          })}
+        </div>
+
+
+        <div className="hidden md:flex items-center gap-4">
+          <LanguageSwitcher />
+          <ThemeToggle />
+          <a href="#contact" className="btn-primary py-2 px-6 text-[10px] whitespace-nowrap font-bold uppercase tracking-widest">
+            {t('navbar.contact')}
+          </a>
+        </div>
+
         <div className="md:hidden flex items-center gap-4">
           <LanguageSwitcher />
           <ThemeToggle />
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 rounded-full bg-muted/50 transition-colors hover:bg-muted">
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
+      </motion.nav>
+
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            className="absolute top-24 left-4 right-4 bg-background rounded-3xl p-6 shadow-2xl md:hidden z-40"
           >
-            <div className="flex flex-col p-6 space-y-4">
+            <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-muted-foreground hover:text-primary text-lg font-medium"
+                  className="px-4 py-3 rounded-2xl text-lg font-medium text-foreground/70 hover:text-primary hover:bg-muted transition-all"
                 >
                   {link.name}
                 </a>
               ))}
-              <button className="btn-primary w-full">
-                DM Us
-              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </div>
   );
 };
 
