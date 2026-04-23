@@ -1,35 +1,35 @@
 {
   "navbar": {
-    "about": "À propos",
+    "about": "À Propos",
     "services": "Services",
     "tech": "Tech",
     "projects": "Projets",
-    "reviews": "Témoignages",
+    "reviews": "Avis",
     "steps": "Processus",
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Agence Digitale · Fondée en 2025",
-    "title1": "Transformez vos Idées",
-    "title2_prefix": "en",
+    "badge": "Agence Digitale · Est. 2025",
+    "title1": "Transformez Vos Idées",
+    "title2_prefix": "En",
     "title2_accent": "Réalité",
-    "description": "Web · Mobile · Solutions Digitales — conçues par deux ingénieurs logiciels soucieux du détail.",
+    "description": "Solutions Web · Mobile · Digitales — conçues par deux ingénieurs logiciels soucieux du détail.",
     "cta_start": "Démarrer Votre Projet",
-    "cta_explore": "Explorer nos Services",
+    "cta_explore": "Explorer les Services",
     "available": "Disponible pour de nouveaux projets",
-    "delivery": "Livraison moyenne · 2–6 semaines"
+    "delivery": "Livraison moy. · 2–6 semaines"
   },
   "about": {
     "subtitle": "Qui nous sommes",
     "title_prefix": "Un duo d'ingénieurs livrant des produits",
-    "title_accent": "prêts pour le futur",
+    "title_accent": "prêts pour l'avenir",
     "title_suffix": ".",
-    "description": "Nous sommes deux étudiants en ingénierie logicielle passionnés par la création de solutions numériques rapides, esthétiques et fiables. Des concepts initiaux aux produits finis, nous accompagnons les fondateurs, les étudiants et les petites équipes pour donner vie à leurs idées.",
+    "description": "Nous sommes deux étudiants en génie logiciel passionnés par la création de solutions numériques rapides, belles et fiables. Des concepts de démarrage aux produits finis, nous nous associons aux fondateurs, étudiants et petites équipes pour donner vie aux idées.",
     "stats": {
       "projects": "Projets livrés",
       "founders": "Fondateurs, une vision",
       "response": "Temps de réponse",
-      "custom": "Code sur mesure"
+      "custom": "Code 100% personnalisé"
     },
     "founders_subtitle": "Les fondateurs",
     "founders_title_prefix": "Rencontrez l'",
@@ -40,29 +40,164 @@
     },
     "founder2": {
       "role": "Développeur Mobile · UI/UX",
-      "bio": "Conçoit des expériences mobiles raffinées avec un soin particulier pour chaque détail."
+      "bio": "Crée des expériences mobiles raffinées avec soin pour chaque détail."
+    }
+  },
+  "services": {
+    "subtitle": "Expertise",
+    "title_prefix": "Nos Services",
+    "title_accent": "Spécialisés",
+    "title_suffix": "",
+    "description": "Un duo d'ingénieurs dédiés à la création de produits numériques performants qui évoluent avec votre vision.",
+    "mobile": {
+      "title": "Développement App Mobile",
+      "description": "Applications iOS et Android natives conçues avec React Native et Flutter."
+    },
+    "web": {
+      "title": "Développement Web",
+      "description": "Sites web et tableaux de bord rapides et évolutifs utilisant Next.js et React."
+    },
+    "design": {
+      "title": "Design UI / UX",
+      "description": "Interfaces modernes et épurées conçues selon les besoins réels des utilisateurs."
+    },
+    "custom": {
+      "title": "Solutions Digitales Sur Mesure",
+      "description": "Outils, automatisations et intégrations personnalisés pour votre entreprise."
+    },
+    "pfe": {
+      "title": "Support PFE",
+      "description": "Aide de bout en bout pour les projets de fin d'études — de l'idée à la soutenance."
+    },
+    "presentation": {
+      "title": "Présentations & Rapports",
+      "description": "Présentations et rapports professionnels qui impressionnent."
+    }
+  },
+  "tech": {
+    "subtitle": "Notre boîte à outils",
+    "title_prefix": "Technologies avec lesquelles nous",
+    "title_accent": "construisons",
+    "description": "Un stack moderne et éprouvé — utilisant les outils originaux pour une performance maximale.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "design": "Design",
+      "database": "Base de données",
+      "business": "Business"
+    }
+  },
+  "projects": {
+    "subtitle": "Travaux sélectionnés",
+    "title_prefix": "Projets dont nous sommes",
+    "title_accent": "fiers",
+    "description": "Un aperçu de ce que nous avons construit — des applications mobiles aux plateformes complètes.",
+    "modal": {
+      "inquire": "S'informer sur le projet"
+    },
+    "items": {
+      "fitpulse": {
+        "title": "FitPulse",
+        "category": "App Mobile",
+        "description": "Suivi de fitness multiplateforme avec plans d'entraînement et défis sociaux."
+      },
+      "nova_store": {
+        "title": "Nova Store",
+        "category": "E-commerce",
+        "description": "Boutique headless moderne avec paiement fluide et galeries animées."
+      },
+      "opsboard": {
+        "title": "OpsBoard",
+        "category": "Tableau de Bord SaaS",
+        "description": "Tableau de bord analytique en temps réel pour PME — KPIs et gestion d'équipe."
+      },
+      "atlas_studio": {
+        "title": "Atlas Studio",
+        "category": "Site d'Agence",
+        "description": "Site de portfolio de style primé avec défilement cinématique et curseur personnalisé."
+      },
+      "edutrack": {
+        "title": "EduTrack",
+        "category": "Projet PFE",
+        "description": "Projet de fin d'études : suivi des progrès des étudiants via IA."
+      },
+      "pitch_deck_pro": {
+        "title": "Pitch Deck Pro",
+        "category": "Branding",
+        "description": "Présentation et identité de marque pour une startup IA en phase de démarrage."
+      }
+    }
+  },
+  "steps": {
+    "subtitle": "Comment nous travaillons",
+    "title_prefix": "Un processus simple et",
+    "title_accent": "focalisé",
+    "items": {
+      "idea": {
+        "title": "Idée",
+        "summary": "Découverte, cadrage et feuille de route claire.",
+        "details": "Nous analysons vos objectifs et contraintes — puis traçons un chemin réaliste."
+      },
+      "design": {
+        "title": "Design",
+        "summary": "Wireframes et prototypes UI raffinés.",
+        "details": "Des flux basse fidélité aux écrans parfaits, nous concevons des interfaces intuitives."
+      },
+      "dev": {
+        "title": "Développement",
+        "summary": "Code propre, testé et de qualité production.",
+        "details": "Stack moderne, architecture modulaire et code conçu pour évoluer."
+      },
+      "launch": {
+        "title": "Lancement",
+        "summary": "Livrer, surveiller, itérer — rapidement.",
+        "details": "Nous déployons, suivons les métriques et améliorons selon l'usage réel."
+      }
+    }
+  },
+  "contact": {
+    "subtitle": "Contactez-nous",
+    "description": "Un projet en tête ? Parlons de la façon dont nous pouvons vous aider à construire quelque chose d'incroyable.",
+    "title_prefix": "Commençons une",
+    "title_accent": "conversation",
+    "info_description": "Que vous soyez une startup, un étudiant ou une petite entreprise, nous sommes là pour vous aider.",
+    "email_label": "Écrivez-nous",
+    "follow_label": "Suivez-nous",
+    "dm_label": "Contactez-nous (DM)",
+    "form": {
+      "name_label": "Votre Nom",
+      "name_placeholder": "Jean Dupont",
+      "email_label": "Adresse Email",
+      "email_placeholder": "jean@example.com",
+      "message_label": "Message",
+      "message_placeholder": "Comment pouvons-nous vous aider ?",
+      "submit": "Envoyer le Message",
+      "submitting": "Envoi en cours...",
+      "success": "Message envoyé avec succès ! Nous vous répondrons bientôt.",
+      "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
     }
   },
   "reviews": {
     "subtitle": "Témoignages",
-    "title_prefix": "Ce que disent nos",
+    "title_prefix": "Ce que nos",
     "title_accent": "clients",
-    "title_suffix": "",
+    "title_suffix": "disent",
     "items": [
       {
         "name": "Alex Thompson",
-        "role": "PDG, TechFlow",
-        "comment": "L'équipe de W&H Agency a transformé notre vision en une réalité époustouflante. Leur souci du détail et leur expertise technique sont inégalés."
+        "role": "CEO, TechFlow",
+        "comment": "L'équipe de W&H Agency a transformé notre vision en une réalité époustouflante."
       },
       {
         "name": "Sarah Chen",
         "role": "Directrice Marketing, Lumina",
-        "comment": "Travailler avec Hamza et Wissal a été un plaisir. Ils ont livré une application web haute performance qui a dépassé nos attentes."
+        "comment": "Travailler avec Hamza et Wissal a été un plaisir. Ils ont livré une application web performante."
       },
       {
         "name": "James Wilson",
         "role": "Fondateur, Artisan",
-        "comment": "Professionnels, créatifs et rapides. La meilleure agence avec laquelle nous avons travaillé pour le développement mobile."
+        "comment": "Professionnel, créatif et rapide. La meilleure agence de développement mobile."
       }
     ]
   }
