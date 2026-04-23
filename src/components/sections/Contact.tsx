@@ -4,7 +4,8 @@ import SectionHeader from '../ui/SectionHeader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Mail, Instagram, MessageCircle, Send } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Instagram, MessageCircle, Send, CheckCircle, XCircle } from 'lucide-react';
 import Card from '../ui/Card';
 
 const contactSchema = z.object({
@@ -20,14 +21,17 @@ const Contact: React.FC = () => {
     resolver: zodResolver(contactSchema)
   });
 
+  const [notification, setNotification] = React.useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
+
+
   const onSubmit = async (data: ContactFormData) => {
     try {
       const templateParams = {
         name: data.name,
         email: data.email,
         message: data.message,
-        title: "New Agency Inquiry", // Matches {{title}} in subject
-        time: new Date().toLocaleString(), // Matches {{time}} in content
+        title: "New Agency Inquiry",
+        time: new Date().toLocaleString(),
       };
 
       await emailjs.send(
@@ -37,11 +41,14 @@ const Contact: React.FC = () => {
         'y8QhHz6fvBdv9FXJ3'
       );
 
-      alert("Message sent successfully!");
+      setNotification({ type: 'success', message: 'Message sent successfully! We\'ll get back to you soon.' });
       reset();
     } catch (error) {
       console.error("EmailJS Error:", error);
-      alert("Failed to send message. Please try again later.");
+      setNotification({ type: 'error', message: 'Failed to send message. Please try again later.' });
+    } finally {
+      // Auto-hide notification after 5 seconds
+      setTimeout(() => setNotification({ type: null, message: '' }), 5000);
     }
   };
 
