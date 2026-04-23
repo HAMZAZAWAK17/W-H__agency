@@ -1,46 +1,49 @@
 import { motion } from "framer-motion";
 import { Lightbulb, PenTool, Code2, Rocket, ChevronRight } from "lucide-react";
-
-const steps = [
-  {
-    number: "01",
-    icon: Lightbulb,
-    title: "Idea",
-    summary: "Discovery, scoping, and a clear roadmap.",
-    details: "We dig into your goals, audience, and constraints — then map a path that's lean and realistic.",
-    tags: ["DISCOVERY", "SCOPE", "ROADMAP"],
-    color: "from-blue-500 to-cyan-400"
-  },
-  {
-    number: "02",
-    icon: PenTool,
-    title: "Design",
-    summary: "Wireframes and polished UI prototypes.",
-    details: "From low-fi flows to pixel-perfect screens, we design interfaces that feel as good as they look.",
-    tags: ["WIREFRAMES", "UI", "PROTOTYPE"],
-    color: "from-cyan-400 to-emerald-400"
-  },
-  {
-    number: "03",
-    icon: Code2,
-    title: "Development",
-    summary: "Clean, tested, production-grade code.",
-    details: "Modern stack, modular architecture, and code that's built to scale — not just to ship.",
-    tags: ["REACT", "API", "TESTS"],
-    color: "from-indigo-500 to-purple-500"
-  },
-  {
-    number: "04",
-    icon: Rocket,
-    title: "Launch",
-    summary: "Ship, monitor, iterate — fast.",
-    details: "We deploy, watch the metrics, and keep improving based on real usage from day one.",
-    tags: ["DEPLOY", "MONITOR", "ITERATE"],
-    color: "from-purple-500 to-pink-500"
-  }
-];
+import { useTranslation } from "react-i18next";
 
 export default function Steps() {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      number: "01",
+      icon: Lightbulb,
+      title: t('steps.items.idea.title'),
+      summary: t('steps.items.idea.summary'),
+      details: t('steps.items.idea.details'),
+      tags: ["DISCOVERY", "SCOPE", "ROADMAP"],
+      color: "from-blue-500 to-cyan-400"
+    },
+    {
+      number: "02",
+      icon: PenTool,
+      title: t('steps.items.design.title'),
+      summary: t('steps.items.design.summary'),
+      details: t('steps.items.design.details'),
+      tags: ["WIREFRAMES", "UI", "PROTOTYPE"],
+      color: "from-cyan-400 to-emerald-400"
+    },
+    {
+      number: "03",
+      icon: Code2,
+      title: t('steps.items.dev.title'),
+      summary: t('steps.items.dev.summary'),
+      details: t('steps.items.dev.details'),
+      tags: ["REACT", "API", "TESTS"],
+      color: "from-indigo-500 to-purple-500"
+    },
+    {
+      number: "04",
+      icon: Rocket,
+      title: t('steps.items.launch.title'),
+      summary: t('steps.items.launch.summary'),
+      details: t('steps.items.launch.details'),
+      tags: ["DEPLOY", "MONITOR", "ITERATE"],
+      color: "from-purple-500 to-pink-500"
+    }
+  ];
+
   return (
     <section id="steps" className="relative py-20 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4">
@@ -51,12 +54,13 @@ export default function Steps() {
             viewport={{ once: true }}
             className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--neon)] mb-4"
           >
-            How we work
+            {t('steps.subtitle')}
           </motion.p>
           <h2 className="font-display text-4xl font-bold tracking-tight sm:text-6xl text-foreground">
-            A simple, focused <span className="text-gradient">process</span>
+            {t('steps.title_prefix')} <span className="text-gradient">{t('steps.title_accent')}</span>
           </h2>
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {steps.map((s, i) => (
