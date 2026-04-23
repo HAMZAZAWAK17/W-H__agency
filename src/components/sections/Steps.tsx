@@ -74,13 +74,11 @@ export default function Steps() {
                   <s.icon className="h-6 w-6" />
                 </div>
                 <div className="relative">
-                  <span className="absolute -top-4 -right-2 text-7xl font-black text-white dark:text-white/[0.03] drop-shadow-sm pointer-events-none select-none">
+                  <span className="absolute -top-6 -right-2 text-8xl font-black text-foreground/15 dark:text-white/[0.08] pointer-events-none select-none">
                     {s.number}
                   </span>
-                  <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] text-muted-foreground group-hover:text-primary transition-colors">
-                    STEP / {s.number}
-                  </span>
                 </div>
+
               </div>
 
 
