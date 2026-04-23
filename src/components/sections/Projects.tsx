@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { 
   ArrowUpRight, Smartphone, Globe, LayoutDashboard, 
   ShoppingBag, GraduationCap, Sparkles, ChevronLeft, 
