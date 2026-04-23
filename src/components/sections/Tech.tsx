@@ -1,11 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import powerbiImg from '../../assets/PowerBi.png';
+import powerpointImg from '../../assets/PowerPoint.png';
 
 type Tech = {
   name: string;
   slug: string;
   category: "Frontend" | "Backend" | "Mobile" | "Design" | "Database" | "Business";
   color?: string;
+  image?: string;
 };
 
 const techs: Tech[] = [
@@ -16,14 +17,15 @@ const techs: Tech[] = [
   { name: "Java", slug: "java", category: "Backend", color: "ED8B00" },
   { name: "Expressjs", slug: "express", category: "Backend", color: "ffffff" },
   { name: "SpringBoot", slug: "springboot", category: "Backend", color: "6DB33F" },
-  { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A" },
-  { name: "PowerBI", slug: "powerbi", category: "Business", color: "F2C811" },
+  { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A", image: powerpointImg },
+  { name: "PowerBI", slug: "powerbi", category: "Business", color: "F2C811", image: powerbiImg },
+  { name: "Canva", slug: "canva", category: "Design", color: "00C4CC" },
   { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
   { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
   { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
 ];
 
-function TechCard({ name, slug, category, color }: Tech) {
+function TechCard({ name, slug, category, color, image }: Tech) {
   return (
     <div className="group relative shrink-0 px-3">
       <div className="bg-glass glow-border relative flex h-36 w-44 flex-col items-center justify-center gap-3 rounded-2xl px-4 py-5 transition-all hover:-translate-y-1 hover:shadow-glow-soft">
@@ -34,7 +36,7 @@ function TechCard({ name, slug, category, color }: Tech) {
             style={{ backgroundColor: color ? `#${color}` : 'var(--neon)' }}
           />
           <img 
-            src={`https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
+            src={image || `https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
             alt={`${name} logo`}
             className="relative h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110"
             loading="lazy"
@@ -50,6 +52,7 @@ function TechCard({ name, slug, category, color }: Tech) {
     </div>
   );
 }
+
 
 export function Tech() {
   // Duplicate the list so the marquee loops seamlessly
