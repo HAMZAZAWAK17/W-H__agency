@@ -61,12 +61,12 @@ const Navbar: React.FC = () => {
           isScrolled ? 'shadow-2xl' : 'shadow-lg'
         }`}
       >
-        <div className="flex items-center gap-3 group cursor-pointer">
+        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className="px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 flex items-center justify-center shadow-[0_0_15px_hsla(var(--primary-glow),0.2)] group-hover:border-primary transition-all duration-300">
             <span className="text-primary text-sm font-black font-display italic tracking-tighter">WH</span>
           </div>
           <span className="hidden sm:block text-lg font-bold tracking-tighter font-display uppercase">
-            W&H <span className="text-primary">Agency</span>
+            W&H <span className="text-[var(--neon)] font-light">Agency</span>
           </span>
         </div>
 

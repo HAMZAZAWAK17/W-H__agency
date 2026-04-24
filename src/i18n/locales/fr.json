@@ -185,19 +185,24 @@
     "title_suffix": "disent",
     "items": [
       {
-        "name": "Alex Thompson",
-        "role": "CEO, TechFlow",
-        "comment": "L'équipe de W&H Agency a transformé notre vision en une réalité époustouflante."
+        "name": "Thomas L.",
+        "role": "Fondateur Startup",
+        "comment": "Super expérience avec Hamza et Wissal. Ils ont compris notre besoin très vite et l'app mobile tourne parfaitement sans aucun bug."
       },
       {
-        "name": "Sarah Chen",
-        "role": "Directrice Marketing, Lumina",
-        "comment": "Travailler avec Hamza et Wissal a été un plaisir. Ils ont livré une application web performante."
+        "name": "Sarah K.",
+        "role": "Gérante E-commerce",
+        "comment": "Franchement au top ! Le site web qu'ils ont fait pour notre boutique est super rapide. Ils sont hyper réactifs quand on a des questions."
       },
       {
-        "name": "James Wilson",
-        "role": "Fondateur, Artisan",
-        "comment": "Professionnel, créatif et rapide. La meilleure agence de développement mobile."
+        "name": "Yassine B.",
+        "role": "Étudiant en Ingénierie",
+        "comment": "Un grand merci à l'équipe. Ils m'ont sauvé pour mon projet de fin d'études. Code propre et très bien expliqué, je recommande à 100%."
+      },
+      {
+        "name": "Marc D.",
+        "role": "Chef de Projet Digital",
+        "comment": "Travail très pro et délais respectés. C'est rare de trouver des développeurs aussi impliqués dans la réussite du projet."
       }
     ]
   }

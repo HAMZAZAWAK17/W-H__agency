@@ -1,65 +1,16 @@
 import { motion } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
-
-const reviews = [
-  {
-    name: "Alex Thompson",
-    role: "CEO, TechFlow",
-    comment: "The team at W&H Agency transformed our vision into a stunning reality. Their attention to detail and technical expertise is unmatched.",
-    avatar: "https://i.pravatar.cc/150?u=alex"
-  },
-  {
-    name: "Sarah Chen",
-    role: "Marketing Director, Lumina",
-    comment: "Working with Hamza and Wissal was a breeze. They delivered a high-performance web app that exceeded our expectations.",
-    avatar: "https://i.pravatar.cc/150?u=sarah"
-  },
-  {
-    name: "James Wilson",
-    role: "Founder, Artisan",
-    comment: "Professional, creative, and fast. The best agency we've worked with for mobile development.",
-    avatar: "https://i.pravatar.cc/150?u=james"
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "Startup Founder, Vibe",
-    comment: "As a student founder, finding a team that understands both the budget and the ambition is rare. W&H crushed it!",
-    avatar: "https://i.pravatar.cc/150?u=elena"
-  },
-  {
-    name: "David Chen",
-    role: "Project Manager, Nexus",
-    comment: "Their code is clean, their communication is proactive, and the final product is beautiful. Highly recommend.",
-    avatar: "https://i.pravatar.cc/150?u=david"
-  }
-];
-
+import { Star, Quote } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export function Reviews() {
   const { t } = useTranslation();
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   // Get translated reviews array
-  const translatedReviews = t('reviews.items', { returnObjects: true }) as any[];
-  // If translations aren't objects yet, fallback to original names but use keys
-  // For simplicity, I'll use the indices from the JSON array
-
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === 'left' 
-        ? scrollLeft - clientWidth / 1.5 
-        : scrollLeft + clientWidth / 1.5;
-      
-      scrollRef.current.scrollTo({
-        left: scrollTo,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const translatedReviews = t('reviews.items', { returnObjects: true }) as Array<{
+    name: string;
+    role: string;
+    comment: string;
+  }>;
 
   return (
     <section id="reviews" className="relative py-20 sm:py-28 overflow-hidden bg-background/30">
@@ -89,94 +40,53 @@ export function Reviews() {
             </motion.h2>
 
           </div>
-          
-          {/* Desktop Navigation Buttons */}
-          <div className="hidden md:flex gap-3">
-            <button
-              onClick={() => scroll('left')}
-              className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 hover:bg-white/10 hover:border-[var(--neon)] transition-all shadow-glow-soft"
-              aria-label="Scroll Left"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 hover:bg-white/10 hover:border-[var(--neon)] transition-all shadow-glow-soft"
-              aria-label="Scroll Right"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          </div>
         </div>
 
-        {/* Horizontal Scroll Container */}
-        <div className="relative group">
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto pb-12 pt-4 px-4 snap-x snap-mandatory scrollbar-hide no-scrollbar"
-            style={{ 
-              msOverflowStyle: 'none', 
-              scrollbarWidth: 'none'
-            }}
-          >
-            {translatedReviews.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex-shrink-0 w-[300px] sm:w-[400px] snap-center bg-glass glow-border group/card relative rounded-3xl p-8 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
-              >
-                <Quote className="absolute top-6 right-8 h-10 w-10 text-primary/10 transition-colors group-hover/card:text-primary/20" />
-                
-                <div className="flex gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-[var(--neon)] text-[var(--neon)]" />
-                  ))}
+        {/* 4-Column Grid for Reviews */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {translatedReviews.slice(0, 4).map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.7, ease: "easeOut" }}
+              className="relative group/card flex flex-col h-full rounded-[2rem] p-8 bg-white dark:bg-transparent dark:bg-gradient-to-br dark:from-white/[0.04] dark:to-transparent border border-slate-100 dark:border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+            >
+              {/* Giant Watermark Quote */}
+              <Quote className="absolute -top-6 -right-6 h-32 w-32 text-slate-50 dark:text-white/[0.02] rotate-12 transition-transform duration-700 group-hover/card:-rotate-6" />
+              
+              <div className="relative z-10 flex gap-1.5 mb-8">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400 drop-shadow-sm" />
+                ))}
+              </div>
+
+              <p className="relative z-10 text-slate-600 dark:text-slate-300 text-[15px] leading-[1.8] flex-grow font-medium">
+                "{item.comment}"
+              </p>
+
+              <div className="relative z-10 flex items-center gap-4 pt-8 mt-6">
+                <div className="relative">
+                  {/* Elegant glow on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#00b8c4] to-[#7000ff] rounded-full blur-md opacity-0 group-hover/card:opacity-60 transition-opacity duration-500" />
+                  <img
+                    src={`https://i.pravatar.cc/150?u=${item.name.replace(/ /g, '')}`}
+                    alt={item.name}
+                    className="relative h-12 w-12 rounded-full object-cover ring-2 ring-white dark:ring-[#0b0e14]"
+                  />
                 </div>
-
-                <p className="relative text-muted-foreground leading-relaxed italic mb-8 min-h-[80px]">
-                  "{item.comment}"
-                </p>
-
-                <div className="flex items-center gap-4 border-t border-white/5 pt-6">
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-2 ring-white/10 group-hover/card:ring-[var(--neon)]/50 transition-all">
-                    <img
-                      src={`https://i.pravatar.cc/150?u=${item.name.split(' ')[0]}`}
-                      alt={item.name}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-semibold text-foreground">{item.name}</h4>
-                    <p className="text-xs text-muted-foreground">{item.role}</p>
-                  </div>
+                <div>
+                  <h4 className="font-display font-bold text-slate-900 dark:text-white text-base group-hover/card:text-[#00b8c4] dark:group-hover/card:text-[#00f2ff] transition-colors duration-300">
+                    {item.name}
+                  </h4>
+                  <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-400 dark:text-slate-500 mt-1">
+                    {item.role}
+                  </p>
                 </div>
-              </motion.div>
-            ))}
-
-          </div>
-          
-          {/* Mobile Navigation Indicators (Fade edges) */}
-          <div className="absolute top-0 left-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 md:w-20" />
-          <div className="absolute top-0 right-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 md:w-20" />
-        </div>
-
-        {/* Mobile Navigation Buttons */}
-        <div className="flex md:hidden justify-center gap-4 mt-4">
-          <button
-            onClick={() => scroll('left')}
-            className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 active:bg-white/10 shadow-glow-soft"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={() => scroll('right')}
-            className="flex h-12 w-12 items-center justify-center rounded-xl bg-glass border border-white/10 active:bg-white/10 shadow-glow-soft"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
