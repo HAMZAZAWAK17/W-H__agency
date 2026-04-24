@@ -141,19 +141,19 @@ export default function Services() {
               
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 group-hover:bg-[var(--neon)]/10 group-hover:border-[var(--neon)]/30 transition-all duration-300">
-                    <service.icon className="h-5 w-5 text-white/70 group-hover:text-[var(--neon)] transition-colors" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 group-hover:bg-[#00f2ff]/10 group-hover:border-[#00f2ff]/30 transition-all duration-300">
+                    <service.icon className="h-5 w-5 text-[var(--neon)] group-hover:text-[#00f2ff] transition-colors" />
                   </div>
-                  <button className="h-8 w-8 rounded-full bg-white/[0.02] border border-white/5 flex items-center justify-center group-hover:bg-[var(--neon)]/20 group-hover:border-[var(--neon)]/50 transition-all">
-                    <ArrowUpRight className="h-4 w-4 text-white/40 group-hover:text-[var(--neon)] transition-colors" />
+                  <button type="button" className="h-8 w-8 rounded-full bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 flex items-center justify-center group-hover:bg-[#00f2ff]/20 group-hover:border-[#00f2ff]/50 transition-all">
+                    <ArrowUpRight className="h-4 w-4 text-[var(--neon)]/60 group-hover:text-[#00f2ff] transition-colors" />
                   </button>
                 </div>
                 
-                <h3 className="font-display text-lg font-bold text-white/90 group-hover:text-[var(--neon)] mb-2 transition-colors">
+                <h3 className="font-display text-lg font-bold text-foreground group-hover:text-[#00f2ff] mb-2 transition-colors">
                   {service.title}
                 </h3>
                 
-                <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -178,7 +178,7 @@ export default function Services() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="relative w-full max-w-lg bg-[#0b0e14]/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-lg bg-white/95 dark:bg-[#0b0e14]/95 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden"
             >
               {/* Decorative glow in modal */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--neon)] opacity-[0.07] blur-[80px] rounded-full pointer-events-none" />
@@ -186,17 +186,17 @@ export default function Services() {
               <button
                 type="button"
                 onClick={() => setSelectedService(null)}
-                className="absolute top-6 right-6 h-8 w-8 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:text-[var(--neon)] transition-colors z-50 cursor-pointer"
+                className="absolute top-6 right-6 h-8 w-8 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 hover:text-[var(--neon)] transition-colors z-50 cursor-pointer text-slate-500"
               >
                 <X className="h-4 w-4" />
               </button>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--neon)]/10 border border-[var(--neon)]/20 shadow-[0_0_15px_rgba(0,242,255,0.1)]">
-                    <selectedService.icon className="h-7 w-7 text-[var(--neon)]" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00b8c4]/15 to-[#7000ff]/15 dark:from-[#00f2ff]/20 dark:to-[#bd00ff]/20 border border-[#00b8c4]/30 dark:border-[#00f2ff]/30 shadow-[0_0_20px_rgba(0,184,196,0.15)] dark:shadow-[0_0_20px_rgba(0,242,255,0.15)]">
+                    <selectedService.icon className="h-7 w-7 text-[#00b8c4] dark:text-[#00f2ff]" />
                   </div>
-                  <h3 className="font-display text-2xl font-bold text-white">
+                  <h3 className="font-display text-2xl font-bold text-foreground">
                     {selectedService.title}
                   </h3>
                 </div>
@@ -206,26 +206,26 @@ export default function Services() {
                 </p>
 
                 <div className="space-y-4">
-                  <h4 className="text-sm font-semibold uppercase tracking-widest text-[var(--neon)] mb-2">
+                  <h4 className="text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] bg-clip-text text-transparent mb-3">
                     Inclus dans ce service :
                   </h4>
                   <ul className="space-y-3">
                     {selectedService.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
-                        <CheckCircle2 className="h-5 w-5 text-[var(--neon)] shrink-0 mt-0.5" />
+                      <li key={idx} className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+                        <CheckCircle2 className="h-5 w-5 text-[#00b8c4] dark:text-[#00f2ff] shrink-0 mt-0.5" />
                         <span className="leading-relaxed">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 flex justify-end">
                   <button 
                     onClick={() => {
                       setSelectedService(null);
                       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="px-6 py-2.5 rounded-full bg-[var(--neon)] text-black font-semibold text-sm hover:bg-white transition-colors shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] text-white font-bold text-sm hover:scale-[1.02] transition-transform shadow-[0_0_20px_rgba(0,184,196,0.3)] dark:shadow-[0_0_20px_rgba(0,242,255,0.3)]"
                   >
                     Demander ce service
                   </button>
