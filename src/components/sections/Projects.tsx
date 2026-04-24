@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { 
-  ArrowUpRight, Smartphone, Globe, LayoutDashboard, 
-  ShoppingBag, GraduationCap, Sparkles, ChevronLeft, 
-  ChevronRight, X, type LucideIcon 
+import {
+  ArrowUpRight, Smartphone, Globe, LayoutDashboard,
+  ShoppingBag, GraduationCap, Sparkles, ChevronLeft,
+  ChevronRight, X, type LucideIcon
 } from "lucide-react";
 
 type Filter = "All" | "Web" | "Mobile" | "UI";
@@ -159,11 +159,10 @@ export default function Projects() {
                 key={f}
                 type="button"
                 onClick={() => setActive(f)}
-                className={`relative rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
-                  isActive
+                className={`relative rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${isActive
                     ? "border-[var(--neon)]/60 bg-[var(--neon)]/10 text-[var(--neon)] shadow-glow-soft"
                     : "border-white/10 bg-white/5 text-foreground/70 hover:border-white/20 hover:text-foreground"
-                }`}
+                  }`}
               >
                 {f}
               </button>
@@ -237,96 +236,104 @@ export default function Projects() {
       {/* Discovery Modal / Gallery */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-background/90 backdrop-blur-md"
-            onClick={() => setSelectedProject(null)}
-          >
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+            
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-5xl max-h-[90vh] bg-glass border border-white/10 rounded-3xl overflow-y-auto lg:overflow-hidden shadow-2xl"
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
+              className="relative w-full max-w-4xl bg-white dark:bg-[#0b0e14] border border-black/10 dark:border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
+                type="button"
                 onClick={() => setSelectedProject(null)}
-                className="absolute right-4 top-4 lg:right-6 lg:top-6 z-50 p-2 rounded-full bg-background/50 hover:bg-background transition-colors text-foreground"
+                className="absolute right-4 top-4 lg:right-6 lg:top-6 z-50 p-2.5 rounded-full bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 backdrop-blur-md transition-colors text-foreground"
               >
                 <X size={20} />
               </button>
 
-              <div className="grid grid-cols-1 lg:grid-cols-5 h-full">
+              <div className="flex flex-col lg:grid lg:grid-cols-5 h-full overflow-y-auto lg:overflow-hidden">
                 {/* Left: Image Gallery */}
-                <div className="lg:col-span-3 relative h-[250px] sm:h-[400px] lg:h-[600px] bg-black/20 flex items-center justify-center group shrink-0">
-
+                <div className="lg:col-span-3 relative h-[250px] sm:h-[350px] lg:h-[450px] bg-black/5 dark:bg-white/5 flex items-center justify-center group shrink-0 overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImgIndex}
                       src={selectedProject.captures?.[currentImgIndex]}
                       alt={selectedProject.title}
-                      initial={{ opacity: 0, scale: 1.1 }}
+                      initial={{ opacity: 0, scale: 1.05 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.5 }}
-                      className="h-full w-full object-cover"
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   </AnimatePresence>
 
                   {/* Navigation Buttons */}
                   <button
                     onClick={handlePrev}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/50 hover:bg-background transition-all opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 text-white -translate-x-2 group-hover:translate-x-0"
                   >
                     <ChevronLeft size={24} />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/50 hover:bg-background transition-all opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 text-white translate-x-2 group-hover:translate-x-0"
                   >
                     <ChevronRight size={24} />
                   </button>
 
-                  {/* Counter */}
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-background/50 backdrop-blur text-xs font-bold uppercase tracking-widest">
+                  {/* Counter Badge */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md text-[10px] text-white font-bold uppercase tracking-widest">
                     {currentImgIndex + 1} / {selectedProject.captures?.length}
                   </div>
                 </div>
 
                 {/* Right: Project Details */}
-                <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center">
-                  <span className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-4">
+                <div className="lg:col-span-2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center bg-white dark:bg-[#0b0e14]">
+                  <span className="text-xs font-bold bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] bg-clip-text text-transparent uppercase tracking-[0.2em] mb-4">
                     {selectedProject.category}
                   </span>
-                  <h3 className="text-4xl font-bold mb-6 tracking-tight">
+                  
+                  <h3 className="text-3xl sm:text-4xl font-display font-bold mb-4 tracking-tight text-foreground">
                     {selectedProject.title}
                   </h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                  
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8">
                     {selectedProject.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-10">
+                  
+                  <div className="flex flex-wrap gap-2 mb-8 lg:mb-10">
                     {selectedProject.tags.map((t) => (
-                      <span key={t} className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary">
+                      <span key={t} className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
                         {t}
                       </span>
                     ))}
                   </div>
-                  <a
-                    href="#contact"
-                    onClick={() => setSelectedProject(null)}
-                    className="btn-primary w-full text-center flex items-center justify-center gap-2"
-                  >
-                    {t('projects.modal.inquire')}
-                    <ArrowUpRight size={18} />
-                  </a>
 
+                  <div className="mt-auto pt-6 border-t border-black/10 dark:border-white/10 flex justify-center lg:justify-start">
+                    <a
+                      href="#contact"
+                      onClick={() => setSelectedProject(null)}
+                      className="px-6 py-3 rounded-xl w-full bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] text-white font-bold text-sm hover:scale-[1.02] transition-transform shadow-[0_0_20px_rgba(0,184,196,0.3)] dark:shadow-[0_0_20px_rgba(0,242,255,0.3)] flex items-center justify-center gap-2"
+                    >
+                      {t('projects.modal.inquire')}
+                      <ArrowUpRight size={18} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </section>
