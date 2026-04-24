@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
   const [expandedService, setExpandedService] = useState<number | null>(null);
 
   return (
-    <footer className="relative pb-10 pt-20 px-4">
+    <footer className="relative pb-10 pt-4 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
