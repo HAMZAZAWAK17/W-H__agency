@@ -160,8 +160,8 @@ export default function Projects() {
                 type="button"
                 onClick={() => setActive(f)}
                 className={`relative rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${isActive
-                    ? "border-[var(--neon)]/60 bg-[var(--neon)]/10 text-[var(--neon)] shadow-glow-soft"
-                    : "border-white/10 bg-white/5 text-foreground/70 hover:border-white/20 hover:text-foreground"
+                  ? "border-[var(--neon)]/60 bg-[var(--neon)]/10 text-[var(--neon)] shadow-glow-soft"
+                  : "border-white/10 bg-white/5 text-foreground/70 hover:border-white/20 hover:text-foreground"
                   }`}
               >
                 {f}
@@ -244,7 +244,7 @@ export default function Projects() {
               onClick={() => setSelectedProject(null)}
               className="absolute inset-0 bg-black/60 backdrop-blur-md"
             />
-            
+
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -303,15 +303,15 @@ export default function Projects() {
                   <span className="text-xs font-bold bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] bg-clip-text text-transparent uppercase tracking-[0.2em] mb-4">
                     {selectedProject.category}
                   </span>
-                  
+
                   <h3 className="text-3xl sm:text-4xl font-display font-bold mb-4 tracking-tight text-foreground">
                     {selectedProject.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8">
                     {selectedProject.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-8 lg:mb-10">
                     {selectedProject.tags.map((t) => (
                       <span key={t} className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
