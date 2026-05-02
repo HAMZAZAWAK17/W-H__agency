@@ -43,6 +43,49 @@
       "bio": "Crafts polished mobile experiences with care for every detail."
     }
   },
+  "pfe_services": {
+    "subtitle": "For Students & Final Year Projects",
+    "title_prefix": "PFE Services",
+    "title_accent": "Without",
+    "title_suffix": "Limits",
+    "description": "We support your academic success.",
+    "services_title": "Our Services",
+    "items": {
+      "creation": {
+        "title": "PFE Project Creation / Ideas",
+        "description": "End-to-end guidance and development for your final year project."
+      },
+      "ppt": {
+        "title": "PPT Presentation Design",
+        "description": "Professional, modern slides to impress your jury."
+      },
+      "word": {
+        "title": "Word Report Writing",
+        "description": "Clear, well-structured, and perfectly formatted project reports."
+      },
+      "plagiarism": {
+        "title": "Anti-Plagiarism Check",
+        "description": "Ensure your work is 100% original and meets academic standards."
+      }
+    },
+    "flexibility_title": "Flexibility",
+    "flexibility_subtitle": "Your Project, Your Choice",
+    "flexibility_badge": "100% Flexible",
+    "packs": {
+      "single": {
+        "title": "Choose one service",
+        "description": "Perfect if you need help with a specific task"
+      },
+      "combine": {
+        "title": "Combine services",
+        "description": "Mix what you need for better results"
+      },
+      "full": {
+        "title": "Or get the full pack",
+        "description": "Complete PFE support from A to Z"
+      }
+    }
+  },
   "services": {
     "subtitle": "Expertise",
     "title_prefix": "Our",
