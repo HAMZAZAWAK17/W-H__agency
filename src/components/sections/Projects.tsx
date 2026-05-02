@@ -4,8 +4,14 @@ import { useTranslation } from "react-i18next";
 import {
   ArrowUpRight, Smartphone, Globe, LayoutDashboard,
   ShoppingBag, GraduationCap, Sparkles, ChevronLeft,
-  ChevronRight, X, type LucideIcon
+  ChevronRight, X, Activity, type LucideIcon
 } from "lucide-react";
+
+import dentaire1 from "../assets/dentaire/image.png";
+import dentaire2 from "../assets/dentaire/image copy.png";
+import dentaire3 from "../assets/dentaire/image copy 2.png";
+import dentaire4 from "../assets/dentaire/image copy 3.png";
+import dentaire5 from "../assets/dentaire/image copy 4.png";
 
 type Filter = "All" | "Web" | "Mobile" | "UI";
 
@@ -98,6 +104,18 @@ const projects: Project[] = [
     captures: [
       "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200",
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200"
+    ]
+  },
+  {
+    icon: Activity,
+    title: "Dental Clinic",
+    category: "Website",
+    type: "Web",
+    description: "A modern and responsive website for a dental clinic, featuring appointment scheduling and service showcases.",
+    tags: ["React", "Tailwind", "Healthcare"],
+    accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
+    captures: [
+      dentaire1, dentaire2, dentaire3, dentaire4, dentaire5
     ]
   },
 ];
@@ -210,9 +228,6 @@ export default function Projects() {
                       <h3 className="font-display text-lg font-semibold tracking-tight">
                         {p.title}
                       </h3>
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 text-foreground/60 transition-all group-hover:border-[var(--neon)]/50 group-hover:bg-[var(--neon)]/10 group-hover:text-[var(--neon)]">
-                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                      </div>
                     </div>
                     <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
                     <div className="mt-4 flex flex-wrap gap-1.5">

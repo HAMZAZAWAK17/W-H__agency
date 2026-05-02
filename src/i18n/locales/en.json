@@ -169,6 +169,11 @@
         "title": "Pitch Deck Pro",
         "category": "Branding",
         "description": "Investor-ready pitch deck and brand identity for an early-stage AI startup."
+      },
+      "dental_clinic": {
+        "title": "Dental Clinic",
+        "category": "Website",
+        "description": "A modern and responsive website for a dental clinic, featuring appointment scheduling and service showcases."
       }
     }
   },

@@ -169,6 +169,11 @@
         "title": "Pitch Deck Pro",
         "category": "Branding",
         "description": "Présentation et identité de marque pour une startup IA en phase de démarrage."
+      },
+      "dental_clinic": {
+        "title": "Cabinet Dentaire",
+        "category": "Site Web",
+        "description": "Un site web moderne et réactif pour un cabinet dentaire, proposant la prise de rendez-vous et la présentation des services."
       }
     }
   },
