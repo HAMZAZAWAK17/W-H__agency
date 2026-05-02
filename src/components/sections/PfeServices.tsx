@@ -202,11 +202,16 @@ export default function PfeServices() {
             transition={{ delay: 0.4 }}
             className="mt-12 pt-8 border-t border-black/10 dark:border-white/10 flex justify-center"
           >
-             <button 
+              <button 
                 onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                  }
                 }}
-                className="group flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-bold hover:bg-[var(--violet-glow)] hover:text-white transition-all shadow-lg hover:shadow-[var(--violet-glow)]/25"
+                className="group flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[var(--neon)] to-[var(--violet-glow)] text-white font-bold transition-all shadow-lg hover:shadow-[var(--neon)]/25 hover:scale-105"
               >
                 {t('contact.subtitle')}
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

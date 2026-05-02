@@ -124,34 +124,34 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-[#0b0e14]/40 backdrop-blur-2xl border border-[var(--neon)]/50 rounded-[2rem] p-8 shadow-[0_0_30px_rgba(0,242,255,0.15)] hover:shadow-[0_0_40px_rgba(0,242,255,0.25)] transition-all duration-500">
+            <div className="bg-black/5 dark:bg-[#0b0e14]/40 backdrop-blur-2xl border border-[var(--neon)]/30 dark:border-[var(--neon)]/50 rounded-[2rem] p-8 shadow-[0_0_30px_rgba(0,242,255,0.15)] hover:shadow-[0_0_40px_rgba(0,242,255,0.25)] transition-all duration-500">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1">{t('contact.form.name_label')}</label>
+                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 ml-1">{t('contact.form.name_label')}</label>
                   <input 
                     {...register("name")}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-[var(--neon)] transition-all duration-300 placeholder:text-slate-600"
+                    className="w-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-5 py-3.5 text-foreground focus:outline-none focus:border-[var(--neon)] transition-all duration-300 placeholder:text-slate-400 dark:placeholder:text-slate-600 shadow-sm dark:shadow-none"
                     placeholder={t('contact.form.name_placeholder')}
                   />
                   {errors.name && <p className="text-red-500 text-[10px] mt-1 ml-1">{errors.name.message}</p>}
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1">{t('contact.form.email_label')}</label>
+                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 ml-1">{t('contact.form.email_label')}</label>
                   <input 
                     {...register("email")}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-[var(--neon)] transition-all duration-300 placeholder:text-slate-600"
+                    className="w-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-5 py-3.5 text-foreground focus:outline-none focus:border-[var(--neon)] transition-all duration-300 placeholder:text-slate-400 dark:placeholder:text-slate-600 shadow-sm dark:shadow-none"
                     placeholder={t('contact.form.email_placeholder')}
                   />
                   {errors.email && <p className="text-red-500 text-[10px] mt-1 ml-1">{errors.email.message}</p>}
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1">{t('contact.form.message_label')}</label>
+                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 ml-1">{t('contact.form.message_label')}</label>
                   <textarea 
                     {...register("message")}
                     rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-[var(--neon)] transition-all duration-300 placeholder:text-slate-600 resize-none"
+                    className="w-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-5 py-3.5 text-foreground focus:outline-none focus:border-[var(--neon)] transition-all duration-300 placeholder:text-slate-400 dark:placeholder:text-slate-600 resize-none shadow-sm dark:shadow-none"
                     placeholder={t('contact.form.message_placeholder')}
                   />
                   {errors.message && <p className="text-red-500 text-[10px] mt-1 ml-1">{errors.message.message}</p>}
@@ -160,7 +160,7 @@ const Contact: React.FC = () => {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-[var(--neon)] hover:bg-[#00d0e0] text-[#0b0e14] rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,255,0.4)] disabled:opacity-70"
+                  className="w-full py-4 bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] text-white rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,242,255,0.4)] hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
                 >
                   {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                 </button>
