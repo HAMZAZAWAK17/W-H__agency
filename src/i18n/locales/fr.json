@@ -43,6 +43,49 @@
       "bio": "Crée des expériences mobiles raffinées avec soin pour chaque détail."
     }
   },
+  "pfe_services": {
+    "subtitle": "Pour les étudiants et les projets de fin d'études",
+    "title_prefix": "Services PFE",
+    "title_accent": "Sans",
+    "title_suffix": "Limites",
+    "description": "Nous soutenons votre réussite académique.",
+    "services_title": "Nos Services",
+    "items": {
+      "creation": {
+        "title": "Création / Idées de Projet PFE",
+        "description": "Accompagnement et développement de bout en bout pour votre PFE."
+      },
+      "ppt": {
+        "title": "Design de Présentation PPT",
+        "description": "Des diapositives professionnelles et modernes pour impressionner votre jury."
+      },
+      "word": {
+        "title": "Rédaction de Rapport Word",
+        "description": "Des rapports de projet clairs, bien structurés et parfaitement formatés."
+      },
+      "plagiarism": {
+        "title": "Vérification Anti-Plagiat",
+        "description": "Assurez-vous que votre travail est 100% original et respecte les normes académiques."
+      }
+    },
+    "flexibility_title": "Flexibilité",
+    "flexibility_subtitle": "Votre Projet, Votre Choix",
+    "flexibility_badge": "100% Flexible",
+    "packs": {
+      "single": {
+        "title": "Choisissez un service",
+        "description": "Parfait si vous avez besoin d'aide pour une tâche spécifique"
+      },
+      "combine": {
+        "title": "Combinez les services",
+        "description": "Mélangez ce dont vous avez besoin pour de meilleurs résultats"
+      },
+      "full": {
+        "title": "Ou prenez le pack complet",
+        "description": "Support PFE complet de A à Z"
+      }
+    }
+  },
   "services": {
     "subtitle": "Expertise",
     "title_prefix": "Nos Services",
