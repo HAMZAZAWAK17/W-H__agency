@@ -3,6 +3,7 @@ import Navbar from './components/sections/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Services from './components/sections/Services';
+import PfeServices from './components/sections/PfeServices';
 import Tech from './components/sections/Tech';
 import Projects from './components/sections/Projects';
 import Reviews from './components/sections/Reviews';
@@ -42,6 +43,9 @@ function App() {
               </ScrollReveal>
               <ScrollReveal threshold={0.15}>
                 <Services />
+              </ScrollReveal>
+              <ScrollReveal threshold={0.15}>
+                <PfeServices />
               </ScrollReveal>
               <ScrollReveal threshold={0.15}>
                 <Tech />
