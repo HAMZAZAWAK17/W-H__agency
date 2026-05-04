@@ -193,10 +193,20 @@
         "category": "School Management",
         "description": "A comprehensive school management system for tracking students, schedules, assignments, teachers, attendance, and grades."
       },
-      "logo_collection": {
-        "title": "Logo Collection",
-        "category": "Branding",
-        "description": "A collection of unique logos designed for various brands and businesses."
+      "valeryon": {
+        "title": "Valeryon",
+        "category": "Logo Design",
+        "description": "Premium and elegant logo design for Valeryon."
+      },
+      "gastronome": {
+        "title": "Gastronome",
+        "category": "Logo Design",
+        "description": "Creative and modern logo design for Gastronome."
+      },
+      "gastronome_2": {
+        "title": "Gastronome 2",
+        "category": "Logo Design",
+        "description": "Alternative logo concept for Gastronome."
       }
     }
   },

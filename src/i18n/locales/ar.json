@@ -193,10 +193,20 @@
         "category": "إدارة مدرسية",
         "description": "نظام شامل لإدارة المدارس يتيح تتبع الطلاب والجداول الزمنية والواجبات المنزلية والمدرسين والغياب والدرجات."
       },
-      "logo_collection": {
-        "title": "مجموعة الشعارات",
-        "category": "هوية بصرية",
-        "description": "مجموعة من الشعارات الفريدة المصممة لمختلف العلامات التجارية والشركات."
+      "valeryon": {
+        "title": "Valeryon",
+        "category": "تصميم شعار",
+        "description": "تصميم شعار فاخر وأنيق لـ Valeryon."
+      },
+      "gastronome": {
+        "title": "Gastronome",
+        "category": "تصميم شعار",
+        "description": "تصميم شعار إبداعي وحديث لـ Gastronome."
+      },
+      "gastronome_2": {
+        "title": "Gastronome 2",
+        "category": "تصميم شعار",
+        "description": "مفهوم بديل لشعار Gastronome."
       }
     }
   },
