@@ -22,7 +22,13 @@ import pcm4 from "../../assets/PCM/1774948087445.jpg";
 import pcm5 from "../../assets/PCM/1774948087676.jpg";
 import pcm6 from "../../assets/PCM/1774948087714.jpg";
 import pcm7 from "../../assets/PCM/1774948087771.jpg";
-import pcm8 from "../../assets/PCM/1774948087781.jpg";
+import pcm8 from "../../assets/PCM/1774948087881.jpg";
+import gastronomeCover from "../../assets/cover_image/gasteonomcover.png";
+import gastronomeMob1 from "../../assets/Gastronome/image.png";
+import gastronomeMob2 from "../../assets/Gastronome/image copy.png";
+import gastronomeMob3 from "../../assets/Gastronome/image copy 2.png";
+import gastronomeMob4 from "../../assets/Gastronome/image copy 3.png";
+import gastronomeMob5 from "../../assets/Gastronome/image copy 4.png";
 import eduzen1 from "../../assets/eduzen/1776688885730.jpg";
 import eduzen2 from "../../assets/eduzen/1776688885765.jpg";
 import eduzen3 from "../../assets/eduzen/1776688885857.jpg";
@@ -99,16 +105,15 @@ const projects: Project[] = [
     ]
   },
   {
-    icon: Globe,
-    title: "Atlas Studio",
-    category: "Agency Site",
-    type: "UI",
-    description: "Award-style portfolio site with cinematic scroll, custom cursor, and CMS-driven case studies.",
-    tags: ["Astro", "GSAP", "Sanity"],
+    icon: Smartphone,
+    title: "Gastronome App",
+    category: "Restaurant App",
+    type: "Mobile",
+    description: "A premium mobile application for Gastronome, featuring elegant menus and seamless ordering.",
+    tags: ["React Native", "Firebase", "UI/UX"],
     accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
     captures: [
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200",
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1200"
+      gastronomeCover, gastronomeMob1, gastronomeMob2, gastronomeMob3, gastronomeMob4, gastronomeMob5
     ]
   },
   {
