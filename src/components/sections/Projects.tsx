@@ -13,6 +13,16 @@ import dentaire3 from "../../assets/dentaire/image copy 2.png";
 import dentaire4 from "../../assets/dentaire/image copy 3.png";
 import dentaire5 from "../../assets/dentaire/image copy 4.png";
 import responsiveMockup from "../../assets/cover_image/coverprjt.png";
+import eduzenCover from "../../assets/cover_image/eduzen cover.png";
+import valeryonCover from "../../assets/cover_image/valeryoncover.png";
+import pcm1 from "../../assets/PCM/1774948086730.jpg";
+import pcm2 from "../../assets/PCM/1774948086733.jpg";
+import pcm3 from "../../assets/PCM/1774948087038.jpg";
+import pcm4 from "../../assets/PCM/1774948087445.jpg";
+import pcm5 from "../../assets/PCM/1774948087676.jpg";
+import pcm6 from "../../assets/PCM/1774948087714.jpg";
+import pcm7 from "../../assets/PCM/1774948087771.jpg";
+import pcm8 from "../../assets/PCM/1774948087781.jpg";
 import eduzen1 from "../../assets/eduzen/1776688885730.jpg";
 import eduzen2 from "../../assets/eduzen/1776688885765.jpg";
 import eduzen3 from "../../assets/eduzen/1776688885857.jpg";
@@ -51,17 +61,15 @@ type Project = {
 
 const projects: Project[] = [
   {
-    icon: Smartphone,
-    title: "FitPulse",
-    category: "Mobile App",
-    type: "Mobile",
-    description: "Cross-platform fitness tracker with workout plans, progress charts, and social challenges.",
-    tags: ["React Native", "Firebase", "UI/UX"],
+    icon: LayoutDashboard,
+    title: "PCM",
+    category: "Accounting System",
+    type: "Web",
+    description: "Comprehensive accounting management system featuring guided entry, automatic financial statements, and full PCM integration.",
+    tags: ["React", "Spring Boot", "MySQL", "Finance"],
     accent: "from-[var(--neon)]/30 to-[var(--electric)]/10",
     captures: [
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200",
-      "https://images.unsplash.com/photo-1510017803434-a899398421b3?q=80&w=1200",
-      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1200"
+      valeryonCover, pcm1, pcm2, pcm3, pcm4, pcm5, pcm6, pcm7, pcm8
     ]
   },
   {
@@ -150,7 +158,7 @@ const projects: Project[] = [
     tags: ["React.js", "Spring Boot", "MySQL"],
     accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
     captures: [
-      eduzen2, eduzen1, eduzen3, eduzen4, eduzen5, eduzen6, eduzen7, eduzen8
+      eduzenCover, eduzen2, eduzen1, eduzen3, eduzen4, eduzen5, eduzen6, eduzen7, eduzen8
     ]
   },
   {

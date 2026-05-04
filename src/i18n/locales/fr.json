@@ -148,10 +148,10 @@
       "inquire": "S'informer sur le projet"
     },
     "items": {
-      "fitpulse": {
-        "title": "FitPulse",
-        "category": "App Mobile",
-        "description": "Suivi de fitness multiplateforme avec plans d'entraînement et défis sociaux."
+      "pcm": {
+        "title": "PCM (Plan Comptable)",
+        "category": "Système Comptable",
+        "description": "Système complet de gestion comptable avec saisie guidée, génération de bilans fonctionnels et intégration de 1238 comptes du PCM."
       },
       "nova_store": {
         "title": "Nova Store",

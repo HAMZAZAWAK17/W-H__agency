@@ -148,10 +148,10 @@
       "inquire": "Inquire About Project"
     },
     "items": {
-      "fitpulse": {
-        "title": "FitPulse",
-        "category": "Mobile App",
-        "description": "Cross-platform fitness tracker with workout plans, progress charts, and social challenges."
+      "pcm": {
+        "title": "PCM (Accounting System)",
+        "category": "Accounting System",
+        "description": "Comprehensive accounting management system featuring guided entry, automatic financial statements, and full PCM integration."
       },
       "nova_store": {
         "title": "Nova Store",
