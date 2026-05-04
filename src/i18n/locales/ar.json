@@ -166,7 +166,7 @@
       "gastronome_app": {
         "title": "Gastronome App",
         "category": "تطبيق مطعم",
-        "description": "تطبيق جوال متميز لمطعم Gastronome، يتميز بقوائم أنيقة وطلب سلس."
+        "description": "تطبيق جوال متميز تم بناؤه باستخدام Flutter لمطعم Gastronome، يتيح للمستخدمين تصفح جميع الأطباق والقوائم بسلاسة."
       },
       "edutrack": {
         "title": "EduTrack",
