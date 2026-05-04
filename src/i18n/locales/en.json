@@ -183,6 +183,11 @@
         "title": "EDUZEN",
         "category": "Training Management",
         "description": "A platform dedicated to managing professional training, designed to simplify and optimize every step of the process: content management, session organization, and learner tracking."
+      },
+      "estem_sup": {
+        "title": "ESTEM SUP",
+        "category": "School Management",
+        "description": "A comprehensive school management system for tracking students, schedules, assignments, teachers, attendance, and grades."
       }
     }
   },

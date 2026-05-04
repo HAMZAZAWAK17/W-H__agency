@@ -21,6 +21,13 @@ import eduzen5 from "../../assets/eduzen/1776688886006.jpg";
 import eduzen6 from "../../assets/eduzen/1776688886123.jpg";
 import eduzen7 from "../../assets/eduzen/1776688886191.jpg";
 import eduzen8 from "../../assets/eduzen/1776688886362.jpg";
+import school1 from "../../assets/education-manag/image copy 2.png";
+import school2 from "../../assets/education-manag/image.png";
+import school3 from "../../assets/education-manag/image copy.png";
+import school4 from "../../assets/education-manag/image copy 3.png";
+import school5 from "../../assets/education-manag/image copy 4.png";
+import school6 from "../../assets/education-manag/image copy 5.png";
+import school7 from "../../assets/education-manag/image copy 6.png";
 
 type Filter = "All" | "Web" | "Mobile" | "UI";
 
@@ -137,6 +144,18 @@ const projects: Project[] = [
     accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
     captures: [
       eduzen2, eduzen1, eduzen3, eduzen4, eduzen5, eduzen6, eduzen7, eduzen8
+    ]
+  },
+  {
+    icon: Globe,
+    title: "ESTEM SUP",
+    category: "School Management",
+    type: "Web",
+    description: "Comprehensive school management system for tracking students, schedules, assignments, and attendance.",
+    tags: ["React", "Spring Boot", "MySQL"],
+    accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
+    captures: [
+      school1, school2, school3, school4, school5, school6, school7
     ]
   },
 ];

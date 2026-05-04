@@ -183,6 +183,11 @@
         "title": "EDUZEN",
         "category": "Gestion de Formation",
         "description": "Plateforme dédiée à la gestion des formations professionnelles, conçue pour simplifier et optimiser chaque étape du processus : gestion des contenus, organisation des sessions et suivi des apprenants."
+      },
+      "estem_sup": {
+        "title": "ESTEM SUP",
+        "category": "Gestion Scolaire",
+        "description": "Système complet de gestion scolaire permettant le suivi des étudiants, des emplois du temps, des devoirs, des professeurs, des absences et des notes."
       }
     }
   },
