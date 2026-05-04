@@ -163,10 +163,10 @@
         "category": "SaaS Dashboard",
         "description": "Real-time analytics dashboard for SMBs — KPIs, team management, and exportable reports."
       },
-      "atlas_studio": {
-        "title": "Atlas Studio",
-        "category": "Agency Site",
-        "description": "Award-style portfolio site with cinematic scroll, custom cursor, and CMS-driven case studies."
+      "gastronome_app": {
+        "title": "Gastronome App",
+        "category": "Restaurant App",
+        "description": "A premium mobile application for Gastronome, featuring elegant menus and seamless ordering."
       },
       "edutrack": {
         "title": "EduTrack",

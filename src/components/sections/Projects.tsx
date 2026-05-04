@@ -22,7 +22,7 @@ import pcm4 from "../../assets/PCM/1774948087445.jpg";
 import pcm5 from "../../assets/PCM/1774948087676.jpg";
 import pcm6 from "../../assets/PCM/1774948087714.jpg";
 import pcm7 from "../../assets/PCM/1774948087771.jpg";
-import pcm8 from "../../assets/PCM/1774948087881.jpg";
+import pcm8 from "../../assets/PCM/1774948087781.jpg";
 import gastronomeCover from "../../assets/cover_image/gasteonomcover.png";
 import gastronomeMob1 from "../../assets/Gastronome/image.png";
 import gastronomeMob2 from "../../assets/Gastronome/image copy.png";
@@ -455,4 +455,3 @@ export default function Projects() {
     </section>
   );
 }
-

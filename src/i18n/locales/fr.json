@@ -163,10 +163,10 @@
         "category": "Tableau de Bord SaaS",
         "description": "Tableau de bord analytique en temps réel pour PME — KPIs et gestion d'équipe."
       },
-      "atlas_studio": {
-        "title": "Atlas Studio",
-        "category": "Site d'Agence",
-        "description": "Site de portfolio de style primé avec défilement cinématique et curseur personnalisé."
+      "gastronome_app": {
+        "title": "Gastronome App",
+        "category": "Application Restaurant",
+        "description": "Une application mobile premium pour Gastronome, avec des menus élégants et une commande fluide."
       },
       "edutrack": {
         "title": "EduTrack",

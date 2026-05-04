@@ -163,10 +163,10 @@
         "category": "لوحة تحكم SaaS",
         "description": "لوحة تحكم تحليلية في الوقت الفعلي للشركات الصغيرة والمتوسطة."
       },
-      "atlas_studio": {
-        "title": "Atlas Studio",
-        "category": "موقع وكالة",
-        "description": "موقع معرض أعمال مع تمرير سينمائي ومؤشر مخصص."
+      "gastronome_app": {
+        "title": "Gastronome App",
+        "category": "تطبيق مطعم",
+        "description": "تطبيق جوال متميز لمطعم Gastronome، يتميز بقوائم أنيقة وطلب سلس."
       },
       "edutrack": {
         "title": "EduTrack",
