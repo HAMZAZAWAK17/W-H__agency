@@ -33,7 +33,7 @@ import logo2 from "../../assets/Logo/image.png";
 import logo3 from "../../assets/Logo/image copy.png";
 import logo4 from "../../assets/Logo/image copy 2.png";
 
-type Filter = "All" | "Web" | "Mobile" | "UI";
+type Filter = "All" | "Web" | "Mobile" | "UI" | "Logo";
 
 type Project = {
   icon: LucideIcon;
@@ -166,7 +166,7 @@ const projects: Project[] = [
     icon: Sparkles,
     title: "Logo Collection",
     category: "Branding",
-    type: "UI",
+    type: "Logo",
     description: "A collection of unique and memorable logos designed to define brand identities.",
     tags: ["Illustrator", "Branding", "Vector"],
     accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
@@ -176,7 +176,7 @@ const projects: Project[] = [
   },
 ];
 
-const filters: Filter[] = ["All", "Web", "Mobile", "UI"];
+const filters: Filter[] = ["All", "Web", "Mobile", "UI", "Logo"];
 
 export default function Projects() {
   const { t } = useTranslation();

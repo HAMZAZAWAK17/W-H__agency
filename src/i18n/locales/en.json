@@ -119,6 +119,10 @@
     "bi": {
       "title": "BI & Dashboards",
       "description": "Interactive data visualization, reporting, and business intelligence solutions."
+    },
+    "logo": {
+      "title": "Logo Maker",
+      "description": "Unique and memorable logos designed to define your brand's visual identity."
     }
   },
   "tech": {
@@ -188,6 +192,11 @@
         "title": "ESTEM SUP",
         "category": "School Management",
         "description": "A comprehensive school management system for tracking students, schedules, assignments, teachers, attendance, and grades."
+      },
+      "logo_collection": {
+        "title": "Logo Collection",
+        "category": "Branding",
+        "description": "A collection of unique logos designed for various brands and businesses."
       }
     }
   },

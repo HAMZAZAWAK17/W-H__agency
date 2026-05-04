@@ -119,6 +119,10 @@
     "bi": {
       "title": "BI & Tableaux de Bord",
       "description": "Visualisation interactive des données, reporting et solutions de Business Intelligence."
+    },
+    "logo": {
+      "title": "Création de Logo",
+      "description": "Des logos uniques et mémorables conçus pour définir l'identité visuelle de votre marque."
     }
   },
   "tech": {
@@ -188,6 +192,11 @@
         "title": "ESTEM SUP",
         "category": "Gestion Scolaire",
         "description": "Système complet de gestion scolaire permettant le suivi des étudiants, des emplois du temps, des devoirs, des professeurs, des absences et des notes."
+      },
+      "logo_collection": {
+        "title": "Collection de Logos",
+        "category": "Branding",
+        "description": "Une collection de logos uniques conçus pour diverses marques et entreprises."
       }
     }
   },
