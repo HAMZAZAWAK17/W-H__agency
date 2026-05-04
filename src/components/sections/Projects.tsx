@@ -32,6 +32,9 @@ import logo1 from "../../assets/Logo/valeryon.png";
 import logo2 from "../../assets/Logo/image.png";
 import logo3 from "../../assets/Logo/image copy.png";
 import logo4 from "../../assets/Logo/image copy 2.png";
+import valeryonLogo from "../../assets/Logo/valeryon.png";
+import gastronomeLogo from "../../assets/Logo/gastronome.png";
+import gastronomeLogo2 from "../../assets/Logo/gastronome 2.png";
 
 type Filter = "All" | "Web" | "Mobile" | "UI" | "Logo";
 
@@ -164,15 +167,33 @@ const projects: Project[] = [
   },
   {
     icon: Sparkles,
-    title: "Logo Collection",
-    category: "Branding",
+    title: "Valeryon",
+    category: "Logo Design",
     type: "Logo",
-    description: "A collection of unique and memorable logos designed to define brand identities.",
-    tags: ["Illustrator", "Branding", "Vector"],
+    description: "Premium and elegant logo design for Valeryon.",
+    tags: ["Branding", "Vector"],
     accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
-    captures: [
-      logo1, logo2, logo3, logo4
-    ]
+    captures: [valeryonLogo]
+  },
+  {
+    icon: Sparkles,
+    title: "Gastronome",
+    category: "Logo Design",
+    type: "Logo",
+    description: "Creative and modern logo design for Gastronome.",
+    tags: ["Branding", "Vector"],
+    accent: "from-[var(--neon)]/30 to-[var(--electric)]/10",
+    captures: [gastronomeLogo]
+  },
+  {
+    icon: Sparkles,
+    title: "Gastronome 2",
+    category: "Logo Design",
+    type: "Logo",
+    description: "Alternative logo concept for Gastronome.",
+    tags: ["Branding", "Vector"],
+    accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
+    captures: [gastronomeLogo2]
   },
 ];
 
