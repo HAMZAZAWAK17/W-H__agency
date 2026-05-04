@@ -28,6 +28,10 @@ import school4 from "../../assets/education-manag/image copy 3.png";
 import school5 from "../../assets/education-manag/image copy 4.png";
 import school6 from "../../assets/education-manag/image copy 5.png";
 import school7 from "../../assets/education-manag/image copy 6.png";
+import logo1 from "../../assets/Logo/valeryon.png";
+import logo2 from "../../assets/Logo/image.png";
+import logo3 from "../../assets/Logo/image copy.png";
+import logo4 from "../../assets/Logo/image copy 2.png";
 
 type Filter = "All" | "Web" | "Mobile" | "UI";
 
@@ -156,6 +160,18 @@ const projects: Project[] = [
     accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
     captures: [
       school1, school2, school3, school4, school5, school6, school7
+    ]
+  },
+  {
+    icon: Sparkles,
+    title: "Logo Collection",
+    category: "Branding",
+    type: "UI",
+    description: "A collection of unique and memorable logos designed to define brand identities.",
+    tags: ["Illustrator", "Branding", "Vector"],
+    accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
+    captures: [
+      logo1, logo2, logo3, logo4
     ]
   },
 ];

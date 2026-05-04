@@ -8,6 +8,7 @@ import {
   GraduationCap,
   Presentation,
   BarChart,
+  Shapes,
   ArrowUpRight,
   X,
   CheckCircle2
@@ -93,6 +94,17 @@ export default function Services() {
         "Visualisation de données et reporting",
         "Intégration de Business Intelligence",
         "Analyse de données en temps réel"
+      ]
+    },
+    {
+      icon: Shapes,
+      title: t('services.logo.title'),
+      description: t('services.logo.description'),
+      features: [
+        "Création de logos vectoriels",
+        "Charte graphique complète",
+        "Déclinaisons pour réseaux sociaux",
+        "Fichiers haute résolution (AI, EPS, PNG)"
       ]
     },
   ];
