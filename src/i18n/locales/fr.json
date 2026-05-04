@@ -166,7 +166,7 @@
       "gastronome_app": {
         "title": "Gastronome App",
         "category": "Application Restaurant",
-        "description": "Une application mobile premium pour Gastronome, avec des menus élégants et une commande fluide."
+        "description": "Une application mobile développée avec Flutter pour Gastronome, permettant aux utilisateurs de consulter l'ensemble des plats et menus avec élégance."
       },
       "edutrack": {
         "title": "EduTrack",
