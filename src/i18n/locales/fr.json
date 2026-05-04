@@ -193,10 +193,20 @@
         "category": "Gestion Scolaire",
         "description": "Système complet de gestion scolaire permettant le suivi des étudiants, des emplois du temps, des devoirs, des professeurs, des absences et des notes."
       },
-      "logo_collection": {
-        "title": "Collection de Logos",
-        "category": "Branding",
-        "description": "Une collection de logos uniques conçus pour diverses marques et entreprises."
+      "valeryon": {
+        "title": "Valeryon",
+        "category": "Design de Logo",
+        "description": "Design de logo premium et élégant pour Valeryon."
+      },
+      "gastronome": {
+        "title": "Gastronome",
+        "category": "Design de Logo",
+        "description": "Design de logo créatif et moderne pour Gastronome."
+      },
+      "gastronome_2": {
+        "title": "Gastronome 2",
+        "category": "Design de Logo",
+        "description": "Concept alternatif de logo pour Gastronome."
       }
     }
   },
