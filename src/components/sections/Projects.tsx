@@ -173,7 +173,7 @@ const projects: Project[] = [
     description: "Premium and elegant logo design for Valeryon.",
     tags: ["Branding", "Vector"],
     accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
-    captures: [valeryonLogo]
+    captures: [logo4, valeryonLogo]
   },
   {
     icon: Sparkles,
@@ -183,7 +183,7 @@ const projects: Project[] = [
     description: "Creative and modern logo design for Gastronome.",
     tags: ["Branding", "Vector"],
     accent: "from-[var(--neon)]/30 to-[var(--electric)]/10",
-    captures: [gastronomeLogo]
+    captures: [logo2, gastronomeLogo]
   },
   {
     icon: Sparkles,
@@ -193,7 +193,7 @@ const projects: Project[] = [
     description: "Alternative logo concept for Gastronome.",
     tags: ["Branding", "Vector"],
     accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
-    captures: [gastronomeLogo2]
+    captures: [logo3, gastronomeLogo2]
   },
 ];
 
