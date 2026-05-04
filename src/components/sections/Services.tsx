@@ -7,6 +7,7 @@ import {
   Wand2,
   GraduationCap,
   Presentation,
+  BarChart,
   ArrowUpRight,
   X,
   CheckCircle2
@@ -81,6 +82,17 @@ export default function Services() {
         "Pitch decks pour startups",
         "Design de présentation d'entreprise",
         "Animations et transitions soignées"
+      ]
+    },
+    {
+      icon: BarChart,
+      title: t('services.bi.title'),
+      description: t('services.bi.description'),
+      features: [
+        "Création de tableaux de bord interactifs",
+        "Visualisation de données et reporting",
+        "Intégration de Business Intelligence",
+        "Analyse de données en temps réel"
       ]
     },
   ];

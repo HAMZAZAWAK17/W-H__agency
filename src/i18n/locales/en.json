@@ -115,6 +115,10 @@
     "presentation": {
       "title": "Presentations & Reports",
       "description": "Polished slide decks and professional reports that impress."
+    },
+    "bi": {
+      "title": "BI & Dashboards",
+      "description": "Interactive data visualization, reporting, and business intelligence solutions."
     }
   },
   "tech": {
@@ -174,6 +178,11 @@
         "title": "Dental Clinic",
         "category": "Website",
         "description": "A modern and responsive website for a dental clinic, featuring appointment scheduling and service showcases."
+      },
+      "eduzen": {
+        "title": "EDUZEN",
+        "category": "Training Management",
+        "description": "A platform dedicated to managing professional training, designed to simplify and optimize every step of the process: content management, session organization, and learner tracking."
       }
     }
   },

@@ -7,11 +7,20 @@ import {
   ChevronRight, X, Activity, type LucideIcon
 } from "lucide-react";
 
-import dentaire1 from "../assets/dentaire/image.png";
-import dentaire2 from "../assets/dentaire/image copy.png";
-import dentaire3 from "../assets/dentaire/image copy 2.png";
-import dentaire4 from "../assets/dentaire/image copy 3.png";
-import dentaire5 from "../assets/dentaire/image copy 4.png";
+import dentaire1 from "../../assets/dentaire/image.png";
+import dentaire2 from "../../assets/dentaire/image copy.png";
+import dentaire3 from "../../assets/dentaire/image copy 2.png";
+import dentaire4 from "../../assets/dentaire/image copy 3.png";
+import dentaire5 from "../../assets/dentaire/image copy 4.png";
+import responsiveMockup from "../../assets/cover_image/coverprjt.png";
+import eduzen1 from "../../assets/eduzen/1776688885730.jpg";
+import eduzen2 from "../../assets/eduzen/1776688885765.jpg";
+import eduzen3 from "../../assets/eduzen/1776688885857.jpg";
+import eduzen4 from "../../assets/eduzen/1776688885993.jpg";
+import eduzen5 from "../../assets/eduzen/1776688886006.jpg";
+import eduzen6 from "../../assets/eduzen/1776688886123.jpg";
+import eduzen7 from "../../assets/eduzen/1776688886191.jpg";
+import eduzen8 from "../../assets/eduzen/1776688886362.jpg";
 
 type Filter = "All" | "Web" | "Mobile" | "UI";
 
@@ -115,7 +124,19 @@ const projects: Project[] = [
     tags: ["React", "Tailwind", "Healthcare"],
     accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
     captures: [
-      dentaire1, dentaire2, dentaire3, dentaire4, dentaire5
+      responsiveMockup, dentaire1, dentaire2, dentaire3, dentaire4, dentaire5
+    ]
+  },
+  {
+    icon: GraduationCap,
+    title: "EDUZEN",
+    category: "Training Platform",
+    type: "Web",
+    description: "Professional training management platform simplifying the entire educational workflow.",
+    tags: ["React.js", "Spring Boot", "MySQL"],
+    accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
+    captures: [
+      eduzen2, eduzen1, eduzen3, eduzen4, eduzen5, eduzen6, eduzen7, eduzen8
     ]
   },
 ];
@@ -208,16 +229,23 @@ export default function Projects() {
                   className="bg-glass glow-border group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-glow-soft cursor-pointer"
                 >
                   {/* Visual header */}
-                  <div className={`relative h-40 overflow-hidden bg-gradient-to-br ${p.accent}`}>
-                    <div className="absolute inset-0 grid-overlay opacity-40" />
-                    <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[var(--neon)]/20 blur-3xl transition-all duration-500 group-hover:scale-125" />
-                    <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-[var(--violet-glow)]/20 blur-3xl" />
-                    <div className="relative flex h-full items-center justify-center">
-                      <div className="bg-glass flex h-16 w-16 items-center justify-center rounded-2xl shadow-glow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                        <Icon className="h-7 w-7 text-[var(--neon)]" strokeWidth={1.5} />
-                      </div>
-                    </div>
-                    <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full border border-white/10 bg-background/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--neon)] backdrop-blur">
+                  <div className={`relative h-48 overflow-hidden bg-gradient-to-br ${p.accent}`}>
+                    {p.captures && p.captures.length > 0 ? (
+                      <img src={p.captures[0]} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 grid-overlay opacity-40" />
+                        <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[var(--neon)]/20 blur-3xl transition-all duration-500 group-hover:scale-125" />
+                        <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-[var(--violet-glow)]/20 blur-3xl" />
+                        <div className="relative flex h-full items-center justify-center">
+                          <div className="bg-glass flex h-16 w-16 items-center justify-center rounded-2xl shadow-glow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                            <Icon className="h-7 w-7 text-[var(--neon)]" strokeWidth={1.5} />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+                    <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full border border-white/10 bg-background/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--neon)] backdrop-blur z-10">
                       {p.category}
                     </div>
                   </div>
@@ -279,19 +307,23 @@ export default function Projects() {
 
               <div className="flex flex-col lg:grid lg:grid-cols-5 h-full overflow-y-auto lg:overflow-hidden">
                 {/* Left: Image Gallery */}
-                <div className="lg:col-span-3 relative h-[250px] sm:h-[350px] lg:h-[450px] bg-black/5 dark:bg-white/5 flex items-center justify-center group shrink-0 overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentImgIndex}
-                      src={selectedProject.captures?.[currentImgIndex]}
-                      alt={selectedProject.title}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
+                <div className="lg:col-span-3 relative h-[250px] sm:h-[350px] lg:h-[450px] bg-black/5 dark:bg-white/5 group shrink-0">
+                  <div className="absolute inset-0 overflow-y-auto">
+                    <div className="min-h-full flex items-center w-full">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={currentImgIndex}
+                          src={selectedProject.captures?.[currentImgIndex]}
+                          alt={selectedProject.title}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.4 }}
+                          className="w-full h-auto block shadow-xl"
+                        />
+                      </AnimatePresence>
+                    </div>
+                  </div>
 
                   {/* Navigation Buttons */}
                   <button

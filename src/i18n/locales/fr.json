@@ -115,6 +115,10 @@
     "presentation": {
       "title": "Présentations & Rapports",
       "description": "Présentations et rapports professionnels qui impressionnent."
+    },
+    "bi": {
+      "title": "BI & Tableaux de Bord",
+      "description": "Visualisation interactive des données, reporting et solutions de Business Intelligence."
     }
   },
   "tech": {
@@ -174,6 +178,11 @@
         "title": "Cabinet Dentaire",
         "category": "Site Web",
         "description": "Un site web moderne et réactif pour un cabinet dentaire, proposant la prise de rendez-vous et la présentation des services."
+      },
+      "eduzen": {
+        "title": "EDUZEN",
+        "category": "Gestion de Formation",
+        "description": "Plateforme dédiée à la gestion des formations professionnelles, conçue pour simplifier et optimiser chaque étape du processus : gestion des contenus, organisation des sessions et suivi des apprenants."
       }
     }
   },
