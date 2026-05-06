@@ -32,42 +32,71 @@ export const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Simple knowledge base based on the website content
+  // Comprehensive knowledge base based on the website content
   const getBotResponse = (query: string): string => {
     const q = query.toLowerCase();
     
-    // Services
-    if (q.includes('service') || q.includes('do you do') || q.includes('offrez')) {
-      return "We offer Mobile App Development (React Native, Flutter), Web Development (Next.js, React), UI/UX Design, and specialized PFE support (Project creation, Reports, Presentations).";
+    // Services & Expertise
+    if (q.includes('service') || q.includes('do you do') || q.includes('expert') || q.includes('offrez')) {
+      return "We are a full-service agency specializing in: \n1. Mobile Apps (React Native, Flutter)\n2. Web Platforms (Next.js, React)\n3. UI/UX Design\n4. PFE Support (Ideas, Reports, PPT)\n5. BI & Dashboards\n6. Branding & Logo Design.";
     }
     
-    // PFE
-    if (q.includes('pfe') || q.includes('student') || q.includes('graduation')) {
-      return "We are experts in PFE support! We can help with project ideas, development, writing your Word report, designing your PPT presentation, and even plagiarism checks.";
-    }
-    
-    // Tech
-    if (q.includes('tech') || q.includes('stack') || q.includes('language')) {
-      return "Our modern stack includes React, Next.js, Flutter, React Native, Node.js, and specialized tools for Business Intelligence and Design.";
-    }
-    
-    // Founders/Who
-    if (q.includes('who') || q.includes('team') || q.includes('hamza') || q.includes('wissal')) {
-      return "W&H Agency is founded by Hamza (Full-stack Developer) and Wissal (Mobile & UI/UX Designer). We are two software engineers dedicated to building high-performance digital products.";
-    }
-    
-    // Pricing/Cost
-    if (q.includes('price') || q.includes('cost') || q.includes('cheap') || q.includes('budget')) {
-      return "Our pricing depends on the project scope. We offer flexible packages, especially for students. Feel free to use our contact form to get a custom quote!";
-    }
-    
-    // Contact
-    if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('talk')) {
-      return "You can reach us via the contact form at the bottom of the page, or email us directly. We usually respond within 24 hours!";
+    // PFE / Students
+    if (q.includes('pfe') || q.includes('student') || q.includes('graduation') || q.includes('étudiant') || q.includes('rapport')) {
+      return "We offer 100% flexible PFE support! This includes project creation/ideas, professional Word report writing, modern PPT slide design, and anti-plagiarism checks. We can handle the full pack or individual services.";
     }
 
-    // Default
-    return "That's an interesting question! For specific inquiries about " + query + ", I recommend talking directly to Hamza or Wissal via our contact section. Anything else I can help with?";
+    // Projects / Portfolio
+    if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('realisation') || q.includes('showcase')) {
+      return "We've shipped amazing projects like PCM (Accounting System), Nova Store (E-commerce), OpsBoard (SaaS Dashboard), and several mobile apps like Gastronome. Check the 'Projects' section to see them in action!";
+    }
+    
+    // Tech / Skills
+    if (q.includes('tech') || q.includes('stack') || q.includes('language') || q.includes('code') || q.includes('build with')) {
+      return "Our toolkit is modern and robust: Frontend (React, Next.js, Tailwind), Backend (Node.js, Supabase), Mobile (Flutter, React Native), and Design (Figma, Adobe Suite).";
+    }
+
+    // Process / How we work
+    if (q.includes('process') || q.includes('how') || q.includes('steps') || q.includes('method')) {
+      return "Our simple 4-step process: \n1. Idea (Discovery & Roadmap)\n2. Design (UI/UX Prototypes)\n3. Development (Clean code)\n4. Launch (Ship & Iterate).";
+    }
+    
+    // Founders / Team
+    if (q.includes('who') || q.includes('team') || q.includes('founders') || q.includes('hamza') || q.includes('wissal')) {
+      return "The agency is led by Hamza (Full-stack Engineer) and Wissal (Mobile & UI/UX Expert). Together, we bring technical excellence and design precision to every project.";
+    }
+
+    // Stats / Experience
+    if (q.includes('stat') || q.includes('experience') || q.includes('many') || q.includes('successful')) {
+      return "We've shipped 12+ premium projects with an average delivery time of 2–6 weeks. We focus on custom code and high-performance solutions.";
+    }
+    
+    // Pricing / Cost
+    if (q.includes('price') || q.includes('cost') || q.includes('budget') || q.includes('argent') || q.includes('cher')) {
+      return "Every project is unique! We offer competitive pricing and specialized discounts for students and startups. Contact us with your project details for a personalized quote.";
+    }
+    
+    // Contact / Location
+    if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('location') || q.includes('map') || q.includes('where')) {
+      return "You can find our office on the map at the bottom of the page! To start a project, fill out the contact form or reach out via email/social media. We're available and usually respond in under 24 hours.";
+    }
+
+    // Reviews / Social Proof
+    if (q.includes('review') || q.includes('client') || q.includes('testimonial') || q.includes('avis') || q.includes('think')) {
+      return "Our clients love our work! We have a 5/5 rating. Thomas L. (Startup Founder) and Sarah K. (E-commerce) are among our happy clients. Read their full reviews in the Testimonials section!";
+    }
+
+    // Languages
+    if (q.includes('language') || q.includes('français') || q.includes('arabic') || q.includes('english')) {
+      return "Our website and our team are fully trilingual! We support projects in English, French, and Arabic.";
+    }
+
+    // Default / Greeting
+    if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('bonjour')) {
+      return "Hello! I'm the W&H Assistant. I can tell you about our projects, services, tech stack, or the founders. What would you like to know?";
+    }
+
+    return "I'm not sure I have specific details about that, but it's definitely something Hamza and Wissal can handle. Would you like me to guide you to the contact section to ask them directly?";
   };
 
   const handleSend = () => {
