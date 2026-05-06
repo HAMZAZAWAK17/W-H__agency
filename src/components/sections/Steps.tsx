@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { Lightbulb, PenTool, Code2, Rocket, ArrowRight, Circle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
@@ -85,7 +85,7 @@ export default function Steps() {
         </div>
 
         {/* Timeline Line */}
-        <div className="absolute left-1/2 top-[400px] bottom-0 -translate-x-1/2 w-1 hidden lg:block">
+        <div className="absolute left-1/2 top-[200px] bottom-0 -translate-x-1/2 w-1 hidden lg:block">
           <motion.div 
             style={{ scaleY }}
             className="w-full h-full bg-gradient-to-b from-[var(--neon)] to-[var(--electric)] origin-top rounded-full shadow-[0_0_15px_rgba(0,242,255,0.5)]"
@@ -100,7 +100,7 @@ export default function Steps() {
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true }}
                   className="w-12 h-12 rounded-full bg-background border-4 border-foreground/10 dark:border-white/10 flex items-center justify-center relative group"
                 >
                    <div className="absolute inset-0 rounded-full bg-[var(--neon)] opacity-0 group-hover:opacity-20 blur-md transition-opacity" />
@@ -113,7 +113,7 @@ export default function Steps() {
                 <motion.div
                   initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="w-full lg:w-[45%] group"
                 >
