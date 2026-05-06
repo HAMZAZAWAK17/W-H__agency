@@ -14,6 +14,7 @@ import Footer from './components/sections/Footer';
 import Loader from './components/ui/Loader';
 import CustomCursor from './components/ui/CustomCursor';
 import ChatBot from './components/ui/ChatBot';
+import SectionDivider from './components/ui/SectionDivider';
 import { ScrollReveal } from './components/ui/ScrollReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -41,31 +42,57 @@ function App() {
           >
             <Navbar />
             <main>
-              <Hero />
+              <div className="relative">
+                <Hero />
+                <SectionDivider type="curve" />
+              </div>
+              
               <ScrollReveal threshold={0.15}>
-                <About />
+                <div className="relative">
+                  <About />
+                  <SectionDivider type="tilt" reverse />
+                </div>
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
-                <Services />
+                <div className="relative">
+                  <Services />
+                  <SectionDivider type="wave" />
+                </div>
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
                 <PfeServices />
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
-                <Tech />
+                <div className="relative">
+                  <Tech />
+                  <SectionDivider type="tilt" />
+                </div>
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
                 <Projects />
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
-                <Reviews />
+                <div className="relative">
+                  <Reviews />
+                  <SectionDivider type="curve" reverse />
+                </div>
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
                 <Steps />
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
-                <Contact />
+                <div className="relative">
+                  <Contact />
+                </div>
               </ScrollReveal>
+
               <ScrollReveal threshold={0.15}>
                 <Map />
               </ScrollReveal>
