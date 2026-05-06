@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '../ui/ThemeToggle';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
+import Magnetic from '../ui/Magnetic';
 
 const Navbar: React.FC = () => {
   const { t } = useTranslation();
@@ -61,14 +62,16 @@ const Navbar: React.FC = () => {
           isScrolled ? 'shadow-2xl' : 'shadow-lg'
         }`}
       >
-        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 flex items-center justify-center shadow-[0_0_15px_hsla(var(--primary-glow),0.2)] group-hover:border-primary transition-all duration-300">
-            <span className="text-primary text-sm font-black font-display italic tracking-tighter">WH</span>
+        <Magnetic>
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 flex items-center justify-center shadow-[0_0_15px_hsla(var(--primary-glow),0.2)] group-hover:border-primary transition-all duration-300">
+              <span className="text-primary text-sm font-black font-display italic tracking-tighter">WH</span>
+            </div>
+            <span className="hidden sm:block text-lg font-bold tracking-tighter font-display uppercase">
+              W&H <span className="text-[var(--neon)] font-light">Agency</span>
+            </span>
           </div>
-          <span className="hidden sm:block text-lg font-bold tracking-tighter font-display uppercase">
-            W&H <span className="text-[var(--neon)] font-light">Agency</span>
-          </span>
-        </div>
+        </Magnetic>
 
         <div className="hidden lg:flex items-center gap-1 bg-muted/20 p-1 rounded-full">
           {navLinks.map((link) => {
@@ -98,9 +101,11 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-4">
           <LanguageSwitcher />
           <ThemeToggle />
-          <a href="#contact" className="btn-primary py-2 px-6 text-[10px] whitespace-nowrap font-bold uppercase tracking-widest">
-            {t('navbar.contact')}
-          </a>
+          <Magnetic>
+            <a href="#contact" className="btn-primary py-2 px-6 text-[10px] whitespace-nowrap font-bold uppercase tracking-widest">
+              {t('navbar.contact')}
+            </a>
+          </Magnetic>
         </div>
 
         <div className="md:hidden flex items-center gap-4">

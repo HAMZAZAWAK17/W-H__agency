@@ -100,19 +100,23 @@ export function Hero() {
             variants={itemVariants}
             className="mt-10 flex flex-wrap justify-center items-center gap-4"
           >
-            <Link
-              to="#contact"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] px-8 py-4 text-base font-semibold text-background shadow-neon transition-all hover:scale-[1.05] active:scale-95"
-            >
-              {t('hero.cta_start')}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="#projects"
-              className="bg-glass inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-white/10 hover:shadow-glow-soft border border-white/10"
-            >
-              {t('hero.cta_explore')}
-            </Link>
+            <Magnetic>
+              <Link
+                to="#contact"
+                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] px-8 py-4 text-base font-semibold text-background shadow-neon transition-all hover:scale-[1.05] active:scale-95"
+              >
+                {t('hero.cta_start')}
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link
+                to="#projects"
+                className="bg-glass inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-white/10 hover:shadow-glow-soft border border-white/10"
+              >
+                {t('hero.cta_explore')}
+              </Link>
+            </Magnetic>
           </motion.div>
 
           {/* Meta Info */}
