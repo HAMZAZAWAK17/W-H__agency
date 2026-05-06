@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { ArrowRight, Zap, Code2, Presentation, FileText, Palette, Terminal } from "lucide-react";
+import { ArrowRight, Zap, Code2, Presentation, FileText, Palette, Terminal, Database, Smartphone, Cpu, Layers } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import TextType from "../ui/TextType";
@@ -77,6 +77,22 @@ export function Hero() {
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent" />
         </motion.div>
 
+        {/* Database Icon */}
+        <motion.div 
+          style={{ x: floatX2, y: floatY3, rotate: 10 }}
+          className="absolute top-[15%] left-[25%] w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl hidden lg:flex items-center justify-center"
+        >
+          <Database className="w-6 h-6 text-white opacity-30" />
+        </motion.div>
+
+        {/* Smartphone Icon */}
+        <motion.div 
+          style={{ x: floatX3, y: floatY1, rotate: -10 }}
+          className="absolute top-[35%] right-[8%] w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl hidden lg:flex items-center justify-center"
+        >
+          <Smartphone className="w-8 h-8 text-[var(--neon)] opacity-40" />
+        </motion.div>
+
         {/* Design Icon */}
         <motion.div 
           style={{ x: floatX2, y: floatY2, rotate: 15 }}
@@ -84,6 +100,14 @@ export function Hero() {
         >
           <Palette className="w-12 h-12 text-[var(--electric)] opacity-60" />
           <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-[var(--neon)]/10 to-transparent" />
+        </motion.div>
+
+        {/* Cpu Icon */}
+        <motion.div 
+          style={{ x: floatX1, y: floatY2, rotate: 5 }}
+          className="absolute bottom-[35%] left-[8%] w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl hidden lg:flex items-center justify-center"
+        >
+          <Cpu className="w-6 h-6 text-[var(--electric)] opacity-30" />
         </motion.div>
 
         {/* Report Icon */}
@@ -102,6 +126,14 @@ export function Hero() {
         >
           <Presentation className="w-10 h-10 text-[var(--neon)] opacity-50" />
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent" />
+        </motion.div>
+
+        {/* Layers Icon */}
+        <motion.div 
+          style={{ x: floatX3, y: floatY2, rotate: 12 }}
+          className="absolute top-[40%] right-[25%] w-14 h-14 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-lg hidden lg:flex items-center justify-center"
+        >
+          <Layers className="w-5 h-5 text-white opacity-30" />
         </motion.div>
 
         {/* Terminal Icon (Small) */}
