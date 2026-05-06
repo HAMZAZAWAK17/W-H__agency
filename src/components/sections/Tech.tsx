@@ -88,7 +88,7 @@ export function Tech() {
   const { t } = useTranslation();
 
   return (
-    <section id="tech" className="relative py-24 sm:py-32 overflow-hidden bg-background">
+    <section id="tech" className="relative pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden bg-background">
       {/* Decorative gradients */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none -z-10">
         <div className="absolute top-1/4 -left-20 w-[400px] h-[400px] bg-[var(--neon)]/5 blur-[120px] rounded-full" />
