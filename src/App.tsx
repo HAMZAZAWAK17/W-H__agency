@@ -27,6 +27,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
+      <CustomCursor />
       <Loader />
       
       <AnimatePresence>
