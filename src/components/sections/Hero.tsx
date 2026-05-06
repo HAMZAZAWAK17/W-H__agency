@@ -111,6 +111,7 @@ export function Hero() {
         >
           <Terminal className="w-6 h-6 text-[var(--electric)] opacity-40" />
         </motion.div>
+      </div>
 
       {/* Video Background with Parallax Effect */}
       <motion.div 
