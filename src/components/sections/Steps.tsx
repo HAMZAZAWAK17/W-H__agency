@@ -117,7 +117,7 @@ export default function Steps() {
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="w-full lg:w-[38%] group"
                 >
-                  <div className="bg-glass relative overflow-hidden rounded-[2rem] p-5 sm:p-6 border border-foreground/10 dark:border-white/5 hover:border-[var(--neon)]/30 transition-all duration-500 shadow-lg">
+                  <div className="bg-glass relative overflow-hidden rounded-[2rem] p-5 sm:p-6 border-2 border-[var(--neon)]/10 dark:border-white/10 group-hover:border-[var(--neon)]/40 transition-all duration-500 shadow-lg">
                     <div className="absolute top-0 right-0 p-4 text-4xl font-black text-foreground/[0.03] dark:text-white/[0.03] group-hover:text-foreground/[0.06] transition-colors pointer-events-none">
                       {s.number}
                     </div>
