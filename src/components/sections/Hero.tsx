@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 import TextType from "../ui/TextType";
 import Magnetic from "../ui/Magnetic";
 
@@ -12,6 +13,25 @@ const Link = ({ to, children, className }: { to: string; children: React.ReactNo
 
 export function Hero() {
   const { t } = useTranslation();
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Spring physics for smooth movement
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      // Normalize to -1 to 1
+      mouseX.set((clientX / innerWidth) * 2 - 1);
+      mouseY.set((clientY / innerHeight) * 2 - 1);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,8 +56,55 @@ export function Hero() {
     },
   };
 
+  // Parallax transforms for background elements
+  const floatX1 = useTransform(springX, [-1, 1], [-40, 40]);
+  const floatY1 = useTransform(springY, [-1, 1], [-40, 40]);
+  const floatX2 = useTransform(springX, [-1, 1], [30, -30]);
+  const floatY2 = useTransform(springY, [-1, 1], [30, -30]);
+  const floatX3 = useTransform(springX, [-1, 1], [-60, 60]);
+  const floatY3 = useTransform(springY, [-1, 1], [60, -60]);
+
   return (
     <section className="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
+      {/* Parallax Floating Elements */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Glass Sphere 1 */}
+        <motion.div 
+          style={{ x: floatX1, y: floatY1 }}
+          className="absolute top-[20%] left-[10%] w-32 h-32 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl hidden lg:block"
+        >
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent" />
+        </motion.div>
+
+        {/* Glass Sphere 2 */}
+        <motion.div 
+          style={{ x: floatX2, y: floatY2 }}
+          className="absolute bottom-[25%] right-[12%] w-48 h-48 rounded-full bg-primary/5 backdrop-blur-xl border border-primary/20 shadow-2xl hidden lg:block"
+        >
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[var(--neon)]/10 to-transparent" />
+        </motion.div>
+
+        {/* Glass Cube/Diamond 3 */}
+        <motion.div 
+          style={{ x: floatX3, y: floatY3, rotate: 45 }}
+          className="absolute top-[15%] right-[20%] w-20 h-20 bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hidden lg:block"
+        >
+          <div className="absolute inset-0 bg-gradient-to-bl from-white/10 to-transparent" />
+        </motion.div>
+
+        {/* Small floating dots */}
+        <motion.div 
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[40%] right-[5%] w-4 h-4 rounded-full bg-[var(--neon)]/30 blur-sm"
+        />
+        <motion.div 
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-[30%] left-[5%] w-6 h-6 rounded-full bg-[var(--electric)]/20 blur-md"
+        />
+      </div>
+
       {/* Video Background with Parallax Effect */}
       <motion.div 
         initial={{ scale: 1.1, opacity: 0 }}
@@ -59,7 +126,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)]" />
       </motion.div>
 
-      <div className="mx-auto max-w-5xl px-4 text-center">
+      <div className="mx-auto max-w-5xl px-4 text-center relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
