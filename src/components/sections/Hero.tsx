@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Zap, Code2, Presentation, FileText, Palette, Terminal } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import TextType from "../ui/TextType";
@@ -68,42 +68,49 @@ export function Hero() {
     <section className="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
       {/* Parallax Floating Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Glass Sphere 1 */}
+        {/* Code Icon */}
         <motion.div 
-          style={{ x: floatX1, y: floatY1 }}
-          className="absolute top-[20%] left-[10%] w-32 h-32 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl hidden lg:block"
+          style={{ x: floatX1, y: floatY1, rotate: -15 }}
+          className="absolute top-[20%] left-[10%] w-24 h-24 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl hidden lg:flex items-center justify-center"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent" />
+          <Code2 className="w-10 h-10 text-[var(--neon)] opacity-60" />
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent" />
         </motion.div>
 
-        {/* Glass Sphere 2 */}
+        {/* Design Icon */}
         <motion.div 
-          style={{ x: floatX2, y: floatY2 }}
-          className="absolute bottom-[25%] right-[12%] w-48 h-48 rounded-full bg-primary/5 backdrop-blur-xl border border-primary/20 shadow-2xl hidden lg:block"
+          style={{ x: floatX2, y: floatY2, rotate: 15 }}
+          className="absolute bottom-[25%] right-[15%] w-28 h-28 rounded-[2rem] bg-primary/5 backdrop-blur-xl border border-primary/20 shadow-2xl hidden lg:flex items-center justify-center"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[var(--neon)]/10 to-transparent" />
+          <Palette className="w-12 h-12 text-[var(--electric)] opacity-60" />
+          <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-[var(--neon)]/10 to-transparent" />
         </motion.div>
 
-        {/* Glass Cube/Diamond 3 */}
+        {/* Report Icon */}
         <motion.div 
-          style={{ x: floatX3, y: floatY3, rotate: 45 }}
-          className="absolute top-[15%] right-[20%] w-20 h-20 bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hidden lg:block"
+          style={{ x: floatX3, y: floatY3, rotate: -10 }}
+          className="absolute top-[15%] right-[20%] w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl hidden lg:flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-bl from-white/10 to-transparent" />
+          <FileText className="w-8 h-8 text-white opacity-40" />
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-bl from-white/10 to-transparent" />
         </motion.div>
 
-        {/* Small floating dots */}
+        {/* Presentation Icon */}
         <motion.div 
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[40%] right-[5%] w-4 h-4 rounded-full bg-[var(--neon)]/30 blur-sm"
-        />
+          style={{ x: floatX1, y: floatY3, rotate: 10 }}
+          className="absolute bottom-[20%] left-[15%] w-24 h-24 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl hidden lg:flex items-center justify-center"
+        >
+          <Presentation className="w-10 h-10 text-[var(--neon)] opacity-50" />
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent" />
+        </motion.div>
+
+        {/* Terminal Icon (Small) */}
         <motion.div 
-          animate={{ y: [0, 20, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-[30%] left-[5%] w-6 h-6 rounded-full bg-[var(--electric)]/20 blur-md"
-        />
-      </div>
+          style={{ x: floatX2, y: floatY1, rotate: -5 }}
+          className="absolute top-[45%] left-[5%] w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-xl hidden lg:flex items-center justify-center"
+        >
+          <Terminal className="w-6 h-6 text-[var(--electric)] opacity-40" />
+        </motion.div>
 
       {/* Video Background with Parallax Effect */}
       <motion.div 
