@@ -12,6 +12,7 @@ import Contact from './components/sections/Contact';
 import Map from './components/sections/Map';
 import Footer from './components/sections/Footer';
 import Loader from './components/ui/Loader';
+import CustomCursor from './components/ui/CustomCursor';
 import { ScrollReveal } from './components/ui/ScrollReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 
