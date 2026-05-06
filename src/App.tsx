@@ -13,6 +13,7 @@ import Map from './components/sections/Map';
 import Footer from './components/sections/Footer';
 import Loader from './components/ui/Loader';
 import CustomCursor from './components/ui/CustomCursor';
+import ChatBot from './components/ui/ChatBot';
 import { ScrollReveal } from './components/ui/ScrollReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -28,6 +29,7 @@ function App() {
   return (
     <div className="relative min-h-screen">
       <CustomCursor />
+      <ChatBot />
       <Loader />
       
       <AnimatePresence>
