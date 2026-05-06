@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import TextType from "../ui/TextType";
+import Magnetic from "../ui/Magnetic";
 
 import heroVideo from "../../assets/14519250_3840_2160_25fps.mp4";
 
