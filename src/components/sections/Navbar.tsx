@@ -57,9 +57,15 @@ const Navbar: React.FC = () => {
     <div className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 py-4 md:py-6">
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className={`w-full max-w-6xl flex items-center justify-between px-6 py-2 rounded-full bg-glass backdrop-blur-xl transition-all duration-500 ${
-          isScrolled ? 'shadow-2xl' : 'shadow-lg'
+        animate={{ 
+          y: 0, 
+          opacity: 1,
+          maxWidth: isScrolled ? "600px" : "1152px",
+          height: isScrolled ? "60px" : "72px"
+        }}
+        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+        className={`w-full flex items-center justify-between px-6 rounded-full bg-glass backdrop-blur-xl border border-white/10 transition-all duration-500 ${
+          isScrolled ? 'shadow-[0_20px_50px_rgba(0,0,0,0.3)] shadow-[var(--neon)]/10 ring-1 ring-white/10' : 'shadow-lg'
         }`}
       >
         <Magnetic>
@@ -67,13 +73,19 @@ const Navbar: React.FC = () => {
             <div className="px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 flex items-center justify-center shadow-[0_0_15px_hsla(var(--primary-glow),0.2)] group-hover:border-primary transition-all duration-300">
               <span className="text-primary text-sm font-black font-display italic tracking-tighter">WH</span>
             </div>
-            <span className="hidden sm:block text-lg font-bold tracking-tighter font-display uppercase">
-              W&H <span className="text-[var(--neon)] font-light">Agency</span>
-            </span>
+            {!isScrolled && (
+              <motion.span 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="hidden sm:block text-base font-bold tracking-tighter font-display uppercase"
+              >
+                W&H <span className="text-[var(--neon)] font-light">Agency</span>
+              </motion.span>
+            )}
           </div>
         </Magnetic>
 
-        <div className="hidden lg:flex items-center gap-1 bg-muted/20 p-1 rounded-full">
+        <div className={`hidden lg:flex items-center gap-1 bg-muted/20 p-1 rounded-full ${isScrolled ? 'scale-90 origin-center' : ''}`}>
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -98,14 +110,26 @@ const Navbar: React.FC = () => {
         </div>
 
 
-        <div className="hidden md:flex items-center gap-4">
-          <LanguageSwitcher />
-          <ThemeToggle />
-          <Magnetic>
-            <a href="#contact" className="btn-primary py-2 px-6 text-[10px] whitespace-nowrap font-bold uppercase tracking-widest">
-              {t('navbar.contact')}
-            </a>
-          </Magnetic>
+        <div className="flex items-center gap-2 md:gap-4 shrink-0">
+          {!isScrolled && (
+            <div className="hidden md:flex items-center gap-4">
+              <LanguageSwitcher />
+              <ThemeToggle />
+              <Magnetic>
+                <a href="#contact" className="btn-primary py-1.5 px-5 text-[9px] whitespace-nowrap font-bold uppercase tracking-widest">
+                  {t('navbar.contact')}
+                </a>
+              </Magnetic>
+            </div>
+          )}
+          {isScrolled && (
+            <div className="flex items-center gap-2">
+               <ThemeToggle />
+               <a href="#contact" className="h-10 w-10 flex items-center justify-center rounded-full bg-[var(--neon)] text-background shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:scale-110 transition-transform">
+                  <Menu size={18} />
+               </a>
+            </div>
+          )}
         </div>
 
         <div className="md:hidden flex items-center gap-4">
