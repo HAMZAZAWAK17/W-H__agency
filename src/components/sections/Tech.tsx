@@ -1,84 +1,41 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import powerbiImg from '../../assets/PowerBi.png';
-import powerpointImg from '../../assets/PowerPoint.png';
+import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  Globe, 
+  Layers, 
+  Smartphone, 
+  Code2, 
+  Terminal, 
+  Palette, 
+  Database, 
+  Cpu 
+} from "lucide-react";
+
 import javaImg from '../../assets/javalogo.png';
 import canvaImg from '../../assets/canvalogo.png';
+import powerbiImg from '../../assets/PowerBi.png';
+import powerpointImg from '../../assets/PowerPoint.png';
 
-type Tech = {
-  name: string;
-  slug: string;
-  category: "Frontend" | "Backend" | "Mobile" | "Design" | "Database" | "Business";
-  color?: string;
-  image?: string;
-  featured?: boolean;
-};
-
-const techs: Tech[] = [
-  { name: "Next.js", slug: "nextdotjs", category: "Frontend", color: "ffffff", featured: true },
-  { name: "React", slug: "react", category: "Frontend", color: "61DAFB", featured: true },
-  { name: "Flutter", slug: "flutter", category: "Mobile", color: "02569B", featured: true },
-  { name: "TypeScript", slug: "typescript", category: "Frontend", color: "3178C6" },
-  { name: "Tailwind CSS", slug: "tailwindcss", category: "Frontend", color: "06B6D4" },
-  { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20", featured: true },
-  { name: "SpringBoot", slug: "springboot", category: "Backend", color: "6DB33F" },
-  { name: "Node.js", slug: "nodedotjs", category: "Backend", color: "339933" },
-  { name: "Supabase", slug: "supabase", category: "Database", color: "3ECF8E" },
-  { name: "Figma", slug: "figma", category: "Design", color: "F24E1E", featured: true },
-  { name: "PowerBI", slug: "powerbi", category: "Business", color: "F2C811" },
-  { name: "Java", slug: "java", category: "Backend", color: "ED8B00", image: javaImg },
-  { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
-  { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
-  { name: "Canva", slug: "canva", category: "Design", color: "00C4CC", image: canvaImg },
-  { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Business", color: "B7472A", image: powerpointImg },
+const technologies = [
+  { name: "Next.js", icon: Globe, category: "Frontend", color: "from-white/20 to-white/5", slug: "nextdotjs" },
+  { name: "React", icon: Layers, category: "Frontend", color: "from-blue-500/20 to-cyan-500/5", slug: "react" },
+  { name: "Flutter", icon: Smartphone, category: "Mobile", color: "from-blue-400/20 to-indigo-400/5", slug: "flutter" },
+  { name: "Laravel", icon: Code2, category: "Backend", color: "from-red-500/20 to-orange-500/5", slug: "laravel" },
+  { name: "TypeScript", icon: Terminal, category: "Frontend", color: "from-blue-600/20 to-blue-400/5", slug: "typescript" },
+  { name: "Tailwind CSS", icon: Palette, category: "Frontend", color: "from-cyan-400/20 to-teal-400/5", slug: "tailwindcss" },
+  { name: "PostgreSQL", icon: Database, category: "Database", color: "from-indigo-400/20 to-blue-400/5", slug: "postgresql" },
+  { name: "Figma", icon: Cpu, category: "Design", color: "from-purple-500/20 to-pink-500/5", slug: "figma" },
+  { name: "Node.js", icon: Terminal, category: "Backend", color: "from-emerald-500/20 to-green-500/5", slug: "nodedotjs" },
+  { name: "Java", image: javaImg, category: "Backend", color: "from-orange-500/20 to-yellow-500/5", name_alt: "java" },
+  { name: "Canva", image: canvaImg, category: "Design", color: "from-cyan-500/20 to-blue-500/5", name_alt: "canva" },
+  { name: "PowerBI", image: powerbiImg, category: "Business", color: "from-yellow-500/20 to-orange-500/5", name_alt: "powerbi" },
+  { name: "PowerPoint", image: powerpointImg, category: "Business", color: "from-red-600/20 to-red-400/5", name_alt: "powerpoint" },
 ];
 
-function TechCard({ name, slug, category, color, image, featured }: Tech) {
-  const { t } = useTranslation();
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5 }}
-      className={`group relative overflow-hidden rounded-[2.5rem] bg-white/5 dark:bg-[#0b0e14]/50 border border-white/10 dark:border-white/5 hover:border-[var(--neon)]/30 transition-all duration-500 p-6 flex flex-col justify-between ${
-        featured ? 'md:col-span-2 md:row-span-2 min-h-[300px]' : 'md:col-span-1 md:row-span-1 min-h-[160px]'
-      }`}
-    >
-      <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-        style={{ background: `radial-gradient(circle at center, #${color}, transparent 70%)` }}
-      />
-      
-      <div className="relative z-10 flex items-start justify-between">
-        <div className={`rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors ${
-          featured ? 'w-16 h-16 sm:w-20 sm:h-20' : 'w-12 h-12'
-        }`}>
-          <img 
-            src={image || `https://cdn.simpleicons.org/${slug}/${color || '00f2ff'}`} 
-            alt={name}
-            className={`object-contain transition-transform duration-500 group-hover:scale-110 ${
-              featured ? 'w-10 h-10 sm:w-12 sm:h-12' : 'w-7 h-7'
-            }`}
-          />
-        </div>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/40">
-          {t(`tech.categories.${category.toLowerCase()}`)}
-        </span>
-      </div>
-
-      <div className="relative z-10 mt-auto">
-        <h3 className={`font-display font-bold text-foreground group-hover:text-[var(--neon)] transition-colors ${
-          featured ? 'text-2xl sm:text-3xl' : 'text-lg'
-        }`}>
-          {name}
-        </h3>
-        {featured && (
-          <p className="mt-2 text-sm text-muted-foreground/80 line-clamp-2 max-w-[200px]">
-            {t(`services.${slug === 'nextdotjs' ? 'web' : slug === 'flutter' ? 'mobile' : slug === 'figma' ? 'design' : 'custom'}.description`)}
-          </p>
-export function Tech() {
+export default function Tech() {
   const { t } = useTranslation();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
@@ -167,7 +124,11 @@ export function Tech() {
                 <div className="relative h-full p-8 flex flex-col">
                   <div className="flex items-center justify-between mb-8">
                     <div className="h-14 w-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[var(--neon)] group-hover:scale-110 transition-transform duration-500">
-                      <tech.icon size={28} strokeWidth={1.5} />
+                      {tech.image ? (
+                        <img src={tech.image} alt={tech.name} className="w-8 h-8 object-contain" />
+                      ) : (
+                        <tech.icon size={28} strokeWidth={1.5} />
+                      )}
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 border border-white/10 px-3 py-1 rounded-full">
                       {tech.category}
@@ -191,5 +152,3 @@ export function Tech() {
     </section>
   );
 }
-
-export default Tech;
