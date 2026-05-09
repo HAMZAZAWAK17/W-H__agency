@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import PowerBiIcon from '../../assets/PowerBi.png';
 import PowerPointIcon from '../../assets/PowerPoint.png';
 import CanvaIcon from '../../assets/canvalogo.png';
+import CssIcon from '../../assets/csslogo.png';
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { 
@@ -20,7 +21,7 @@ import {
 
 const technologies = [
   { name: "HTML5", slug: "html5", category: "Frontend" },
-  { name: "CSS3", slug: "css3", category: "Frontend" },
+  { name: "CSS3", src: CssIcon, category: "Frontend" },
   { name: "JavaScript", slug: "javascript", category: "Frontend" },
   { name: "Bootstrap", slug: "bootstrap", category: "Frontend" },
   { name: "Tailwind", slug: "tailwindcss", category: "Frontend" },
