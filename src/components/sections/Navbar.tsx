@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '../ui/ThemeToggle';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
@@ -117,16 +117,25 @@ const Navbar: React.FC = () => {
             <ThemeToggle />
           </div>
           
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             {isScrolled ? (
-              <Magnetic>
+              <div className="flex items-center gap-2">
+                <Magnetic>
+                  <a 
+                    href="#contact"
+                    className="h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-full bg-primary text-background shadow-[0_0_15px_hsla(var(--primary-glow),0.4)] hover:scale-110 transition-all cursor-pointer"
+                    title={t('navbar.contact')}
+                  >
+                    <MessageCircle size={16} />
+                  </a>
+                </Magnetic>
                 <button 
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-full bg-primary text-background shadow-[0_0_15px_hsla(var(--primary-glow),0.4)] hover:scale-110 transition-all"
+                  className="h-8 w-8 sm:h-9 sm:w-9 flex items-center justify-center rounded-full bg-white/10 dark:bg-white/5 text-foreground hover:bg-white/20 transition-all lg:hidden"
                 >
                   {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
                 </button>
-              </Magnetic>
+              </div>
             ) : (
               <>
                 <Magnetic>
@@ -134,7 +143,10 @@ const Navbar: React.FC = () => {
                     {t('navbar.contact')}
                   </a>
                 </Magnetic>
-                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 rounded-full bg-muted/50 transition-colors hover:bg-muted">
+                <button 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+                  className="lg:hidden p-2 rounded-full bg-muted/50 transition-colors hover:bg-muted"
+                >
                   {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
               </>
