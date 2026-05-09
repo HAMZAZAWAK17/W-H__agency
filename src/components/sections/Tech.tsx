@@ -32,6 +32,12 @@ const technologies = [
   { name: "Express.js", slug: "express", category: "Backend", color: "000000" },
   { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
   { name: "Spring Boot", slug: "springboot", category: "Backend", color: "6DB33F" },
+  { name: "Python", slug: "python", category: "Backend", color: "3776AB" },
+  { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
+  { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
+  { name: "Canva", slug: "canva", category: "Design", color: "00C4CC" },
+  { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Presentation", color: "B7472A" },
+  { name: "Power BI", slug: "powerbi", category: "Business", color: "F2C811" },
 ];
 
 export default function Tech() {
