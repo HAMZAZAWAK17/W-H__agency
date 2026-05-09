@@ -1,4 +1,7 @@
 import { useRef, useState, useEffect } from "react";
+import PowerBiIcon from '../../assets/PowerBi.png';
+import PowerPointIcon from '../../assets/PowerPoint.png';
+import CanvaIcon from '../../assets/canvalogo.png';
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { 
@@ -16,28 +19,28 @@ import {
 
 
 const technologies = [
-  { name: "HTML5", slug: "html5", category: "Frontend", color: "E34F26" },
-  { name: "CSS3", slug: "css3", category: "Frontend", color: "1572B6" },
-  { name: "JavaScript", slug: "javascript", category: "Frontend", color: "F7DF1E" },
-  { name: "Bootstrap", slug: "bootstrap", category: "Frontend", color: "7952B3" },
-  { name: "Tailwind", slug: "tailwindcss", category: "Frontend", color: "06B6D4" },
-  { name: "ReactJS", slug: "react", category: "Frontend", color: "61DAFB" },
-  { name: "Angular", slug: "angular", category: "Frontend", color: "DD0031" },
-  { name: "React Native", slug: "react", category: "Mobile", color: "61DAFB" },
-  { name: "Expo", slug: "expo", category: "Mobile", color: "000020" },
-  { name: "Flutter", slug: "flutter", category: "Mobile", color: "02569B" },
-  { name: "Ionic", slug: "ionic", category: "Mobile", color: "3880FF" },
-  { name: "PHP", slug: "php", category: "Backend", color: "777BB4" },
-  { name: "Node.js", slug: "nodedotjs", category: "Backend", color: "339933" },
-  { name: "Express.js", slug: "express", category: "Backend", color: "000000" },
-  { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
-  { name: "Spring Boot", slug: "springboot", category: "Backend", color: "6DB33F" },
-  { name: "Python", slug: "python", category: "Backend", color: "3776AB" },
-  { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
-  { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
-  { name: "Canva", slug: "canva", category: "Design", color: "00C4CC" },
-  { name: "PowerPoint", slug: "microsoftpowerpoint", category: "Presentation", color: "B7472A" },
-  { name: "Power BI", slug: "powerbi", category: "Business", color: "F2C811" },
+  { name: "HTML5", slug: "html5", category: "Frontend" },
+  { name: "CSS3", slug: "css3", category: "Frontend" },
+  { name: "JavaScript", slug: "javascript", category: "Frontend" },
+  { name: "Bootstrap", slug: "bootstrap", category: "Frontend" },
+  { name: "Tailwind", slug: "tailwindcss", category: "Frontend" },
+  { name: "ReactJS", slug: "react", category: "Frontend" },
+  { name: "Angular", slug: "angular", category: "Frontend" },
+  { name: "React Native", slug: "react", category: "Mobile" },
+  { name: "Expo", slug: "expo", category: "Mobile" },
+  { name: "Flutter", slug: "flutter", category: "Mobile" },
+  { name: "Ionic", slug: "ionic", category: "Mobile" },
+  { name: "PHP", slug: "php", category: "Backend" },
+  { name: "Node.js", slug: "nodedotjs", category: "Backend" },
+  { name: "Express.js", slug: "express", category: "Backend" },
+  { name: "Laravel", slug: "laravel", category: "Backend" },
+  { name: "Spring Boot", slug: "springboot", category: "Backend" },
+  { name: "Python", slug: "python", category: "Backend" },
+  { name: "MySQL", slug: "mysql", category: "Database" },
+  { name: "MongoDB", slug: "mongodb", category: "Database" },
+  { name: "Canva", src: CanvaIcon, category: "Design" },
+  { name: "PowerPoint", src: PowerPointIcon, category: "Presentation" },
+  { name: "Power BI", src: PowerBiIcon, category: "Business" },
 ];
 
 export default function Tech() {
@@ -104,7 +107,7 @@ export default function Tech() {
                   
                   <div className="relative h-20 w-20 sm:h-24 sm:w-24 flex items-center justify-center rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-[var(--neon)]/30 transition-all">
                     <img 
-                      src={`https://cdn.simpleicons.org/${tech.slug}`}
+                      src={tech.src || `https://cdn.simpleicons.org/${tech.slug}`}
                       alt={tech.name}
                       className="h-10 w-10 sm:h-12 sm:w-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
