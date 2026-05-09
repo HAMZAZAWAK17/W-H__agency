@@ -16,20 +16,22 @@ import {
 
 
 const technologies = [
-  { name: "Next.js", slug: "nextdotjs", category: "Frontend", color: "ffffff" },
-  { name: "React", slug: "react", category: "Frontend", color: "61DAFB" },
+  { name: "HTML5", slug: "html5", category: "Frontend", color: "E34F26" },
+  { name: "CSS3", slug: "css3", category: "Frontend", color: "1572B6" },
+  { name: "JavaScript", slug: "javascript", category: "Frontend", color: "F7DF1E" },
+  { name: "Bootstrap", slug: "bootstrap", category: "Frontend", color: "7952B3" },
+  { name: "Tailwind", slug: "tailwindcss", category: "Frontend", color: "06B6D4" },
+  { name: "ReactJS", slug: "react", category: "Frontend", color: "61DAFB" },
+  { name: "Angular", slug: "angular", category: "Frontend", color: "DD0031" },
+  { name: "React Native", slug: "react", category: "Mobile", color: "61DAFB" },
+  { name: "Expo", slug: "expo", category: "Mobile", color: "000020" },
   { name: "Flutter", slug: "flutter", category: "Mobile", color: "02569B" },
-  { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
-  { name: "TypeScript", slug: "typescript", category: "Frontend", color: "3178C6" },
-  { name: "Tailwind CSS", slug: "tailwindcss", category: "Frontend", color: "06B6D4" },
-  { name: "PostgreSQL", slug: "postgresql", category: "Database", color: "4479A1" },
-  { name: "Figma", slug: "figma", category: "Design", color: "F24E1E" },
+  { name: "Ionic", slug: "ionic", category: "Mobile", color: "3880FF" },
+  { name: "PHP", slug: "php", category: "Backend", color: "777BB4" },
   { name: "Node.js", slug: "nodedotjs", category: "Backend", color: "339933" },
-  { name: "Docker", slug: "docker", category: "DevOps", color: "2496ED" },
-  { name: "Firebase", slug: "firebase", category: "Backend", color: "FFCA28" },
-  { name: "Vite", slug: "vite", category: "Frontend", color: "646CFF" },
-  { name: "MySQL", slug: "mysql", category: "Database", color: "4479A1" },
-  { name: "MongoDB", slug: "mongodb", category: "Database", color: "47A248" },
+  { name: "Express.js", slug: "express", category: "Backend", color: "000000" },
+  { name: "Laravel", slug: "laravel", category: "Backend", color: "FF2D20" },
+  { name: "Spring Boot", slug: "springboot", category: "Backend", color: "6DB33F" },
 ];
 
 export default function Tech() {
