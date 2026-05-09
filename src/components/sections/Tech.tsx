@@ -104,7 +104,7 @@ export default function Tech() {
                   
                   <div className="relative h-20 w-20 sm:h-24 sm:w-24 flex items-center justify-center rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group-hover:border-[var(--neon)]/30 transition-all">
                     <img 
-                      src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
+                      src={`https://cdn.simpleicons.org/${tech.slug}`}
                       alt={tech.name}
                       className="h-10 w-10 sm:h-12 sm:w-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
