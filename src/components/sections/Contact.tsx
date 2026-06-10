@@ -108,7 +108,21 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* ── Background personnalisé Contact ── */}
+      {/* Warm violet orbe gauche */}
+      <div className="absolute -top-10 -left-20 w-[500px] h-[500px] rounded-full bg-[var(--violet-glow)] opacity-[0.05] blur-[130px] pointer-events-none" />
+      {/* Neon orbe droite */}
+      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[120px] pointer-events-none" />
+      {/* Centre horizontal glow line */}
+      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--violet-glow)]/15 to-transparent pointer-events-none" />
+      {/* Subtle 45° grid */}
+      <div
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(-45deg, rgba(189,0,255,0.5) 0px, rgba(189,0,255,0.5) 1px, transparent 1px, transparent 50px)',
+        }}
+      />
       <div className="container mx-auto px-6">
         <SectionHeader
           title={t('contact.subtitle')}

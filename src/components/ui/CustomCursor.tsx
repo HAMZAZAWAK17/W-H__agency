@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
-  const [isHovering, setIsHovering] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  // Custom cursor removed by user request
+  return null;
+};
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
