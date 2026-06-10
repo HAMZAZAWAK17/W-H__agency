@@ -1,19 +1,12 @@
-import { motion, useInView, useAnimation } from "framer-motion";
-import { useEffect, useRef, ReactNode } from "react";
+import { motion, useInView, useAnimation, type Variants, type Transition } from "framer-motion";
+import { useEffect, useRef, type ReactNode } from "react";
 import { usePrefersReducedMotion } from "../../lib/useAnimations";
 
 interface ScrollRevealProps {
   children: ReactNode;
   width?: "fit-content" | "100%";
-  variants?: {
-    hidden: Record<string, unknown>;
-    visible: Record<string, unknown>;
-  };
-  transition?: {
-    duration?: number;
-    delay?: number;
-    ease?: string | number[];
-  };
+  variants?: Variants;
+  transition?: Transition;
   threshold?: number;
   once?: boolean;
 }
@@ -27,7 +20,7 @@ export const ScrollReveal = ({
   },
   transition = {
     duration: 0.9,
-    ease: [0.16, 1, 0.3, 1] as number[],
+    ease: [0.16, 1, 0.3, 1] as const,
   },
   threshold = 0.2,
   once = true,

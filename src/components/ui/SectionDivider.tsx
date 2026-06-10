@@ -1,9 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 interface SectionDividerProps {
   type: 'curve' | 'tilt' | 'spike' | 'wave';
-  color?: string;
   position?: 'top' | 'bottom';
   className?: string;
   reverse?: boolean;
@@ -11,7 +9,6 @@ interface SectionDividerProps {
 
 export const SectionDivider: React.FC<SectionDividerProps> = ({ 
   type, 
-  color = "bg-background", 
   position = 'bottom',
   className = "",
   reverse = false
