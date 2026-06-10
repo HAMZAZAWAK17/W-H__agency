@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { useState, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ArrowUpRight, Smartphone, Globe, LayoutDashboard,
@@ -62,155 +62,146 @@ type Project = {
   description: string;
   tags: string[];
   accent: string;
-  captures?: string[]; // Array of image URLs/paths
+  captures?: string[];
 };
 
 const projects: Project[] = [
-  {
-    icon: LayoutDashboard,
-    title: "PCM",
-    category: "Accounting System",
-    type: "Web",
-    description: "Comprehensive accounting management system featuring guided entry, automatic financial statements, and full PCM integration.",
-    tags: ["React", "Spring Boot", "MySQL", "Finance"],
-    accent: "from-[var(--neon)]/30 to-[var(--electric)]/10",
-    captures: [
-      valeryonCover, pcm1, pcm2, pcm3, pcm4, pcm5, pcm6, pcm7, pcm8
-    ]
-  },
-  {
-    icon: ShoppingBag,
-    title: "Nova Store",
-    category: "E-commerce",
-    type: "Web",
-    description: "Modern headless storefront with smooth checkout, animated product galleries, and CMS.",
-    tags: ["Next.js", "Stripe", "Tailwind"],
-    accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
-    captures: [
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200",
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200"
-    ]
-  },
-  {
-    icon: LayoutDashboard,
-    title: "OpsBoard",
-    category: "SaaS Dashboard",
-    type: "Web",
-    description: "Real-time analytics dashboard for SMBs — KPIs, team management, and exportable reports.",
-    tags: ["React", "Supabase", "Charts"],
-    accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
-    captures: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
-    ]
-  },
-  {
-    icon: Smartphone,
-    title: "Gastronome App",
-    category: "Restaurant App",
-    type: "Mobile",
-    description: "A premium mobile application built with Flutter for Gastronome, allowing users to browse all dishes and menus seamlessly.",
-    tags: ["Flutter", "Firebase", "UI/UX"],
-    accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
-    captures: [
-      gastronomeCover, gastronomeMob1, gastronomeMob2, gastronomeMob3, gastronomeMob4, gastronomeMob5
-    ]
-  },
-  {
-    icon: GraduationCap,
-    title: "EduTrack",
-    category: "PFE Project",
-    type: "Mobile",
-    description: "Final-year project: an AI-powered student progress tracker with smart recommendations.",
-    tags: ["Python", "FastAPI", "ML"],
-    accent: "from-[var(--electric)]/30 to-[var(--neon)]/10",
-    captures: [
-      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1200",
-      "https://images.unsplash.com/photo-1523240715639-99a808406742?q=80&w=1200"
-    ]
-  },
-  {
-    icon: Sparkles,
-    title: "Pitch Deck Pro",
-    category: "Branding",
-    type: "UI",
-    description: "Investor-ready pitch deck and brand identity for an early-stage AI startup.",
-    tags: ["Figma", "Slides", "Branding"],
-    accent: "from-[var(--violet-glow)]/30 to-[var(--electric)]/10",
-    captures: [
-      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200",
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200"
-    ]
-  },
-  {
-    icon: Activity,
-    title: "Dental Clinic",
-    category: "Website",
-    type: "Web",
-    description: "A modern and responsive website for a dental clinic, featuring appointment scheduling and service showcases.",
-    tags: ["React", "Tailwind", "Healthcare"],
-    accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
-    captures: [
-      responsiveMockup, dentaire1, dentaire2, dentaire3, dentaire4, dentaire5
-    ]
-  },
-  {
-    icon: GraduationCap,
-    title: "EDUZEN",
-    category: "Training Platform",
-    type: "Web",
-    description: "Professional training management platform simplifying the entire educational workflow.",
-    tags: ["React.js", "Spring Boot", "MySQL"],
-    accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
-    captures: [
-      eduzenCover, eduzen2, eduzen1, eduzen3, eduzen4, eduzen5, eduzen6, eduzen7, eduzen8
-    ]
-  },
-  {
-    icon: Globe,
-    title: "ESTEM SUP",
-    category: "School Management",
-    type: "Web",
-    description: "Comprehensive school management system for tracking students, schedules, assignments, and attendance.",
-    tags: ["React", "Spring Boot", "MySQL"],
-    accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10",
-    captures: [
-      school1, school2, school3, school4, school5, school6, school7
-    ]
-  },
-  {
-    icon: Sparkles,
-    title: "Valeryon",
-    category: "Logo Design",
-    type: "Logo",
-    description: "Premium and elegant logo design for Valeryon.",
-    tags: ["Branding", "Vector"],
-    accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10",
-    captures: [logo4, valeryonLogo]
-  },
-  {
-    icon: Sparkles,
-    title: "Gastronome",
-    category: "Logo Design",
-    type: "Logo",
-    description: "Creative and modern logo design for Gastronome.",
-    tags: ["Branding", "Vector"],
-    accent: "from-[var(--neon)]/30 to-[var(--electric)]/10",
-    captures: [logo2, gastronomeLogo]
-  },
-  {
-    icon: Sparkles,
-    title: "Gastronome 2",
-    category: "Logo Design",
-    type: "Logo",
-    description: "Alternative logo concept for Gastronome.",
-    tags: ["Branding", "Vector"],
-    accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10",
-    captures: [logo3, gastronomeLogo2]
-  },
+  { icon: LayoutDashboard, title: "PCM", category: "Accounting System", type: "Web", description: "Comprehensive accounting management system featuring guided entry, automatic financial statements, and full PCM integration.", tags: ["React", "Spring Boot", "MySQL", "Finance"], accent: "from-[var(--neon)]/30 to-[var(--electric)]/10", captures: [valeryonCover, pcm1, pcm2, pcm3, pcm4, pcm5, pcm6, pcm7, pcm8] },
+  { icon: ShoppingBag, title: "Nova Store", category: "E-commerce", type: "Web", description: "Modern headless storefront with smooth checkout, animated product galleries, and CMS.", tags: ["Next.js", "Stripe", "Tailwind"], accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10", captures: ["https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200", "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200"] },
+  { icon: LayoutDashboard, title: "OpsBoard", category: "SaaS Dashboard", type: "Web", description: "Real-time analytics dashboard for SMBs — KPIs, team management, and exportable reports.", tags: ["React", "Supabase", "Charts"], accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10", captures: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200", "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"] },
+  { icon: Smartphone, title: "Gastronome App", category: "Restaurant App", type: "Mobile", description: "A premium mobile application built with Flutter for Gastronome, allowing users to browse all dishes and menus seamlessly.", tags: ["Flutter", "Firebase", "UI/UX"], accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10", captures: [gastronomeCover, gastronomeMob1, gastronomeMob2, gastronomeMob3, gastronomeMob4, gastronomeMob5] },
+  { icon: GraduationCap, title: "EduTrack", category: "PFE Project", type: "Mobile", description: "Final-year project: an AI-powered student progress tracker with smart recommendations.", tags: ["Python", "FastAPI", "ML"], accent: "from-[var(--electric)]/30 to-[var(--neon)]/10", captures: ["https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1200", "https://images.unsplash.com/photo-1523240715639-99a808406742?q=80&w=1200"] },
+  { icon: Sparkles, title: "Pitch Deck Pro", category: "Branding", type: "UI", description: "Investor-ready pitch deck and brand identity for an early-stage AI startup.", tags: ["Figma", "Slides", "Branding"], accent: "from-[var(--violet-glow)]/30 to-[var(--electric)]/10", captures: ["https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200", "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200"] },
+  { icon: Activity, title: "Dental Clinic", category: "Website", type: "Web", description: "A modern and responsive website for a dental clinic, featuring appointment scheduling and service showcases.", tags: ["React", "Tailwind", "Healthcare"], accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10", captures: [responsiveMockup, dentaire1, dentaire2, dentaire3, dentaire4, dentaire5] },
+  { icon: GraduationCap, title: "EDUZEN", category: "Training Platform", type: "Web", description: "Professional training management platform simplifying the entire educational workflow.", tags: ["React.js", "Spring Boot", "MySQL"], accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10", captures: [eduzenCover, eduzen2, eduzen1, eduzen3, eduzen4, eduzen5, eduzen6, eduzen7, eduzen8] },
+  { icon: Globe, title: "ESTEM SUP", category: "School Management", type: "Web", description: "Comprehensive school management system for tracking students, schedules, assignments, and attendance.", tags: ["React", "Spring Boot", "MySQL"], accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10", captures: [school1, school2, school3, school4, school5, school6, school7] },
+  { icon: Sparkles, title: "Valeryon", category: "Logo Design", type: "Logo", description: "Premium and elegant logo design for Valeryon.", tags: ["Branding", "Vector"], accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10", captures: [logo4, valeryonLogo] },
+  { icon: Sparkles, title: "Gastronome", category: "Logo Design", type: "Logo", description: "Creative and modern logo design for Gastronome.", tags: ["Branding", "Vector"], accent: "from-[var(--neon)]/30 to-[var(--electric)]/10", captures: [logo2, gastronomeLogo] },
+  { icon: Sparkles, title: "Gastronome 2", category: "Logo Design", type: "Logo", description: "Alternative logo concept for Gastronome.", tags: ["Branding", "Vector"], accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10", captures: [logo3, gastronomeLogo2] },
 ];
 
 const filters: Filter[] = ["All", "Web", "Mobile", "UI", "Logo"];
+
+// Card with mouse tilt and cursor glow
+function ProjectCard({
+  p,
+  i,
+  onClick,
+}: {
+  p: Project;
+  i: number;
+  onClick: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const glowX = useMotionValue(50);
+  const glowY = useMotionValue(50);
+
+  const springCfg = { damping: 22, stiffness: 180 };
+  const springRotateX = useSpring(rotateX, springCfg);
+  const springRotateY = useSpring(rotateY, springCfg);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    rotateX.set(-dy * 4);
+    rotateY.set(dx * 4);
+    glowX.set(((e.clientX - rect.left) / rect.width) * 100);
+    glowY.set(((e.clientY - rect.top) / rect.height) * 100);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    rotateX.set(0);
+    rotateY.set(0);
+  }, []);
+
+  const Icon = p.icon;
+
+  return (
+    <motion.article
+      layout
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.93 }}
+      transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      ref={ref}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX: springRotateX,
+        rotateY: springRotateY,
+        transformPerspective: 900,
+        transformStyle: "preserve-3d",
+      }}
+      className="bg-glass glow-border group relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-[0_25px_50px_rgba(0,242,255,0.08)] cursor-pointer"
+      whileHover={{ y: -6 }}
+    >
+      {/* Cursor-following glow */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(circle at ${glowX.get()}% ${glowY.get()}%, rgba(0,242,255,0.06) 0%, transparent 60%)`,
+        }}
+      />
+
+      {/* Image header */}
+      <div className={`relative h-48 overflow-hidden bg-gradient-to-br ${p.accent}`}>
+        {p.captures && p.captures.length > 0 ? (
+          <img
+            src={p.captures[0]}
+            alt={p.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 grid-overlay opacity-40" />
+            <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[var(--neon)]/20 blur-3xl transition-all duration-500 group-hover:scale-125" />
+            <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-[var(--violet-glow)]/20 blur-3xl" />
+            <div className="relative flex h-full items-center justify-center">
+              <div className="bg-glass flex h-16 w-16 items-center justify-center rounded-2xl shadow-glow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <Icon className="h-7 w-7 text-[var(--neon)]" strokeWidth={1.5} />
+              </div>
+            </div>
+          </>
+        )}
+        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+        <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full border border-white/10 bg-background/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--neon)] backdrop-blur z-10">
+          {p.category}
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="p-6">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-display text-lg font-semibold tracking-tight">{p.title}</h3>
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
+
+        {/* Tags — slide up on hover */}
+        <div className="mt-4 flex flex-wrap gap-1.5 overflow-hidden">
+          {p.tags.map((tag, ti) => (
+            <motion.span
+              key={tag}
+              initial={{ y: 0 }}
+              whileHover={{ y: -2 }}
+              transition={{ delay: ti * 0.05 }}
+              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-foreground/70 transition-colors hover:border-[var(--neon)]/30 hover:text-[var(--neon)]"
+            >
+              {tag}
+            </motion.span>
+          ))}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -226,7 +217,6 @@ export default function Projects() {
     description: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.description`),
     category: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.category`),
   }));
-
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -245,107 +235,68 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mx-auto max-w-2xl text-center">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto max-w-2xl text-center"
+        >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--neon)]">
             {t('projects.subtitle')}
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
             {t('projects.title_prefix')} <span className="text-gradient">{t('projects.title_accent')}</span>
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            {t('projects.description')}
-          </p>
-        </div>
-
+          <p className="mt-4 text-muted-foreground">{t('projects.description')}</p>
+        </motion.div>
 
         {/* Filters */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
-          {filters.map((f) => {
+          {filters.map((f, fi) => {
             const isActive = active === f;
             return (
-              <button
+              <motion.button
                 key={f}
                 type="button"
                 onClick={() => setActive(f)}
-                className={`relative rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${isActive
-                  ? "border-[var(--neon)]/60 bg-[var(--neon)]/10 text-[var(--neon)] shadow-glow-soft"
-                  : "border-white/10 bg-white/5 text-foreground/70 hover:border-white/20 hover:text-foreground"
-                  }`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: fi * 0.06 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
+                  isActive
+                    ? "border-[var(--neon)]/60 bg-[var(--neon)]/10 text-[var(--neon)] shadow-[0_0_15px_rgba(0,242,255,0.15)]"
+                    : "border-white/10 bg-white/5 text-foreground/70 hover:border-white/20 hover:text-foreground"
+                }`}
               >
                 {f}
-              </button>
+              </motion.button>
             );
           })}
         </div>
 
+        {/* Grid */}
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {translatedProjects.map((p, i) => {
-              const Icon = p.icon;
-
-              return (
-                <motion.article
-                  key={p.title}
-                  layout
-                  initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  onClick={() => {
-                    setSelectedProject(p);
-                    setCurrentImgIndex(0);
-                  }}
-                  className="bg-glass glow-border group relative overflow-hidden rounded-2xl transition-all hover:-translate-y-1 hover:shadow-glow-soft cursor-pointer"
-                >
-                  {/* Visual header */}
-                  <div className={`relative h-48 overflow-hidden bg-gradient-to-br ${p.accent}`}>
-                    {p.captures && p.captures.length > 0 ? (
-                      <img src={p.captures[0]} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    ) : (
-                      <>
-                        <div className="absolute inset-0 grid-overlay opacity-40" />
-                        <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[var(--neon)]/20 blur-3xl transition-all duration-500 group-hover:scale-125" />
-                        <div className="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-[var(--violet-glow)]/20 blur-3xl" />
-                        <div className="relative flex h-full items-center justify-center">
-                          <div className="bg-glass flex h-16 w-16 items-center justify-center rounded-2xl shadow-glow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                            <Icon className="h-7 w-7 text-[var(--neon)]" strokeWidth={1.5} />
-                          </div>
-                        </div>
-                      </>
-                    )}
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
-                    <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full border border-white/10 bg-background/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--neon)] backdrop-blur z-10">
-                      {p.category}
-                    </div>
-                  </div>
-
-                  {/* Body */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="font-display text-lg font-semibold tracking-tight">
-                        {p.title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {p.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-foreground/70"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+            {translatedProjects.map((p, i) => (
+              <ProjectCard
+                key={p.title}
+                p={p}
+                i={i}
+                onClick={() => {
+                  setSelectedProject(p);
+                  setCurrentImgIndex(0);
+                }}
+              />
+            ))}
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Discovery Modal / Gallery */}
+      {/* Discovery Modal */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -354,28 +305,26 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+              className="absolute inset-0 bg-black/65 backdrop-blur-md"
             />
-
             <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              initial={{ scale: 0.93, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
+              exit={{ scale: 0.93, opacity: 0, y: 30 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.25 }}
               className="relative w-full max-w-4xl bg-white dark:bg-[#0b0e14] border border-black/10 dark:border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedProject(null)}
-                className="absolute right-4 top-4 lg:right-6 lg:top-6 z-50 p-2.5 rounded-full bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 backdrop-blur-md transition-colors text-foreground"
+                className="absolute right-4 top-4 lg:right-6 lg:top-6 z-50 p-2.5 rounded-full bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 backdrop-blur-md transition-all text-foreground hover:rotate-90 duration-200"
               >
                 <X size={20} />
               </button>
 
               <div className="flex flex-col lg:grid lg:grid-cols-5 h-full overflow-y-auto lg:overflow-hidden">
-                {/* Left: Image Gallery */}
+                {/* Gallery */}
                 <div className="lg:col-span-3 relative h-[250px] sm:h-[350px] lg:h-[450px] bg-black/5 dark:bg-white/5 group shrink-0">
                   <div className="absolute inset-0 overflow-y-auto">
                     <div className="min-h-full flex items-center w-full">
@@ -384,67 +333,75 @@ export default function Projects() {
                           key={currentImgIndex}
                           src={selectedProject.captures?.[currentImgIndex]}
                           alt={selectedProject.title}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.4 }}
+                          initial={{ opacity: 0, scale: 1.05 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                           className="w-full h-auto block shadow-xl"
                         />
                       </AnimatePresence>
                     </div>
                   </div>
 
-                  {/* Navigation Buttons */}
-                  <button
+                  {/* Nav Buttons */}
+                  <motion.button
                     onClick={handlePrev}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 text-white -translate-x-2 group-hover:translate-x-0"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 text-white"
                   >
                     <ChevronLeft size={24} />
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={handleNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 text-white translate-x-2 group-hover:translate-x-0"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 text-white"
                   >
                     <ChevronRight size={24} />
-                  </button>
+                  </motion.button>
 
-                  {/* Counter Badge */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md text-[10px] text-white font-bold uppercase tracking-widest">
-                    {currentImgIndex + 1} / {selectedProject.captures?.length}
+                  {/* Image dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    {selectedProject.captures?.map((_, dotIdx) => (
+                      <button
+                        key={dotIdx}
+                        onClick={(e) => { e.stopPropagation(); setCurrentImgIndex(dotIdx); }}
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${dotIdx === currentImgIndex ? 'bg-white w-4' : 'bg-white/40'}`}
+                      />
+                    ))}
                   </div>
                 </div>
 
-                {/* Right: Project Details */}
+                {/* Details */}
                 <div className="lg:col-span-2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center bg-white dark:bg-[#0b0e14]">
                   <span className="text-xs font-bold bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] bg-clip-text text-transparent uppercase tracking-[0.2em] mb-4">
                     {selectedProject.category}
                   </span>
-
                   <h3 className="text-3xl sm:text-4xl font-display font-bold mb-4 tracking-tight text-foreground">
                     {selectedProject.title}
                   </h3>
-
                   <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-8">
                     {selectedProject.description}
                   </p>
-
                   <div className="flex flex-wrap gap-2 mb-8 lg:mb-10">
-                    {selectedProject.tags.map((t) => (
-                      <span key={t} className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                        {t}
+                    {selectedProject.tags.map((tag) => (
+                      <span key={tag} className="px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                        {tag}
                       </span>
                     ))}
                   </div>
-
                   <div className="mt-auto pt-6 border-t border-black/10 dark:border-white/10 flex justify-center lg:justify-start">
-                    <a
+                    <motion.a
                       href="#contact"
                       onClick={() => setSelectedProject(null)}
-                      className="px-6 py-3 rounded-xl w-full bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] text-white font-bold text-sm hover:scale-[1.02] transition-transform shadow-[0_0_20px_rgba(0,184,196,0.3)] dark:shadow-[0_0_20px_rgba(0,242,255,0.3)] flex items-center justify-center gap-2"
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="px-6 py-3 rounded-xl w-full bg-gradient-to-r from-[#00b8c4] to-[#7000ff] dark:from-[#00f2ff] dark:to-[#bd00ff] text-white font-bold text-sm shadow-[0_0_20px_rgba(0,184,196,0.3)] dark:shadow-[0_0_20px_rgba(0,242,255,0.3)] flex items-center justify-center gap-2"
                     >
                       {t('projects.modal.inquire')}
                       <ArrowUpRight size={18} />
-                    </a>
+                    </motion.a>
                   </div>
                 </div>
               </div>
