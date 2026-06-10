@@ -128,12 +128,35 @@ export default function Services() {
           backgroundSize: '60px 60px',
         }}
       />
-      {/* Centre radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[var(--neon)] opacity-[0.03] blur-[140px] pointer-events-none" />
-      {/* Corner accent top-right */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--electric)] opacity-[0.05] blur-[80px] rounded-full pointer-events-none" />
+      {/* Centre radial glow with breathing animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.03, 0.06, 0.03]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[var(--neon)] blur-[140px] pointer-events-none z-0"
+      />
+      {/* Corner accent top-right with pulse */}
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.04, 0.07, 0.04]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+        className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--electric)] blur-[80px] rounded-full pointer-events-none z-0"
+      />
 
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-4 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.p

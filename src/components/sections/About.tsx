@@ -1,11 +1,25 @@
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Github, Linkedin, GraduationCap, Mail } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
+import Lightfall from './Lightfall';
 
 export function About() {
   const { t } = useTranslation();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll position of the About section for dynamic transition
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Smooth scroll animations for background scale, position, and opacity
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 0.35, 0.35, 0]);
+  const backgroundScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   const founders = [
     {
@@ -33,23 +47,46 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* ── Background personnalisé About ── */}
-      {/* Orbe cyan haut-gauche */}
-      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[120px] pointer-events-none" />
-      {/* Orbe violet bas-droite */}
-      <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] opacity-[0.06] blur-[100px] pointer-events-none" />
-      {/* Diagonal tilt gradient stripe */}
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,242,255,0.015)_0%,transparent_50%,rgba(112,0,255,0.015)_100%)] pointer-events-none" />
-      {/* Subtle dot grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(circle, rgba(0,242,255,0.8) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-        }}
-      />
-      <div className="mx-auto max-w-6xl px-4">
+    <section ref={sectionRef} id="about" className="relative py-20 sm:py-28 overflow-hidden">
+      {/* ── Background personnalisé About (Lightfall with scrolling transition) ── */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        <motion.div
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+            y: backgroundY,
+            opacity: backgroundOpacity,
+            scale: backgroundScale
+          }}
+        >
+          <Lightfall
+            colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+            backgroundColor="#0A29FF"
+            speed={0.5}
+            streakCount={2}
+            streakWidth={1}
+            streakLength={1}
+            glow={1}
+            density={0.6}
+            twinkle={1}
+            zoom={3}
+            backgroundGlow={0.5}
+            opacity={1}
+            mouseInteraction
+            mouseStrength={0.5}
+            mouseRadius={1}
+            color1="#A6C8FF"
+            color2="#5227FF"
+            color3="#FF9FFC"
+          />
+        </motion.div>
+      </div>
+
+      {/* Subtle overlay to blend the Lightfall background into dark theme */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0 opacity-80" />
+
+      <div className="mx-auto max-w-6xl px-4 relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
