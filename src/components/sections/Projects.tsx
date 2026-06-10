@@ -203,15 +203,20 @@ function ProjectCard({
   );
 }
 
+const INITIAL_COUNT = 6;
+
 export default function Projects() {
   const { t } = useTranslation();
   const [active, setActive] = useState<Filter>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [showAll, setShowAll] = useState(false);
 
   const visible = active === "All" ? projects : projects.filter((p) => p.type === active);
+  const displayed = showAll ? visible : visible.slice(0, INITIAL_COUNT);
+  const hasMore = visible.length > INITIAL_COUNT;
 
-  const translatedProjects = visible.map((p) => ({
+  const translatedProjects = displayed.map((p) => ({
     ...p,
     title: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.title`),
     description: t(`projects.items.${p.title.toLowerCase().replace(/ /g, '_')}.description`),
@@ -272,7 +277,7 @@ export default function Projects() {
               <motion.button
                 key={f}
                 type="button"
-                onClick={() => setActive(f)}
+                onClick={() => { setActive(f); setShowAll(false); }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: fi * 0.06 }}
@@ -291,7 +296,7 @@ export default function Projects() {
         </div>
 
         {/* Grid */}
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div layout className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {translatedProjects.map((p, i) => (
               <ProjectCard
@@ -305,7 +310,52 @@ export default function Projects() {
               />
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
+
+        {/* Show All / Reduce Button */}
+        {hasMore && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-12 flex justify-center"
+          >
+            <motion.button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="group relative flex items-center gap-3 rounded-full border border-[var(--neon)]/30 bg-white/5 dark:bg-[var(--neon)]/5 px-8 py-3.5 text-sm font-semibold text-[var(--neon)] backdrop-blur-md transition-all hover:border-[var(--neon)]/60 hover:bg-[var(--neon)]/10 hover:shadow-[0_0_25px_rgba(0,242,255,0.15)]"
+            >
+              {/* Animated badge showing remaining count */}
+              {!showAll && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--neon)] text-[10px] font-black text-background"
+                >
+                  +{visible.length - INITIAL_COUNT}
+                </motion.span>
+              )}
+              <span>
+                {showAll ? "Réduire" : "Voir tous les projets"}
+              </span>
+              {/* Arrow icon */}
+              <motion.svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                animate={{ rotate: showAll ? 180 : 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[var(--neon)]"
+              >
+                <path d="M8 3L8 13M8 13L4 9M8 13L12 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </motion.svg>
+            </motion.button>
+          </motion.div>
+        )}
       </div>
 
       {/* Discovery Modal */}
