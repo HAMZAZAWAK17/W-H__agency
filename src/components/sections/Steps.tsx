@@ -1,5 +1,5 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { Lightbulb, PenTool, Code2, Rocket, ArrowRight, Circle } from "lucide-react";
+import { motion, useScroll, useSpring, useInView } from "framer-motion";
+import { Lightbulb, PenTool, Code2, Rocket } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 
@@ -9,13 +9,13 @@ export default function Steps() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end end"]
+    offset: ["start end", "end end"],
   });
 
   const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
+    stiffness: 80,
+    damping: 25,
+    restDelta: 0.001,
   });
 
   const steps = [
@@ -26,7 +26,7 @@ export default function Steps() {
       summary: t('steps.items.idea.summary'),
       details: t('steps.items.idea.details'),
       tags: ["DISCOVERY", "ROADMAP"],
-      color: "var(--neon)"
+      color: "var(--neon)",
     },
     {
       number: "02",
@@ -35,7 +35,7 @@ export default function Steps() {
       summary: t('steps.items.design.summary'),
       details: t('steps.items.design.details'),
       tags: ["UI/UX", "PROTOTYPE"],
-      color: "var(--electric)"
+      color: "var(--electric)",
     },
     {
       number: "03",
@@ -44,7 +44,7 @@ export default function Steps() {
       summary: t('steps.items.dev.summary'),
       details: t('steps.items.dev.details'),
       tags: ["REACT", "API"],
-      color: "var(--neon)"
+      color: "var(--neon)",
     },
     {
       number: "04",
@@ -53,21 +53,27 @@ export default function Steps() {
       summary: t('steps.items.launch.summary'),
       details: t('steps.items.launch.details'),
       tags: ["DEPLOY", "ITERATE"],
-      color: "var(--electric)"
-    }
+      color: "var(--electric)",
+    },
   ];
 
   return (
-    <section id="steps" className="relative py-12 sm:py-16 overflow-hidden bg-background" ref={containerRef}>
-      {/* Background Decorative Elements */}
+    <section
+      id="steps"
+      className="relative py-12 sm:py-16 overflow-hidden bg-background"
+      ref={containerRef}
+    >
+      {/* Background line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-foreground/5 dark:bg-white/5" />
-      
+
       <div className="mx-auto max-w-7xl px-6 relative">
+        {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
             className="px-4 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4"
           >
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">
@@ -78,81 +84,115 @@ export default function Steps() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight uppercase max-w-xl"
           >
             {t('steps.title_prefix')} <span className="text-gradient">{t('steps.title_accent')}</span>
           </motion.h2>
         </div>
 
-        {/* Timeline Line */}
+        {/* Animated Timeline Line */}
         <div className="absolute left-1/2 top-[120px] bottom-0 -translate-x-1/2 w-0.5 hidden lg:block">
-          <motion.div 
+          <motion.div
             style={{ scaleY }}
-            className="w-full h-full bg-gradient-to-b from-[var(--neon)] to-[var(--electric)] origin-top rounded-full shadow-[0_0_10px_rgba(0,242,255,0.4)]"
+            className="w-full h-full bg-gradient-to-b from-[var(--neon)] to-[var(--electric)] origin-top rounded-full"
+            // Enhanced glow shadow on the fill
+            animate={{
+              boxShadow: [
+                "0 0 6px rgba(0,242,255,0.3)",
+                "0 0 15px rgba(0,242,255,0.6)",
+                "0 0 6px rgba(0,242,255,0.3)",
+              ],
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
 
         <div className="space-y-12 sm:space-y-16 relative">
           {steps.map((s, i) => (
-            <div key={s.title} className="relative">
-              {/* Step Marker */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block">
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  className="w-8 h-8 rounded-full bg-background border-2 border-foreground/10 dark:border-white/10 flex items-center justify-center relative group"
-                >
-                   <div className="absolute inset-0 rounded-full bg-[var(--neon)] opacity-0 group-hover:opacity-20 blur-sm transition-opacity" />
-                   <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[var(--neon)] to-[var(--electric)]" />
-                </motion.div>
-              </div>
-
-              <div className={`flex flex-col lg:flex-row items-center justify-between gap-6 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                {/* Content Card */}
-                <motion.div
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="w-full lg:w-[38%] group"
-                >
-                  <div className="bg-glass relative overflow-hidden rounded-[2rem] p-5 sm:p-6 border-2 border-[var(--neon)]/10 dark:border-white/10 group-hover:border-[var(--neon)]/40 transition-all duration-500 shadow-lg">
-                    <div className="absolute top-0 right-0 p-4 text-4xl font-black text-foreground/[0.03] dark:text-white/[0.03] group-hover:text-foreground/[0.06] transition-colors pointer-events-none">
-                      {s.number}
-                    </div>
-                    
-                    <div className="relative z-10 flex gap-4 items-start">
-                      <div className="shrink-0 h-10 w-10 items-center justify-center rounded-lg bg-foreground/[0.05] dark:bg-white/[0.05] border border-foreground/10 dark:border-white/10 text-[var(--neon)] flex group-hover:scale-105 transition-transform duration-500">
-                        <s.icon size={20} strokeWidth={1.5} />
-                      </div>
-
-                      <div className="flex-1">
-                        <h3 className="font-display text-lg font-bold mb-1 tracking-tight text-foreground group-hover:text-[var(--neon)] transition-colors">
-                          {s.title}
-                        </h3>
-                        
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-3 font-medium">
-                          {s.summary}
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-2">
-                          {s.tags.map(tag => (
-                            <span key={tag} className="text-[8px] font-bold text-muted-foreground/30 uppercase tracking-[0.2em]">{tag}</span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Empty space for alternating layout */}
-                <div className="hidden lg:block lg:w-[38%]" />
-              </div>
-            </div>
+            <StepRow key={s.title} step={s} index={i} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function StepRow({ step, index }: { step: any; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.4 });
+
+  return (
+    <div ref={ref} className="relative">
+      {/* Step Marker — pulsing dot */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block">
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={isInView ? { scale: 1, opacity: 1 } : {}}
+          transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.2 }}
+          className="relative w-8 h-8 rounded-full bg-background border-2 border-foreground/10 dark:border-white/10 flex items-center justify-center"
+        >
+          {/* Pulsing ring when in view */}
+          {isInView && (
+            <motion.div
+              className="absolute inset-0 rounded-full border border-[var(--neon)]/40"
+              animate={{ scale: [1, 1.8, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          )}
+          <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[var(--neon)] to-[var(--electric)]" />
+        </motion.div>
+      </div>
+
+      <div className={`flex flex-col lg:flex-row items-center justify-between gap-6 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+        {/* Card */}
+        <motion.div
+          initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, y: 20 }}
+          animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="w-full lg:w-[38%] group"
+        >
+          <div className="bg-glass relative overflow-hidden rounded-[2rem] p-5 sm:p-6 border-2 border-[var(--neon)]/10 dark:border-white/10 group-hover:border-[var(--neon)]/40 transition-all duration-500 shadow-lg hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,242,255,0.06)]">
+            {/* Ghost number */}
+            <div className="absolute top-0 right-0 p-4 text-4xl font-black text-foreground/[0.03] dark:text-white/[0.03] group-hover:text-foreground/[0.06] transition-colors pointer-events-none select-none">
+              {step.number}
+            </div>
+
+            <div className="relative z-10 flex gap-4 items-start">
+              {/* Icon */}
+              <motion.div
+                className="shrink-0 h-10 w-10 items-center justify-center rounded-lg bg-foreground/[0.05] dark:bg-white/[0.05] border border-foreground/10 dark:border-white/10 text-[var(--neon)] flex"
+                whileHover={{ rotate: 5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
+                <step.icon size={20} strokeWidth={1.5} />
+              </motion.div>
+
+              <div className="flex-1">
+                <h3 className="font-display text-lg font-bold mb-1 tracking-tight text-foreground group-hover:text-[var(--neon)] transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3 font-medium">
+                  {step.summary}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {step.tags.map((tag: string) => (
+                    <span
+                      key={tag}
+                      className="text-[8px] font-bold text-[var(--neon)]/40 group-hover:text-[var(--neon)]/70 uppercase tracking-[0.2em] transition-colors"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Spacer for alternating layout */}
+        <div className="hidden lg:block lg:w-[38%]" />
+      </div>
+    </div>
   );
 }
