@@ -114,9 +114,20 @@ export function Reviews() {
 
   return (
     <section id="reviews" className="relative py-24 sm:py-32 overflow-hidden bg-background">
-      {/* Background glows */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--neon)]/5 blur-[120px] rounded-full -z-10" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[var(--electric)]/5 blur-[120px] rounded-full -z-10" />
+      {/* ── Background personnalisé Reviews ── */}
+      {/* Two large orbes symétriques */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--neon)]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[var(--electric)]/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Diamond / caret pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.018] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(0,242,255,0.6) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
+      {/* Horizontal light bar centre */}
+      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--neon)]/10 to-transparent pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-center mb-16">

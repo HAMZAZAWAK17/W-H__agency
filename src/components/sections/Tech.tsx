@@ -52,8 +52,21 @@ export default function Tech() {
 
   return (
     <section id="tech" className="relative pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden bg-background">
-      {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.03)_0%,transparent_70%)] -z-10 pointer-events-none" />
+      {/* ── Background personnalisé Tech ── */}
+      {/* Circuit-style horizontal lines */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, rgba(0,242,255,0.6) 1px, transparent 1px)',
+          backgroundSize: '100% 48px',
+        }}
+      />
+      {/* Blue orbe left */}
+      <div className="absolute top-1/3 -left-40 w-[500px] h-[500px] rounded-full bg-[var(--electric)] opacity-[0.05] blur-[120px] pointer-events-none" />
+      {/* Cyan orbe right */}
+      <div className="absolute bottom-1/4 -right-40 w-[500px] h-[500px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[140px] pointer-events-none" />
+      {/* Diagonal fade overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(112,0,255,0.03)_0%,transparent_40%,rgba(0,242,255,0.02)_100%)] pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center text-center mb-20">

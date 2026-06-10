@@ -233,7 +233,19 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="relative py-20 sm:py-28">
+    <section id="projects" className="relative py-20 sm:py-28 overflow-hidden">
+      {/* ── Background personnalisé Projects ── */}
+      {/* Orbes éparpillés */}
+      <div className="absolute top-10 left-1/4 w-[350px] h-[350px] rounded-full bg-[var(--neon)] opacity-[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] opacity-[0.04] blur-[110px] pointer-events-none" />
+      <div className="absolute top-1/2 -left-20 w-[300px] h-[300px] rounded-full bg-[var(--electric)] opacity-[0.04] blur-[90px] pointer-events-none" />
+      {/* Diagonal lines pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(45deg, rgba(0,242,255,0.5) 0px, rgba(0,242,255,0.5) 1px, transparent 1px, transparent 60px)',
+        }}
+      />
       <div className="mx-auto max-w-6xl px-4">
         {/* Header */}
         <motion.div

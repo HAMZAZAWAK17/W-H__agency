@@ -117,9 +117,21 @@ export default function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
 
   return (
-    <section id="services" className="relative py-20 sm:py-28">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.02)_0%,transparent_70%)] -z-10" />
+    <section id="services" className="relative py-20 sm:py-28 overflow-hidden">
+      {/* ── Background personnalisé Services ── */}
+      {/* Grid horizontal/vertical subtle */}
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(0,242,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+      {/* Centre radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[var(--neon)] opacity-[0.03] blur-[140px] pointer-events-none" />
+      {/* Corner accent top-right */}
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--electric)] opacity-[0.05] blur-[80px] rounded-full pointer-events-none" />
 
       <div className="mx-auto max-w-6xl px-4">
         {/* Header */}

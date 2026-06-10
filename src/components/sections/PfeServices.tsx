@@ -70,8 +70,21 @@ export default function PfeServices() {
 
   return (
     <section id="pfe-services" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,var(--neon)_0%,transparent_60%)] opacity-5 -z-10" />
+      {/* ── Background personnalisé PFE Services ── */}
+      {/* Aurora ellipse centre */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-[100%] bg-gradient-to-r from-[var(--neon)] to-[var(--violet-glow)] opacity-[0.035] blur-[120px] pointer-events-none" />
+      {/* Top accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--neon)]/20 to-transparent pointer-events-none" />
+      {/* Bottom accent bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--violet-glow)]/20 to-transparent pointer-events-none" />
+      {/* Dot matrix */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(189,0,255,0.6) 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
+        }}
+      />
 
       <div className="mx-auto max-w-6xl px-4">
         {/* Header */}

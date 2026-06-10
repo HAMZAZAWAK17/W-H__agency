@@ -33,7 +33,22 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="relative py-20 sm:py-28">
+    <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
+      {/* ── Background personnalisé About ── */}
+      {/* Orbe cyan haut-gauche */}
+      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[120px] pointer-events-none" />
+      {/* Orbe violet bas-droite */}
+      <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] opacity-[0.06] blur-[100px] pointer-events-none" />
+      {/* Diagonal tilt gradient stripe */}
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,242,255,0.015)_0%,transparent_50%,rgba(112,0,255,0.015)_100%)] pointer-events-none" />
+      {/* Subtle dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(0,242,255,0.8) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <motion.div

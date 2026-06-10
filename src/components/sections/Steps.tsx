@@ -63,8 +63,22 @@ export default function Steps() {
       className="relative py-12 sm:py-16 overflow-hidden bg-background"
       ref={containerRef}
     >
-      {/* Background line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-foreground/5 dark:bg-white/5" />
+      {/* ── Background personnalisé Steps ── */}
+      {/* Centre vertical light beam */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-full bg-gradient-to-b from-transparent via-[var(--neon)]/8 to-transparent pointer-events-none" />
+      {/* Orbe top-left violet */}
+      <div className="absolute -top-20 -left-20 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] opacity-[0.04] blur-[100px] pointer-events-none" />
+      {/* Orbe bottom-right cyan */}
+      <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[100px] pointer-events-none" />
+      {/* Cross-hatch pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(0,242,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
+        }}
+      />
 
       <div className="mx-auto max-w-7xl px-6 relative">
         {/* Header */}
