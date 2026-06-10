@@ -240,10 +240,45 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé Projects ── */}
-      {/* Orbes éparpillés */}
-      <div className="absolute top-10 left-1/4 w-[350px] h-[350px] rounded-full bg-[var(--neon)] opacity-[0.03] blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] opacity-[0.04] blur-[110px] pointer-events-none" />
-      <div className="absolute top-1/2 -left-20 w-[300px] h-[300px] rounded-full bg-[var(--electric)] opacity-[0.04] blur-[90px] pointer-events-none" />
+      {/* Orbes éparpillés with breathing animations */}
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.03, 0.05, 0.03]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-10 left-1/4 w-[350px] h-[350px] rounded-full bg-[var(--neon)] blur-[100px] pointer-events-none z-0"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.12, 1],
+          opacity: [0.04, 0.07, 0.04]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1
+        }}
+        className="absolute bottom-20 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] blur-[110px] pointer-events-none z-0"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.04, 0.06, 0.04]
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+        className="absolute top-1/2 -left-20 w-[300px] h-[300px] rounded-full bg-[var(--electric)] blur-[90px] pointer-events-none z-0"
+      />
       {/* Diagonal lines pattern */}
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -251,7 +286,7 @@ export default function Projects() {
           backgroundImage: 'repeating-linear-gradient(45deg, rgba(0,242,255,0.5) 0px, rgba(0,242,255,0.5) 1px, transparent 1px, transparent 60px)',
         }}
       />
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

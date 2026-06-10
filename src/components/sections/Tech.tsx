@@ -61,14 +61,39 @@ export default function Tech() {
           backgroundSize: '100% 48px',
         }}
       />
-      {/* Blue orbe left */}
-      <div className="absolute top-1/3 -left-40 w-[500px] h-[500px] rounded-full bg-[var(--electric)] opacity-[0.05] blur-[120px] pointer-events-none" />
-      {/* Cyan orbe right */}
-      <div className="absolute bottom-1/4 -right-40 w-[500px] h-[500px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[140px] pointer-events-none" />
+      {/* Blue orbe left with animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.12, 1],
+          opacity: [0.05, 0.08, 0.05],
+          x: [0, 10, 0]
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/3 -left-40 w-[500px] h-[500px] rounded-full bg-[var(--electric)] blur-[120px] pointer-events-none z-0"
+      />
+      {/* Cyan orbe right with animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.04, 0.07, 0.04],
+          x: [0, -15, 0]
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5
+        }}
+        className="absolute bottom-1/4 -right-40 w-[500px] h-[500px] rounded-full bg-[var(--neon)] blur-[140px] pointer-events-none z-0"
+      />
       {/* Diagonal fade overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(112,0,255,0.03)_0%,transparent_40%,rgba(0,242,255,0.02)_100%)] pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-6 relative z-10">
         <div className="flex flex-col items-center text-center mb-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

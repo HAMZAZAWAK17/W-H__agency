@@ -71,8 +71,20 @@ export default function PfeServices() {
   return (
     <section id="pfe-services" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé PFE Services ── */}
-      {/* Aurora ellipse centre */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-[100%] bg-gradient-to-r from-[var(--neon)] to-[var(--violet-glow)] opacity-[0.035] blur-[120px] pointer-events-none" />
+      {/* Aurora ellipse centre with breathing animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.035, 0.05, 0.035],
+          rotate: [0, 5, 0]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-[100%] bg-gradient-to-r from-[var(--neon)] to-[var(--violet-glow)] blur-[120px] pointer-events-none z-0"
+      />
       {/* Top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--neon)]/20 to-transparent pointer-events-none" />
       {/* Bottom accent bar */}
@@ -86,7 +98,7 @@ export default function PfeServices() {
         }}
       />
 
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-4 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.p
