@@ -6,13 +6,15 @@
   :root {
     --background: #ffffff;
     --foreground: #030712;
-    --neon: #002B5B; /* Bleu Nuit */
+    --neon: #002B5B;
     --electric: #7000ff;
     --violet-glow: #bd00ff;
     --muted-foreground: #64748b;
     --glass-bg: rgba(0, 0, 0, 0.03);
     --glass-border: rgba(0, 0, 0, 0.08);
     --grid-overlay: rgba(0, 0, 0, 0.05);
+    --neon-rgb: 0, 43, 91;
+    --electric-rgb: 112, 0, 255;
   }
 
   .dark {
@@ -25,6 +27,8 @@
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     --grid-overlay: rgba(255, 255, 255, 0.05);
+    --neon-rgb: 0, 242, 255;
+    --electric-rgb: 112, 0, 255;
   }
 
   html {
@@ -38,15 +42,188 @@
   }
 }
 
+/* ============================================
+   KEYFRAMES
+============================================ */
+
+/* Shimmer sweep for navbar glassmorphism */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%) skewX(-15deg); opacity: 0; }
+}
+
+/* Marquee horizontal scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Float breathing */
+@keyframes float-breath {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.02); }
+}
+
+@keyframes float-breath-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(1deg); }
+  66% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+/* Border travel — gradient light travels around card */
+@keyframes border-travel {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ripple / glow pulse expand */
+@keyframes ripple-glow {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes ripple-glow-sm {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Neon text / border pulse */
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(var(--neon-rgb), 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 20px rgba(var(--neon-rgb), 0.7), 0 0 40px rgba(var(--neon-rgb), 0.3); }
+}
+
+/* Gradient shimmer for text */
+@keyframes gradient-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Scanner line */
+@keyframes scanner {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+/* Star sequencer (for reviews) */
+@keyframes star-pop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Chat button float */
+@keyframes chat-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Liquid gradient button */
+@keyframes liquid-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Count up flash */
+@keyframes count-flash {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Rotate spin */
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Glow pulse for background orbs */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* ============================================
+   ANIMATION UTILITIES
+============================================ */
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-track-fast {
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track-reverse {
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.marquee-track:hover,
+.marquee-track-fast:hover,
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-float-breath {
+  animation: float-breath 6s ease-in-out infinite;
+}
+
+.animate-float-breath-slow {
+  animation: float-breath-slow 8s ease-in-out infinite;
+}
+
+.animate-float-breath-delayed {
+  animation: float-breath 7s ease-in-out 2s infinite;
+}
+
+.animate-scanner {
+  animation: scanner 4s ease-in-out infinite;
+}
+
+.animate-chat-float {
+  animation: chat-float 3s ease-in-out infinite;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+.animate-gradient-shimmer {
+  background-size: 200% auto;
+  animation: gradient-shimmer 3s linear infinite;
+}
+
+/* ============================================
+   COMPONENT CLASSES
+============================================ */
+
 @layer components {
   .bg-glass {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
   }
-  
+
   .text-gradient {
     @apply bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-shimmer {
+    background: linear-gradient(90deg, var(--neon) 0%, var(--electric) 30%, var(--violet-glow) 60%, var(--neon) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shimmer 4s linear infinite;
   }
 
   .shadow-neon {
@@ -63,7 +240,7 @@
     border: 1px solid var(--glass-border);
     @apply shadow-xl;
   }
-  
+
   .neon-border {
     @apply border border-primary/30 hover:border-primary transition-colors duration-300;
   }
@@ -76,17 +253,67 @@
     @apply px-6 py-3 rounded-xl bg-gradient-to-r from-[var(--neon)] to-[var(--electric)] text-background font-bold transition-all duration-300 shadow-neon hover:scale-[1.03];
   }
 
+  .btn-liquid {
+    background: linear-gradient(270deg, var(--neon), var(--electric), var(--violet-glow), var(--neon));
+    background-size: 300% 300%;
+    animation: liquid-gradient 4s ease infinite;
+    @apply text-white font-bold rounded-xl transition-all duration-300;
+  }
+
   .glow-border {
     @apply border border-white/5 relative overflow-hidden;
   }
-  
+
   .glow-border::after {
     content: '';
     @apply absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 transition-opacity duration-500;
   }
-  
+
   .glow-border:hover::after {
     @apply opacity-100;
+  }
+
+  /* Card with animated border-travel on hover */
+  .card-border-travel {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .card-border-travel::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--angle, 0deg),
+      transparent 0%,
+      rgba(0, 242, 255, 0) 30%,
+      rgba(0, 242, 255, 0.8) 50%,
+      rgba(0, 242, 255, 0) 70%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-border-travel:hover::before {
+    opacity: 1;
+    animation: rotate-border 2s linear infinite;
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes rotate-border {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
   }
 
   .grid-overlay {
@@ -94,36 +321,22 @@
       linear-gradient(to bottom, var(--grid-overlay) 1px, transparent 1px);
     background-size: 24px 24px;
   }
+
+  /* Form field focus glow */
+  .input-glow {
+    @apply w-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-5 py-3.5 text-foreground placeholder:text-slate-400 dark:placeholder:text-slate-600 outline-none transition-all duration-300 shadow-sm dark:shadow-none;
+  }
+
+  .input-glow:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 0 2px rgba(var(--neon-rgb), 0.2), 0 0 20px rgba(var(--neon-rgb), 0.1);
+  }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
-}
+/* ============================================
+   GLOW SPOTS
+============================================ */
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  animation: marquee 40s linear infinite;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-primary/50 transition-colors;
-}
-
-/* Glow effects */
 .glow-spot {
   position: absolute;
   width: 400px;
@@ -143,12 +356,106 @@
   pointer-events: none;
   z-index: -1;
 }
-@keyframes scanner {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(100%); }
-  100% { transform: translateY(0); }
+
+/* ============================================
+   CUSTOM SCROLLBAR
+============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.animate-scanner {
-  animation: scanner 4s ease-in-out infinite;
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-primary/50 transition-colors;
+}
+
+/* ============================================
+   CHAT BUTTON RIPPLE
+============================================ */
+
+.chat-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(var(--neon-rgb), 0.4);
+  animation: ripple-glow 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.chat-ripple-delayed {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(var(--neon-rgb), 0.2);
+  animation: ripple-glow 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s infinite;
+}
+
+/* ============================================
+   SHIMMER NAVBAR SWEEP
+============================================ */
+
+.navbar-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none;
+}
+
+.navbar-shimmer.shimmer-active::after {
+  animation: shimmer-sweep 1.2s ease-in-out forwards;
+}
+
+/* ============================================
+   STAR ANIMATION FOR REVIEWS
+============================================ */
+
+.star-animate {
+  animation: star-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ============================================
+   PREFERS-REDUCED-MOTION
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track,
+  .marquee-track-fast,
+  .marquee-track-reverse {
+    animation: none !important;
+  }
+
+  .animate-float-breath,
+  .animate-float-breath-slow,
+  .animate-float-breath-delayed,
+  .animate-chat-float,
+  .animate-neon-pulse,
+  .animate-gradient-shimmer,
+  .text-gradient-shimmer {
+    animation: none !important;
+    background-size: auto !important;
+  }
+
+  .card-border-travel:hover::before {
+    animation: none !important;
+  }
 }
