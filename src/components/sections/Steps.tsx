@@ -64,12 +64,35 @@ export default function Steps() {
       ref={containerRef}
     >
       {/* ── Background personnalisé Steps ── */}
-      {/* Centre vertical light beam */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-full bg-gradient-to-b from-transparent via-[var(--neon)]/8 to-transparent pointer-events-none" />
-      {/* Orbe top-left violet */}
-      <div className="absolute -top-20 -left-20 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] opacity-[0.04] blur-[100px] pointer-events-none" />
-      {/* Orbe bottom-right cyan */}
-      <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[100px] pointer-events-none" />
+      {/* Centre vertical light beam with glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-full bg-gradient-to-b from-transparent via-[var(--neon)]/15 to-transparent pointer-events-none" />
+      {/* Orbe top-left violet with breathing animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.04, 0.07, 0.04]
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute -top-20 -left-20 w-[400px] h-[400px] rounded-full bg-[var(--violet-glow)] blur-[100px] pointer-events-none z-0"
+      />
+      {/* Orbe bottom-right cyan with breathing animation */}
+      <motion.div
+        animate={{
+          scale: [1, 1.12, 1],
+          opacity: [0.04, 0.06, 0.04]
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5
+        }}
+        className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-[var(--neon)] blur-[100px] pointer-events-none z-0"
+      />
       {/* Cross-hatch pattern */}
       <div
         className="absolute inset-0 opacity-[0.015] pointer-events-none"
