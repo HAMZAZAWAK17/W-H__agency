@@ -44,7 +44,6 @@ import school4 from "../../assets/education-manag/image copy 3.png";
 import school5 from "../../assets/education-manag/image copy 4.png";
 import school6 from "../../assets/education-manag/image copy 5.png";
 import school7 from "../../assets/education-manag/image copy 6.png";
-import logo1 from "../../assets/Logo/valeryon.png";
 import logo2 from "../../assets/Logo/image.png";
 import logo3 from "../../assets/Logo/image copy.png";
 import logo4 from "../../assets/Logo/image copy 2.png";

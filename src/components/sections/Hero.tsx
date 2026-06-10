@@ -83,7 +83,7 @@ export function Hero() {
       clipPath: "inset(0 0 0% 0)",
       transition: {
         duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
         delay: 0.3 + i * 0.15,
       },
     }),
@@ -99,7 +99,7 @@ export function Hero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 

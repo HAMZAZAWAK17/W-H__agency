@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import {
   Smartphone, Globe, Palette, Wand2, GraduationCap, Presentation,
   BarChart, Shapes, ArrowUpRight, X, CheckCircle2,

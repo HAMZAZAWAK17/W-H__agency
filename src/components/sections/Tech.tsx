@@ -1,22 +1,9 @@
-import { useRef, useState, useEffect } from "react";
 import PowerBiIcon from '../../assets/PowerBi.png';
 import PowerPointIcon from '../../assets/PowerPoint.png';
 import CanvaIcon from '../../assets/canvalogo.png';
 import CssIcon from '../../assets/csslogo.png';
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Globe, 
-  Layers, 
-  Smartphone, 
-  Code2, 
-  Terminal, 
-  Palette, 
-  Database, 
-  Cpu 
-} from "lucide-react";
+
 
 
 const technologies = [
@@ -45,7 +32,6 @@ const technologies = [
 ];
 
 export default function Tech() {
-  const { t } = useTranslation();
   
   // Duplicate the array for seamless looping
   const duplicatedTechs = [...technologies, ...technologies];

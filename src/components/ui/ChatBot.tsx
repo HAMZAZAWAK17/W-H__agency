@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Bot, User } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 interface Message {
   id: string;
@@ -11,7 +10,6 @@ interface Message {
 }
 
 export const ChatBot = () => {
-  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isRippling, setIsRippling] = useState(false);
