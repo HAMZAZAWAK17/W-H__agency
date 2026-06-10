@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 
 const ThemeToggle: React.FC = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Check local storage or system preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme === 'light') {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
@@ -31,13 +31,54 @@ const ThemeToggle: React.FC = () => {
   };
 
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
-      className="p-2 rounded-xl bg-glass border border-white/10 text-muted-foreground hover:text-primary transition-all duration-300"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.88 }}
+      className="relative p-2 rounded-xl overflow-hidden transition-all duration-500"
+      style={{
+        background: isDark
+          ? 'rgba(0,242,255,0.06)'
+          : 'rgba(255,180,0,0.08)',
+        border: isDark
+          ? '1px solid rgba(0,242,255,0.2)'
+          : '1px solid rgba(255,180,0,0.25)',
+        boxShadow: isDark
+          ? '0 0 12px rgba(0,242,255,0.1)'
+          : '0 0 12px rgba(255,180,0,0.1)',
+      }}
       aria-label="Toggle theme"
     >
-      {isDark ? <Sun size={18} /> : <Moon size={18} />}
-    </button>
+      <AnimatePresence mode="wait" initial={false}>
+        {isDark ? (
+          <motion.div
+            key="sun"
+            initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+          >
+            <Sun
+              size={18}
+              className="text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.6)]"
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="moon"
+            initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
+            animate={{ rotate: 0, opacity: 1, scale: 1 }}
+            exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
+            transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+          >
+            <Moon
+              size={18}
+              className="text-[var(--neon)] drop-shadow-[0_0_6px_rgba(0,242,255,0.5)]"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.button>
   );
 };
 
