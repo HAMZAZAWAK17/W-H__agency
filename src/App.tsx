@@ -13,7 +13,6 @@ import Map from './components/sections/Map';
 import Footer from './components/sections/Footer';
 import Loader from './components/ui/Loader';
 import ChatBot from './components/ui/ChatBot';
-import SectionDivider from './components/ui/SectionDivider';
 import { ScrollReveal } from './components/ui/ScrollReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -41,20 +40,17 @@ function App() {
             <main>
               <div className="relative">
                 <Hero />
-                <SectionDivider type="curve" />
               </div>
               
               <ScrollReveal threshold={0.15}>
                 <div className="relative">
                   <About />
-                  <SectionDivider type="tilt" reverse />
                 </div>
               </ScrollReveal>
 
               <ScrollReveal threshold={0.15}>
                 <div className="relative">
                   <Services />
-                  <SectionDivider type="wave" />
                 </div>
               </ScrollReveal>
 
@@ -65,7 +61,6 @@ function App() {
               <ScrollReveal threshold={0.15}>
                 <div className="relative">
                   <Tech />
-                  <SectionDivider type="tilt" />
                 </div>
               </ScrollReveal>
 
@@ -76,7 +71,6 @@ function App() {
               <ScrollReveal threshold={0.15}>
                 <div className="relative">
                   <Reviews />
-                  <SectionDivider type="curve" reverse />
                 </div>
               </ScrollReveal>
 

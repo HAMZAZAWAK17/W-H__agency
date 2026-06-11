@@ -5,7 +5,7 @@ import {
   BarChart, Shapes, ArrowUpRight, X, CheckCircle2,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import Lightfall from "./Lightfall";
+import Particles from "./Particles";
 
 // Card tilt component
 function TiltCard({
@@ -120,25 +120,16 @@ export default function Services() {
   return (
     <section id="services" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé Services ── */}
-      {/* Lightfall ReactBits Animation */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
-        <Lightfall
-          colors={['#00f2ff', '#7000ff', '#bd00ff']}
-          backgroundColor="#030712"
+        <Particles
           speed={0.4}
-          streakCount={2}
-          streakWidth={1}
-          streakLength={1.2}
-          glow={1}
-          density={0.5}
-          twinkle={1}
-          zoom={3.5}
-          backgroundGlow={0.3}
-          opacity={1}
-          mouseInteraction
-          mouseStrength={0.5}
-          mouseRadius={1.2}
+          density={55}
+          maxDistance={110}
+          mouseRadius={135}
         />
+        {/* Smooth blending overlays to transition between sections */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       </div>
       {/* Grid overlay */}
       <div

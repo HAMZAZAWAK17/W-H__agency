@@ -7,7 +7,7 @@ import * as z from 'zod';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Mail, Instagram, MessageCircle, XCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import Lightfall from './Lightfall';
+import Squares from './Squares';
 
 // Animated SVG checkmark
 function AnimatedCheckmark() {
@@ -111,25 +111,15 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* ── Background personnalisé Contact ── */}
-      {/* Lightfall ReactBits Animation */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
-        <Lightfall
-          colors={['#bd00ff', '#7000ff', '#00f2ff']}
-          backgroundColor="#030712"
-          speed={0.4}
-          streakCount={2}
-          streakWidth={1}
-          streakLength={1.3}
-          glow={1}
-          density={0.55}
-          twinkle={1}
-          zoom={3.2}
-          backgroundGlow={0.35}
-          opacity={1}
-          mouseInteraction
-          mouseStrength={0.5}
-          mouseRadius={1.1}
+        <Squares
+          cellSize={54}
+          speed={0.015}
+          interactive
         />
+        {/* Smooth blending overlays to transition between sections */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       </div>
       {/* Subtle 45° grid */}
       <div
