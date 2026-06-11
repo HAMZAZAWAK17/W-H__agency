@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { ArrowRight, Zap, Code2, Presentation, FileText, Palette, Terminal, Database, Smartphone, Cpu, Layers } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import TextType from "../ui/TextType";
 import Magnetic from "../ui/Magnetic";
 import heroVideo from "../../assets/14519250_3840_2160_25fps.mp4";
@@ -45,6 +45,16 @@ export function Hero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const containerRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Spring physics for smooth cursor movement
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -279,17 +289,19 @@ export function Hero() {
         className="absolute inset-0 -z-20 overflow-hidden"
         style={{ y: videoY }}
       >
-        <motion.div className="w-full h-full" style={{ scale: videoScale }}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover brightness-[0.65]"
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
-        </motion.div>
+        {!isMobile && (
+          <motion.div className="w-full h-full" style={{ scale: videoScale }}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover brightness-[0.65]"
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
+          </motion.div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/55 to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)]" />
       </motion.div>
