@@ -219,7 +219,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-24 left-4 right-4 bg-background/90 backdrop-blur-2xl rounded-3xl p-6 shadow-2xl md:hidden z-40 border border-white/10"
+            className="absolute top-24 left-4 right-4 bg-background/90 backdrop-blur-2xl rounded-3xl p-6 shadow-2xl lg:hidden z-40 border border-white/10 pointer-events-auto"
           >
             <div className="flex flex-col space-y-2">
               {navLinks.map((link, i) => (
