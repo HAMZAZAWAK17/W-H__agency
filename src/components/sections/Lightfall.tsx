@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import './Lightfall.css';
 
@@ -156,7 +156,8 @@ void mainImage(out vec4 o, vec2 C) {
   }
 
   vec3 colr = sqrt(tanhv(max(O.rgb * uGlow - vec3(0.04, 0.08, 0.02), 0.0)));
-  o = vec4(colr, uOpacity);
+  float alpha = max(max(colr.r, colr.g), colr.b) * uOpacity;
+  o = vec4(colr, alpha);
 }
 
 void main() {
@@ -223,6 +224,25 @@ export const Lightfall = ({
   const mouseTargetRef = useRef<[number, number]>([0, 0]);
   const lastTimeRef = useRef<number>(0);
 
+  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const observer = new MutationObserver(() => {
+      setIsDarkTheme(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -242,6 +262,8 @@ export const Lightfall = ({
     container.appendChild(canvas);
 
     const { arr, count, avg } = prepColors(colors);
+    const finalBgColor = isDarkTheme ? backgroundColor : '#ffffff';
+    const finalBgGlow = isDarkTheme ? backgroundGlow : 0.0;
 
     const uniforms = {
       iResolution: { value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1] },
@@ -256,7 +278,7 @@ export const Lightfall = ({
       uColor6: { value: arr[6] },
       uColor7: { value: arr[7] },
       uColorCount: { value: count },
-      uBgColor: { value: hexToRGB(backgroundColor) },
+      uBgColor: { value: hexToRGB(finalBgColor) },
       uMouseColor: { value: avg },
       uSpeed: { value: speed },
       uStreakCount: { value: Math.max(1, Math.min(16, Math.round(streakCount))) },
@@ -266,7 +288,7 @@ export const Lightfall = ({
       uDensity: { value: density },
       uTwinkle: { value: twinkle },
       uZoom: { value: zoom },
-      uBgGlow: { value: backgroundGlow },
+      uBgGlow: { value: finalBgGlow },
       uOpacity: { value: opacity },
       uMouseEnabled: { value: mouseInteraction ? 1 : 0 },
       uMouseStrength: { value: mouseStrength },
@@ -405,7 +427,8 @@ export const Lightfall = ({
     mouseInteraction,
     mouseStrength,
     mouseRadius,
-    mouseDampening
+    mouseDampening,
+    isDarkTheme
   ]);
 
   return (

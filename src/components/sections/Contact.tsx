@@ -112,7 +112,7 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* ── Background personnalisé Contact ── */}
       {/* Lightfall ReactBits Animation */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-15">
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
         <Lightfall
           colors={['#bd00ff', '#7000ff', '#00f2ff']}
           backgroundColor="#030712"

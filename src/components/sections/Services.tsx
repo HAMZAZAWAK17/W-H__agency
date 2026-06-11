@@ -121,7 +121,7 @@ export default function Services() {
     <section id="services" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé Services ── */}
       {/* Lightfall ReactBits Animation */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-15">
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
         <Lightfall
           colors={['#00f2ff', '#7000ff', '#bd00ff']}
           backgroundColor="#030712"

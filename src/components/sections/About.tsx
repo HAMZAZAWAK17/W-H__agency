@@ -38,7 +38,7 @@ export function About() {
   return (
     <section ref={sectionRef} id="about" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé About (Lightfall static blending) ── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-30">
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
         <Lightfall
           colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
           backgroundColor="#0A29FF"
