@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Github, Linkedin, GraduationCap, Mail } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
-import Lightfall from './Lightfall';
+import Particles from './Particles';
 
 export function About() {
   const { t } = useTranslation();
@@ -52,23 +52,15 @@ export function About() {
         style={{ opacity: bgOpacity }}
         className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
       >
-        <Lightfall
-          colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
-          backgroundColor="#0A29FF"
-          speed={0.5}
-          streakCount={2}
-          streakWidth={1}
-          streakLength={1}
-          glow={1}
-          density={0.6}
-          twinkle={1}
-          zoom={3}
-          backgroundGlow={0.5}
-          opacity={1}
-          mouseInteraction
-          mouseStrength={0.5}
-          mouseRadius={1}
+        <Particles
+          speed={0.4}
+          density={55}
+          maxDistance={110}
+          mouseRadius={135}
         />
+        {/* Smooth blending overlays to transition between sections */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       </motion.div>
 
       {/* Subtle overlay to blend the Lightfall background into dark theme */}

@@ -7,7 +7,7 @@ import * as z from 'zod';
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
 import { Mail, Instagram, MessageCircle, XCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import Squares from './Squares';
+import Particles from './Particles';
 
 // Animated SVG checkmark
 function AnimatedCheckmark() {
@@ -127,10 +127,11 @@ const Contact: React.FC = () => {
         style={{ opacity: bgOpacity }}
         className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
       >
-        <Squares
-          cellSize={54}
-          speed={0.015}
-          interactive
+        <Particles
+          speed={0.4}
+          density={55}
+          maxDistance={110}
+          mouseRadius={135}
         />
         {/* Smooth blending overlays to transition between sections */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
