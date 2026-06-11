@@ -61,6 +61,10 @@ export const Particles = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const effectiveInteractive = isMobile ? false : interactive;
+    const effectiveMaxDistance = isMobile ? 0 : maxDistance;
+
     // Use dpr=1 to ensure high scroll performance
     const dpr = 1;
 
@@ -85,15 +89,15 @@ export const Particles = ({
     const initParticles = () => {
       const { pColor1, pColor2 } = getColors();
       const area = (canvas.width * canvas.height) / (dpr * dpr);
-      const count = Math.min(120, Math.max(20, Math.floor((area / 15000) * (density / 60))));
+      const count = isMobile ? 12 : Math.min(120, Math.max(20, Math.floor((area / 15000) * (density / 60))));
       
       const newParticles: Particle[] = [];
       for (let i = 0; i < count; i++) {
         newParticles.push({
           x: Math.random() * (canvas.width / dpr),
           y: Math.random() * (canvas.height / dpr),
-          vx: (Math.random() - 0.5) * speed * 2,
-          vy: (Math.random() - 0.5) * speed * 2,
+          vx: (Math.random() - 0.5) * speed * (isMobile ? 1 : 2),
+          vy: (Math.random() - 0.5) * speed * (isMobile ? 1 : 2),
           radius: Math.random() * 2 + 1,
           color: Math.random() > 0.5 ? pColor1 : pColor2,
         });
@@ -116,7 +120,7 @@ export const Particles = ({
       mouseRef.current.active = false;
     };
 
-    if (interactive) {
+    if (effectiveInteractive) {
       container.addEventListener('pointermove', handlePointerMove);
       container.addEventListener('pointerleave', handlePointerLeave);
     }
@@ -148,7 +152,7 @@ export const Particles = ({
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
         // Mouse interaction (pull effect)
-        if (interactive && mouseRef.current.active) {
+        if (effectiveInteractive && mouseRef.current.active) {
           const dx = mouseRef.current.x - p.x;
           const dy = mouseRef.current.y - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -167,27 +171,32 @@ export const Particles = ({
       });
 
       // 2. Draw connecting lines
-      ctx.lineWidth = 0.55;
-      for (let i = 0; i < particles.length; i++) {
-        const pi = particles[i];
-        for (let j = i + 1; j < particles.length; j++) {
-          const pj = particles[j];
-          const dx = pi.x - pj.x;
-          const dy = pi.y - pj.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      if (effectiveMaxDistance > 0) {
+        ctx.lineWidth = 0.55;
+        for (let i = 0; i < particles.length; i++) {
+          const pi = particles[i];
+          for (let j = i + 1; j < particles.length; j++) {
+            const pj = particles[j];
+            const dx = pi.x - pj.x;
+            const dy = pi.y - pj.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < maxDistance) {
-            const alpha = (1 - dist / maxDistance) * 0.16;
-            ctx.beginPath();
-            ctx.moveTo(pi.x, pi.y);
-            ctx.lineTo(pj.x, pj.y);
-            ctx.strokeStyle = `rgba(${lineColor}, ${alpha})`;
-            ctx.stroke();
+            if (dist < effectiveMaxDistance) {
+              const alpha = (1 - dist / effectiveMaxDistance) * 0.16;
+              ctx.beginPath();
+              ctx.moveTo(pi.x, pi.y);
+              ctx.lineTo(pj.x, pj.y);
+              ctx.strokeStyle = `rgba(${lineColor}, ${alpha})`;
+              ctx.stroke();
+            }
           }
         }
+      }
 
-        // Mouse lines
-        if (interactive && mouseRef.current.active) {
+      // Mouse lines
+      if (effectiveInteractive && mouseRef.current.active) {
+        for (let i = 0; i < particles.length; i++) {
+          const pi = particles[i];
           const dx = pi.x - mouseRef.current.x;
           const dy = pi.y - mouseRef.current.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -235,7 +244,7 @@ export const Particles = ({
       stopLoop();
       observer.disconnect();
       ro.disconnect();
-      if (interactive) {
+      if (effectiveInteractive) {
         container.removeEventListener('pointermove', handlePointerMove);
         container.removeEventListener('pointerleave', handlePointerLeave);
       }
