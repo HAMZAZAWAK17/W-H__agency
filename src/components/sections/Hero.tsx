@@ -320,7 +320,7 @@ export function Hero() {
               variants={lineVariants}
               initial="hidden"
               animate="visible"
-              className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl"
+              className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl min-h-[2.15em]"
             >
               {t('hero.title2_prefix')}{" "}
               <TextType
