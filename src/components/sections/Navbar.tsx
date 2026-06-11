@@ -92,12 +92,12 @@ const Navbar: React.FC = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <motion.div
-                className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-primary/30 bg-primary/5 flex items-center justify-center group-hover:border-primary transition-all duration-300"
+                className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-blue-900/30 dark:border-primary/30 bg-blue-900/5 dark:bg-primary/5 flex items-center justify-center group-hover:border-blue-900 dark:group-hover:border-primary transition-all duration-300"
                 whileHover={{
                   boxShadow: '0 0 20px rgba(0,242,255,0.4)',
                 }}
               >
-                <span className="text-primary text-[10px] sm:text-xs font-black font-display italic tracking-tighter">WH</span>
+                <span className="text-blue-900 dark:text-primary text-[10px] sm:text-xs font-black font-display italic tracking-tighter">WH</span>
               </motion.div>
               {!isScrolled && (
                 <motion.span
