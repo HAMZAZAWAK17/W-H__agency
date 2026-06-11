@@ -47,10 +47,12 @@ function ReviewCard({
         transformPerspective: 800,
         transformStyle: "preserve-3d",
       }}
-      className="group bg-white/5 dark:bg-[#0b0e14]/50 backdrop-blur-md border border-[var(--neon)]/20 hover:border-[var(--neon)]/50 shadow-xl hover:shadow-[var(--neon)]/10 relative rounded-[2rem] p-6 flex flex-col w-[320px] shrink-0 transition-all duration-300 cursor-default"
+      className="group bg-white/45 dark:bg-[#0b0e14]/40 border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.03)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.25)] hover:border-[var(--neon)]/30 dark:hover:border-[var(--neon)]/30 backdrop-blur-xl relative rounded-[2rem] p-6 flex flex-col w-[320px] shrink-0 transition-all duration-300 cursor-default"
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
+      {/* Hover glow blob */}
+      <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-[var(--neon)] blur-[60px] opacity-0 transition-opacity duration-500 group-hover:opacity-10 pointer-events-none" />
       <Quote className="absolute top-6 right-6 h-8 w-8 text-[var(--neon)]/10 transition-colors group-hover:text-[var(--neon)]/25" />
 
       {/* Stars — sequential reveal */}
@@ -152,10 +154,13 @@ export function Reviews() {
       </div>
 
       {/* Marquee Row 1 — left scroll */}
-      <div className="relative overflow-hidden mb-6 group">
-        {/* Edge fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      <div 
+        className="relative overflow-hidden mb-6 group"
+        style={{
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+        }}
+      >
 
         <div
           className="flex gap-6 marquee-track-fast"
@@ -173,9 +178,13 @@ export function Reviews() {
 
       {/* Marquee Row 2 — right scroll (reverse) */}
       {row2.length > 0 && (
-        <div className="relative overflow-hidden group">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        <div 
+          className="relative overflow-hidden group"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+            maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+          }}
+        >
 
           <div
             className="flex gap-6 marquee-track-reverse"
