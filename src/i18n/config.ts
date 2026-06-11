@@ -7,7 +7,6 @@ import fr from './locales/fr.json';
 import ar from './locales/ar.json';
 
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
@@ -15,16 +14,14 @@ i18n
       fr: { translation: fr },
       ar: { translation: ar }
     },
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
   });
 
-// Handle RTL for Arabic
-i18n.on('languageChanged', (lng) => {
-  document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
-  document.documentElement.lang = lng;
-});
+document.documentElement.dir = 'ltr';
+document.documentElement.lang = 'en';
 
 export default i18n;

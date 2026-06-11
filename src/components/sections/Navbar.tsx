@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '../ui/ThemeToggle';
-import LanguageSwitcher from '../ui/LanguageSwitcher';
 import Magnetic from '../ui/Magnetic';
 
 const Navbar: React.FC = () => {
@@ -144,7 +143,6 @@ const Navbar: React.FC = () => {
         {/* Right Actions */}
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <div className="flex items-center gap-1 sm:gap-2">
-            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
