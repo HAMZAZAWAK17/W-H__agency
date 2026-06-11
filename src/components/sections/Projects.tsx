@@ -50,6 +50,7 @@ import logo4 from "../../assets/Logo/image copy 2.png";
 import valeryonLogo from "../../assets/Logo/valeryon.png";
 import gastronomeLogo from "../../assets/Logo/gastronome.png";
 import gastronomeLogo2 from "../../assets/Logo/gastronome 2.png";
+import uiPageImg from "../../assets/UI/uiPAGE.png";
 
 type Filter = "All" | "Web" | "Mobile" | "UI" | "Logo";
 
@@ -73,6 +74,7 @@ const projects: Project[] = [
   { icon: Sparkles, title: "Valeryon", category: "Logo Design", type: "Logo", description: "Premium and elegant logo design for Valeryon.", tags: ["Branding", "Vector"], accent: "from-[var(--violet-glow)]/30 to-[var(--neon)]/10", captures: [logo4, valeryonLogo] },
   { icon: Sparkles, title: "Gastronome", category: "Logo Design", type: "Logo", description: "Creative and modern logo design for Gastronome.", tags: ["Branding", "Vector"], accent: "from-[var(--neon)]/30 to-[var(--electric)]/10", captures: [logo2, gastronomeLogo] },
   { icon: Sparkles, title: "Gastronome 2", category: "Logo Design", type: "Logo", description: "Alternative logo concept for Gastronome.", tags: ["Branding", "Vector"], accent: "from-[var(--electric)]/30 to-[var(--violet-glow)]/10", captures: [logo3, gastronomeLogo2] },
+  { icon: Sparkles, title: "Agency Landing Page", category: "UI/UX Design", type: "UI", description: "Modern, immersive, and high-performance landing page design utilizing custom animations and clean aesthetic layout.", tags: ["UI/UX", "Design", "Figma"], accent: "from-[var(--neon)]/30 to-[var(--violet-glow)]/10", captures: [uiPageImg] },
 ];
 
 const filters: Filter[] = ["All", "Web", "Mobile", "UI", "Logo"];
