@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Github, Linkedin, GraduationCap, Mail } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
@@ -9,6 +9,17 @@ import Lightfall from './Lightfall';
 export function About() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const bgOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0, 0.8, 0.8, 0]
+  );
 
   const founders = [
     {
@@ -37,8 +48,10 @@ export function About() {
 
   return (
     <section ref={sectionRef} id="about" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* ── Background personnalisé About (Lightfall static blending) ── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
+      <motion.div
+        style={{ opacity: bgOpacity }}
+        className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
+      >
         <Lightfall
           colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
           backgroundColor="#0A29FF"
@@ -56,7 +69,7 @@ export function About() {
           mouseStrength={0.5}
           mouseRadius={1}
         />
-      </div>
+      </motion.div>
 
       {/* Subtle overlay to blend the Lightfall background into dark theme */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none z-0 opacity-80" />

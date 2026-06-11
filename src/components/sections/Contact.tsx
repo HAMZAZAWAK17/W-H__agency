@@ -4,7 +4,7 @@ import SectionHeader from '../ui/SectionHeader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
 import { Mail, Instagram, MessageCircle, XCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Squares from './Squares';
@@ -40,7 +40,19 @@ function AnimatedCheckmark() {
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   const formRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(formRef, { once: true, amount: 0.3 });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const bgOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0, 0.8, 0.8, 0]
+  );
 
   const contactSchema = z.object({
     name: z.string().min(2, t('contact.form.name_label')),
@@ -109,9 +121,12 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section ref={sectionRef} id="contact" className="py-24 relative overflow-hidden">
       {/* ── Background personnalisé Contact ── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
+      <motion.div
+        style={{ opacity: bgOpacity }}
+        className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
+      >
         <Squares
           cellSize={54}
           speed={0.015}
@@ -120,7 +135,7 @@ const Contact: React.FC = () => {
         {/* Smooth blending overlays to transition between sections */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-      </div>
+      </motion.div>
       {/* Subtle 45° grid */}
       <div
         className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"

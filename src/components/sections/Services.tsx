@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
 import {
   Smartphone, Globe, Palette, Wand2, GraduationCap, Presentation,
   BarChart, Shapes, ArrowUpRight, X, CheckCircle2,
@@ -63,6 +63,18 @@ function TiltCard({
 
 export default function Services() {
   const { t } = useTranslation();
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const bgOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0, 0.8, 0.8, 0]
+  );
 
   const services = [
     {
@@ -118,9 +130,12 @@ export default function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
 
   return (
-    <section id="services" className="relative py-20 sm:py-28 overflow-hidden">
+    <section ref={sectionRef} id="services" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé Services ── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-80">
+      <motion.div
+        style={{ opacity: bgOpacity }}
+        className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0"
+      >
         <Particles
           speed={0.4}
           density={55}
@@ -130,7 +145,7 @@ export default function Services() {
         {/* Smooth blending overlays to transition between sections */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-      </div>
+      </motion.div>
       {/* Grid overlay */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
