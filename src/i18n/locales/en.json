@@ -153,30 +153,10 @@
         "category": "Accounting System",
         "description": "Comprehensive accounting management system featuring guided entry, automatic financial statements, and full PCM integration."
       },
-      "nova_store": {
-        "title": "Nova Store",
-        "category": "E-commerce",
-        "description": "Modern headless storefront with smooth checkout, animated product galleries, and CMS."
-      },
-      "opsboard": {
-        "title": "OpsBoard",
-        "category": "SaaS Dashboard",
-        "description": "Real-time analytics dashboard for SMBs — KPIs, team management, and exportable reports."
-      },
       "gastronome_app": {
         "title": "Gastronome App",
         "category": "Restaurant App",
         "description": "A premium mobile application built with Flutter for Gastronome, allowing users to browse all dishes and menus seamlessly."
-      },
-      "edutrack": {
-        "title": "EduTrack",
-        "category": "PFE Project",
-        "description": "Final-year project: an AI-powered student progress tracker with smart recommendations."
-      },
-      "pitch_deck_pro": {
-        "title": "Pitch Deck Pro",
-        "category": "Branding",
-        "description": "Investor-ready pitch deck and brand identity for an early-stage AI startup."
       },
       "dental_clinic": {
         "title": "Dental Clinic",

@@ -5,6 +5,7 @@ import {
   BarChart, Shapes, ArrowUpRight, X, CheckCircle2,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Lightfall from "./Lightfall";
 
 // Card tilt component
 function TiltCard({
@@ -119,41 +120,34 @@ export default function Services() {
   return (
     <section id="services" className="relative py-20 sm:py-28 overflow-hidden">
       {/* ── Background personnalisé Services ── */}
-      {/* Grid horizontal/vertical subtle */}
+      {/* Lightfall ReactBits Animation */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-15">
+        <Lightfall
+          colors={['#00f2ff', '#7000ff', '#bd00ff']}
+          backgroundColor="#030712"
+          speed={0.4}
+          streakCount={2}
+          streakWidth={1}
+          streakLength={1.2}
+          glow={1}
+          density={0.5}
+          twinkle={1}
+          zoom={3.5}
+          backgroundGlow={0.3}
+          opacity={1}
+          mouseInteraction
+          mouseStrength={0.5}
+          mouseRadius={1.2}
+        />
+      </div>
+      {/* Grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none z-0"
         style={{
           backgroundImage:
             'linear-gradient(to right, rgba(0,242,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.5) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
         }}
-      />
-      {/* Centre radial glow with breathing animation */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.03, 0.06, 0.03]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[var(--neon)] blur-[140px] pointer-events-none z-0"
-      />
-      {/* Corner accent top-right with pulse */}
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.04, 0.07, 0.04]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-        className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--electric)] blur-[80px] rounded-full pointer-events-none z-0"
       />
 
       <div className="mx-auto max-w-6xl px-4 relative z-10">

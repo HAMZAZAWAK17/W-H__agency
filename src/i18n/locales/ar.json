@@ -153,30 +153,10 @@
         "category": "نظام محاسبي",
         "description": "نظام متكامل للإدارة المحاسبية يتميز بإدخال موجه، وتوليد تلقائي للقوائم المالية، وتكامل كامل مع المخطط المحاسبي."
       },
-      "nova_store": {
-        "title": "Nova Store",
-        "category": "تجارة إلكترونية",
-        "description": "متجر إلكتروني حديث مع عملية دفع سلسة ومعارض منتجات متحركة."
-      },
-      "opsboard": {
-        "title": "OpsBoard",
-        "category": "لوحة تحكم SaaS",
-        "description": "لوحة تحكم تحليلية في الوقت الفعلي للشركات الصغيرة والمتوسطة."
-      },
       "gastronome_app": {
         "title": "Gastronome App",
         "category": "تطبيق مطعم",
         "description": "تطبيق جوال متميز تم بناؤه باستخدام Flutter لمطعم Gastronome، يتيح للمستخدمين تصفح جميع الأطباق والقوائم بسلاسة."
-      },
-      "edutrack": {
-        "title": "EduTrack",
-        "category": "مشروع تخرج",
-        "description": "مشروع نهاية السنة: متتبع تقدم الطلاب المدعوم بالذكاء الاصطناعي."
-      },
-      "pitch_deck_pro": {
-        "title": "Pitch Deck Pro",
-        "category": "هوية بصرية",
-        "description": "عرض تقديمي وهوية بصرية لشركة ناشئة في مجال الذاء الاصطناعي."
       },
       "dental_clinic": {
         "title": "عيادة أسنان",

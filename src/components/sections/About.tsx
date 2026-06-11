@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Github, Linkedin, GraduationCap, Mail } from "lucide-react";
 import profileImg from "../../assets/profile.jpg";
 import wissalImg from "../../assets/image.png";
@@ -9,17 +9,6 @@ import Lightfall from './Lightfall';
 export function About() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
-  
-  // Track scroll position of the About section for dynamic transition
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Smooth scroll animations for background scale, position, and opacity
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 0.35, 0.35, 0]);
-  const backgroundScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
 
   const founders = [
     {
@@ -48,39 +37,25 @@ export function About() {
 
   return (
     <section ref={sectionRef} id="about" className="relative py-20 sm:py-28 overflow-hidden">
-      {/* ── Background personnalisé About (Lightfall with scrolling transition) ── */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <motion.div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            y: backgroundY,
-            opacity: backgroundOpacity,
-            scale: backgroundScale
-          }}
-        >
-          <Lightfall
-            colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
-            backgroundColor="#0A29FF"
-            speed={0.5}
-            streakCount={2}
-            streakWidth={1}
-            streakLength={1}
-            glow={1}
-            density={0.6}
-            twinkle={1}
-            zoom={3}
-            backgroundGlow={0.5}
-            opacity={1}
-            mouseInteraction
-            mouseStrength={0.5}
-            mouseRadius={1}
-            color1="#A6C8FF"
-            color2="#5227FF"
-            color3="#FF9FFC"
-          />
-        </motion.div>
+      {/* ── Background personnalisé About (Lightfall static blending) ── */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-30">
+        <Lightfall
+          colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+          backgroundColor="#0A29FF"
+          speed={0.5}
+          streakCount={2}
+          streakWidth={1}
+          streakLength={1}
+          glow={1}
+          density={0.6}
+          twinkle={1}
+          zoom={3}
+          backgroundGlow={0.5}
+          opacity={1}
+          mouseInteraction
+          mouseStrength={0.5}
+          mouseRadius={1}
+        />
       </div>
 
       {/* Subtle overlay to blend the Lightfall background into dark theme */}

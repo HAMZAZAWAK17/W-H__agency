@@ -7,6 +7,7 @@ import * as z from 'zod';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Mail, Instagram, MessageCircle, XCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import Lightfall from './Lightfall';
 
 // Animated SVG checkmark
 function AnimatedCheckmark() {
@@ -110,15 +111,29 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* ── Background personnalisé Contact ── */}
-      {/* Warm violet orbe gauche */}
-      <div className="absolute -top-10 -left-20 w-[500px] h-[500px] rounded-full bg-[var(--violet-glow)] opacity-[0.05] blur-[130px] pointer-events-none" />
-      {/* Neon orbe droite */}
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-[var(--neon)] opacity-[0.04] blur-[120px] pointer-events-none" />
-      {/* Centre horizontal glow line */}
-      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--violet-glow)]/15 to-transparent pointer-events-none" />
+      {/* Lightfall ReactBits Animation */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-15">
+        <Lightfall
+          colors={['#bd00ff', '#7000ff', '#00f2ff']}
+          backgroundColor="#030712"
+          speed={0.4}
+          streakCount={2}
+          streakWidth={1}
+          streakLength={1.3}
+          glow={1}
+          density={0.55}
+          twinkle={1}
+          zoom={3.2}
+          backgroundGlow={0.35}
+          opacity={1}
+          mouseInteraction
+          mouseStrength={0.5}
+          mouseRadius={1.1}
+        />
+      </div>
       {/* Subtle 45° grid */}
       <div
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        className="absolute inset-0 opacity-[0.015] pointer-events-none z-0"
         style={{
           backgroundImage: 'repeating-linear-gradient(-45deg, rgba(189,0,255,0.5) 0px, rgba(189,0,255,0.5) 1px, transparent 1px, transparent 50px)',
         }}

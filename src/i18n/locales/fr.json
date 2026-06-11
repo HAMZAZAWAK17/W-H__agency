@@ -153,30 +153,10 @@
         "category": "Système Comptable",
         "description": "Système complet de gestion comptable avec saisie guidée, génération de bilans fonctionnels et intégration de 1238 comptes du PCM."
       },
-      "nova_store": {
-        "title": "Nova Store",
-        "category": "E-commerce",
-        "description": "Boutique headless moderne avec paiement fluide et galeries animées."
-      },
-      "opsboard": {
-        "title": "OpsBoard",
-        "category": "Tableau de Bord SaaS",
-        "description": "Tableau de bord analytique en temps réel pour PME — KPIs et gestion d'équipe."
-      },
       "gastronome_app": {
         "title": "Gastronome App",
         "category": "Application Restaurant",
         "description": "Une application mobile développée avec Flutter pour Gastronome, permettant aux utilisateurs de consulter l'ensemble des plats et menus avec élégance."
-      },
-      "edutrack": {
-        "title": "EduTrack",
-        "category": "Projet PFE",
-        "description": "Projet de fin d'études : suivi des progrès des étudiants via IA."
-      },
-      "pitch_deck_pro": {
-        "title": "Pitch Deck Pro",
-        "category": "Branding",
-        "description": "Présentation et identité de marque pour une startup IA en phase de démarrage."
       },
       "dental_clinic": {
         "title": "Cabinet Dentaire",
